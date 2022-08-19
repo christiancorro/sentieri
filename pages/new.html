@@ -28,6 +28,7 @@
     <script type="text/javascript" src="../js/models/Trail.js"></script>
     <script type="text/javascript" src="../js/models/Enums.js"></script>
     <script type="text/javascript" src="../js/models/Card.js"></script>
+    <script type="text/javascript" src="../js/Utils.js"></script>
 </head>
 
 <body>
@@ -68,7 +69,7 @@
 
             <form class="trail-form">
 
-                <input type="file" accept="image/*" name="image" id="load-image" style="display: none;">
+                <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;">
                 <label class="image-preview" for="load-image" style="cursor: pointer;">
                     <span class="message">Cambia immagine
                     </span>
@@ -76,38 +77,54 @@
 
                 <p><img id="output" width="900" margin="0 auto" /></p>
 
+                <label class="selection-big" for="difficulty-selection">
+                    <select id="difficulty-selection" name="difficulty" required="required">
+                        <option value="E" selected="selected">E (Escursionistico)</option>
+                        <option value="EE">EE (Escursionisti Esperti)</option>
+                        <option value="EEA">EEA (Escursionisti Esperti con Attrezzature)</option>
+                        <option value="EAI">EAI (Escursionisti in Ambiente Innevato)</option>
+                        <option value="EEA-F">EEA-F (Ferrata Facile)</option>
+                        <option value="EEA-D">EEA-D (Ferrata Difficile)</option>
+                    </select>
 
+                </label>
+
+                <br>
+                <br>
 
                 <div class="input">
                     <!-- <input type="text" class="input-field title" name="title" value="" required /> -->
-                    <textarea class="input-field title" name="title" rows="2" value="Titolo di prova"
-                        required></textarea>
+                    <textarea class="input-field title" name="title" rows="2" placeholder=" "
+                        required>Titolo di prova</textarea>
 
                     <label class="input-label">Titolo</label>
                 </div>
                 <div class="input">
                     <!-- <input type="text" value="" required /> -->
-                    <textarea class="input-field description" name="descritpion" value="Descrizione" rows="3"
-                        required></textarea>
+                    <textarea class="input-field description" name="description" rows="3" placeholder=" "
+                        required>Descrizione di prova</textarea>
                     <label class="input-label">Descrizione</label>
                 </div>
 
                 <div class="input-group">
                     <div class="input">
-                        <input type="number" step="any" name="duration" class="input-field" value="6" required />
+                        <input type="number" step="any" name="duration" class="input-field" placeholder=" " value="6"
+                            required />
                         <label class="input-label"><i class="fa-solid fa-clock"></i> Durata (h)</label>
                     </div>
                     <div class="input">
-                        <input type="number" step="any" name="length" class="input-field" value="12" required />
+                        <input type="number" step="any" name="trail_length" class="input-field" placeholder=" "
+                            value="12" required />
                         <label class="input-label"><i class="fa-solid fa-route"></i> Lunghezza (km)</label>
                     </div>
                     <div class="input">
-                        <input type="number" step="any" name="elevation_gain" class="input-field" value="880"
-                            required />
+                        <input type="number" step="any" name="elevation_gain" class="input-field" placeholder=" "
+                            value="880" required />
                         <label class="input-label"><i class="fa-solid fa-arrows-up-down"></i> Dislivello (m)</label>
                     </div>
                     <div class="input">
-                        <input type="number" step="any" name="max_altitude" class="input-field" value="1970" required />
+                        <input type="number" step="any" name="max_altitude" class="input-field" placeholder=" "
+                            value="1970" required />
                         <label class="input-label"><i class="fa-solid fa-flag"></i> Altitudine massima (m)</label>
                     </div>
                 </div>
@@ -116,20 +133,29 @@
                 <!-- TODO: add autocomplete based on other groups -->
                 <div class="input-group">
 
-                    <label class="orderBy" for="slct">
-                        <select id="slct" required="required">
-                            <option value="date" selected="selected">Veneto</option>
-                            <option value="duration">Friuli-Venezia-Giulia</option>
-                            <option value="length">Trentino-Alto-Adige</option>
-                            <option value="elevation_gain">Lombardia</option>
+
+
+                    <!-- <label class="orderBy" for="slct">
+                        <select id="slct" required="required" name="location">
+                            <option value="Veneto" selected="selected">Veneto</option>
+                            <option value="Friuli-Venezia-Giulia">Friuli-Venezia-Giulia</option>
+                            <option value="Trentino-Alto-Adige">Trentino-Alto-Adige</option>
+                            <option value="Lombardia">Lombardia</option>
                         </select>
                         <span>
                             <i class="fa-solid fa-angle-down"></i>
                         </span>
-                    </label>
+                    </label> -->
 
                     <div class="input">
-                        <input type="text" step="any" name="group" class="input-field" value="" required />
+                        <input type="text" step="any" name="location" class="input-field" placeholder=" " value="Veneto"
+                            required />
+                        <label class="input-label">Regione</label>
+                    </div>
+
+                    <div class="input">
+                        <input type="text" step="any" name="group" class="input-field" placeholder=" "
+                            value="Gruppo di prova" required />
                         <label class="input-label">Gruppo</label>
                     </div>
                 </div>
@@ -141,115 +167,87 @@
 
 
                 <div class="input">
-                    <input type="url" step="any" name="start_google_maps_url" class="input-field" value="" required />
+                    <input type="url" step="any" name="start_google_maps_url" class="input-field" placeholder=" "
+                        value="https://www.google.com/maps/place/Via+Cr%C3%B2+Durigon,+2,+31055+Quinto+di+Treviso+TV/@45.6625449,12.1816236,17z/data=!3m1!4b1!4m5!3m4!1s0x477936fa838ce553:0x15ca8dd901a93f8b!8m2!3d45.6625449!4d12.1838123?shorturl=1"
+                        required />
                     <label class="input-label">URL Google Maps</label>
                 </div>
 
                 <div class="input">
-                    <input type="url" step="any" name="url" class="input-field" value="" required />
+                    <input type="url" step="any" name="url" class="input-field" placeholder=" "
+                        value="https://www.itineraridimontagna.it/sentiero-dei-kaiserjager-e-gallerie-del-lagazuoi/"
+                        required />
                     <label class="input-label">URL Pagina</label>
                 </div>
                 <br>
 
-                <div class="filters difficulty-filter">
-                    <span class="filter-title"> Difficoltà</span>
-                    <div>
-                        <input type="checkbox" id="E" name="difficulty" value="E">
-                        <label for="E" title="Escursionistico">E</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="EE" name="difficulty" value="EE">
-                        <label for="EE" title="Escursionisti Esperti">EE</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="EEA" name="difficulty" value="EEA">
-                        <label for="EEA" title="Escursionisti Esperti con Attrezzature">EEA</label>
-                    </div>
 
-                    <div>
-                        <input type="checkbox" id="EAI" name="difficulty" value="EAI">
-                        <label for="EAI" title="Escursionisti in Ambiente Innevato">EAI</label>
-                    </div>
-
-                    <!-- <br> -->
-                    <div>
-                        <input type="checkbox" id="EEA-F" name="difficulty" value="EEA-F">
-                        <label for="EEA-F" title="Ferrata Facile">EEA-F</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="EEA-D" name="difficulty" value="EEA-D">
-                        <label for="EEA-D" title="Ferrata Difficile">EEA-D</label>
-                    </div>
-
-                </div>
-
-                <br>
 
                 <div class="filters">
                     <span class="filter-title"> Tags</span>
                     <div>
-                        <input type="checkbox" id="Anello" name="tag" value="Anello">
+                        <input type="checkbox" id="Anello" name="tags" value="Anello">
                         <label for="Anello">Anello</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Cresta" name="tag" value="Cresta">
+                        <input type="checkbox" id="Cresta" name="tags" value="Cresta">
                         <label for="Cresta">Cresta</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Ferrata" name="tag" value="Ferrata">
+                        <input type="checkbox" id="Ferrata" name="tags" value="Ferrata">
                         <label for="Ferrata">Ferrata</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Ciaspole" name="tag" value="Ciaspole">
+                        <input type="checkbox" id="Ciaspole" name="tags" value="Ciaspole">
                         <label for="Ciaspole">Ciaspole</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="Trekking" name="tag" value="Trekking">
+                        <input type="checkbox" id="Trekking" name="tags" value="Trekking">
                         <label for="Trekking">Trekking</label>
                     </div>
                     <br>
                     <div>
-                        <input type="checkbox" id="Lago" name="tag" value="Lago">
+                        <input type="checkbox" id="Lago" name="tags" value="Lago">
                         <label for="Lago">Lago</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Fiume" name="tag" value="Fiume">
+                        <input type="checkbox" id="Fiume" name="tags" value="Fiume">
                         <label for="Fiume">Fiume</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="Cascata" name="tag" value="Cascata">
+                        <input type="checkbox" id="Cascata" name="tags" value="Cascata">
                         <label for="Cascata">Cascata</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="Ghiacciaio" name="tag" value="Ghiacciaio">
+                        <input type="checkbox" id="Ghiacciaio" name="tags" value="Ghiacciaio">
                         <label for="Ghiacciaio">Ghiacciaio</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="Storia" name="tag" value="Storia">
+                        <input type="checkbox" id="Storia" name="tags" value="Storia">
                         <label for="Storia">Storia</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="Rifugio" name="tag" value="Rifugio">
+                        <input type="checkbox" id="Rifugio" name="tags" value="Rifugio">
                         <label for="Rifugio">Rifugio</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Malga" name="tag" value="Malga">
+                        <input type="checkbox" id="Malga" name="tags" value="Malga">
                         <label for="Malga">Malga</label>
                     </div>
 
 
                     <div>
-                        <input type="checkbox" id="Bivacco" name="tag" value="Fiume">
+                        <input type="checkbox" id="Bivacco" name="tags" value="Fiume">
                         <label for="Bivacco">Bivacco</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="Bambini" name="tag" value="Bambini">
+                        <input type="checkbox" id="Bambini" name="tags" value="Bambini">
                         <label for="Bambini">Bambini</label>
                     </div>
 
@@ -265,7 +263,7 @@
             </form>
 
 
-            <img class="work_in_progress" src="../images/work_in_progress.svg" alt="Work in progress">
+            <!-- <img class="work_in_progress" src="../images/work_in_progress.svg" alt="Work in progress"> -->
         </div>
 
 

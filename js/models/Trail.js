@@ -20,7 +20,7 @@ class Trail {
 
         this.start = "";
         this.start_coords = [];
-        this.start_google_maps_url = ""
+        this.start_google_maps_url = "";
         this.start_altitude = 0;
 
         this.end = "";
@@ -71,7 +71,13 @@ class Trail {
         return data;
     }
 
+
+
     upload() {
+        if (this.start_coords == "") {
+            this.extractCoords()
+        }
+
         let database = getDatabase(this.id)
         database.set(this.serialize());
         database.on("value", function (snapshot) {
@@ -90,6 +96,7 @@ class Trail {
 
     async downloadImages() {
         this.imagesURL.forEach(url => {
+            console.log(url);
             fetch(url).then(res => res.blob())
                 .then(blob => {
                     let image = new File([blob], 'image.jpeg', {

@@ -16,7 +16,7 @@ class Card {
         let card = document.createElement('article');
 
         card.className = 'card hide';
-        card.innerHTML = '<a href="' +
+        card.innerHTML = '<a target="_blank" href="' +
             this.trail.url +
             '">' +
             '<picture class="thumbnail">' +
@@ -28,7 +28,7 @@ class Card {
             '</picture>' +
             '</a > ' +
             '<div class="card-content">' +
-            '<a href="' +
+            '<a target="_blank" href="' +
             this.trail.url +
             '">' +
             '<h2 class="title">' +
@@ -43,7 +43,7 @@ class Card {
             this.trail.difficulty +
             '</span>' +
             '<span class ="duration" title="Durata"><i class ="fa-solid fa-clock"></i> ' +
-            this.trail.duration.toFixed(2) +
+            parseInt(this.trail.duration).toFixed(2) +
             '<i class="unit">h</i></span>' +
             '<span class ="trail_length" title="Lunghezza"><i class ="fa-solid fa-route"></i> ' +
             this.trail.trail_length +

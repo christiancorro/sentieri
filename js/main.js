@@ -82,13 +82,13 @@ function addCards(trails) {
 
 function addCard(trail) {
 
-    // trail.downloadImages();
+    trail.downloadImages();
     // console.log(trail);
 
     let card = new Card(trail);
-    card.html.addEventListener('click', (event) => {
-        openCard(card);
-    });
+    // card.html.addEventListener('click', (event) => {
+    //     openCard(card);
+    // });
     cards.push(card);
 
     // console.log(card.html);

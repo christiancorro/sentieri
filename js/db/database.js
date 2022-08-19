@@ -132,12 +132,21 @@ async function imageToFile(url) {
 }
 
 
-function uploadImage(file) {
-    const ref = firebase.storage().ref().child('trail-0/image1');
+function uploadImage(trail, file) {
+    return new Promise((resolve, reject) => {
+        console.log("Uploading image");
+        const ref = firebase.storage().ref().child('trail-' + trail.id + '/image');
 
-    ref.put(file).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
+        ref.put(file).then(async (snapshot) => {
+            console.log('Uploaded a blob or file!');
+            await snapshot.ref.getDownloadURL().then((fileUrl) => {
+                // url = fileUrl;
+                console.log(fileUrl);
+                resolve(fileUrl);
+            });
+        });
     });
+
 }
 
 function downloadImage() {
