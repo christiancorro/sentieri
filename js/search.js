@@ -119,7 +119,9 @@ async function search() {
             ||
             card.trail.group.toLowerCase().includes(text)
             ||
-            card.trail.location.toLowerCase().includes(text)) {
+            card.trail.location.toLowerCase().includes(text) ||
+
+            card.trail.description.toLowerCase().includes(text)) {
             card.html.classList.remove("hide");
 
         } else {

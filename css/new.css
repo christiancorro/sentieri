@@ -187,3 +187,9 @@ form .image-preview:hover .message {
 form input[type=url] {
     font-size: 0.88em;
 }
+
+
+.image-upload-container {
+    display: block;
+    position: relative;
+}

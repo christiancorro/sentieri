@@ -132,19 +132,33 @@ async function imageToFile(url) {
 }
 
 
-function uploadImage(trail, file) {
+function uploadImage(file, progressBar = null) {
     return new Promise((resolve, reject) => {
-        console.log("Uploading image");
-        const ref = firebase.storage().ref().child('trail-' + trail.id + '/image');
+        console.log("Uploading image: trail-" + (Trail.lastId + 1) + "/image");
+        const ref = firebase.storage().ref().child('trail-' + Trail.lastId + '/image');
 
-        ref.put(file).then(async (snapshot) => {
+        let uploadTask = ref.put(file);
+
+        uploadTask.then((snapshot) => {
             console.log('Uploaded a blob or file!');
-            await snapshot.ref.getDownloadURL().then((fileUrl) => {
+            snapshot.ref.getDownloadURL().then((fileUrl) => {
                 // url = fileUrl;
                 console.log(fileUrl);
                 resolve(fileUrl);
+
             });
         });
+
+
+        uploadTask.on('state_changed', (snapshot) => {
+            let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            // console.log(percentage);
+            if (progressBar) {
+                progressBar.set(percentage);
+            }
+        });
+
+
     });
 
 }

@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../css/filters.css">
     <link rel="stylesheet" href="../css/search.css">
     <link rel="stylesheet" href="../css/new.css">
+    <link rel="stylesheet" href="../libs/progressbar/progressbar.css">
+    <script src="../libs/progressbar/progressbar.js"></script>
 
     <script src="libs/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/d8c2758a42.js" crossorigin="anonymous"></script>
@@ -69,13 +71,16 @@
 
             <form class="trail-form">
 
-                <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;">
-                <label class="image-preview" for="load-image" style="cursor: pointer;">
-                    <span class="message">Cambia immagine
-                    </span>
-                </label>
+                <div class="image-upload-container">
+                    <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;">
+                    <label class="image-preview" for="load-image" style="cursor: pointer;">
+                        <span class="message">Cambia immagine
+                        </span>
+                    </label>
+                    <div class="ldBar" id="loading-bar"></div>
 
-                <p><img id="output" width="900" margin="0 auto" /></p>
+                    <!-- <p><img id="output" width="900" margin="0 auto" /></p> -->
+                </div>
 
                 <label class="selection-big" for="difficulty-selection">
                     <select id="difficulty-selection" name="difficulty" required="required">

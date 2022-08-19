@@ -82,7 +82,7 @@ function addCards(trails) {
 
 function addCard(trail) {
 
-    trail.downloadImages();
+    // trail.downloadImages();
     // console.log(trail);
 
     let card = new Card(trail);

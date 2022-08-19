@@ -3,7 +3,7 @@ class Trail {
     static lastId = 0;
 
     constructor() {
-        this.id = ++Trail.lastId;
+        this.id = Trail.lastId + 1;
 
         this.title = "";
         this.description = "";
@@ -78,7 +78,8 @@ class Trail {
             this.extractCoords()
         }
 
-        let database = getDatabase(this.id)
+        Trail.lastId += 1;
+        let database = getDatabase(this.id);
         database.set(this.serialize());
         database.on("value", function (snapshot) {
             console.log(snapshot);
@@ -94,19 +95,21 @@ class Trail {
         this.start_coords = [lat, long];
     }
 
-    async downloadImages() {
-        this.imagesURL.forEach(url => {
-            console.log(url);
-            fetch(url).then(res => res.blob())
-                .then(blob => {
-                    let image = new File([blob], 'image.jpeg', {
-                        type: blob.type,
-                    });
+    downloadImages() {
+        return new Promise((resolve, error) => {
+            this.imagesURL.forEach(url => {
+                console.log(url);
+                fetch(url).then(res => res.blob())
+                    .then(blob => {
+                        let image = new File([blob], 'image.jpeg', {
+                            type: blob.type,
+                        });
 
-                    let objectURL = URL.createObjectURL(blob);
-                    document.querySelector(".work_in_progress").src = objectURL;
-                    this.images.push(image);
-                });
+                        let objectURL = URL.createObjectURL(blob);
+                        document.querySelector(".work_in_progress").src = objectURL;
+                        this.images.push(image);
+                    });
+            });
         });
     }
 
