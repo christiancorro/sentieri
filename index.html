@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Sentieri di montagna, ordinati</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/double-slider.css">
+
+    <link rel="stylesheet" href="/libs/slider/slider.min.css">
+    <script src="/libs/slider/slider.min.js"></script>
+    <script src="/libs/wNumb.min.js"></script>
+
+    <script src="libs/splide.min.js"></script>
+    <script src="https://kit.fontawesome.com/d8c2758a42.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
+
+    <script type="text/javascript" src="js/db/database.js"></script>
+    <script type="text/javascript" src="js/models/Trail.js"></script>
+    <script type="text/javascript" src="js/models/Enums.js"></script>
+    <script type="text/javascript" src="js/models/Card.js"></script>
+</head>
+
+<body>
+
+    <header id="navbar">
+        <nav class="navbar-container">
+            <a href="../mountains/index.html" class="home-link">
+                <div class="navbar-logo"></div>
+                Sentieri
+            </a>
+            <svg class="navbar-toggle ham hamRotate ham8" aria-label="Toggle menu" aria-expanded="false"
+                viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('opened')">
+                <path class="line top"
+                    d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+                <path class="line middle" d="m 30,50 h 40" />
+                <path class="line bottom"
+                    d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+            </svg>
+            <div id="navbar-menu" class="detached">
+                <ul class="navbar-links">
+                    <li class="navbar-item selected"><a class="navbar-link" href="../mountains/index.html">Lista</a>
+                    </li>
+                    <li class="navbar-item"><a class="navbar-link" href="/map">Mappa</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="/info">Info</a></li>
+                    <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
+                    <li class="navbar-item account-item"><a class="navbar-link" href="/account">Account</a></li>
+                    <li class="navbar-item account-item"><a class="navbar-link" href="pages/new.html">+</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-area">
+
+        <div class="centered">
+
+            <div class="sticky">
+                <form class="search-container">
+                    <input type="text" class="search-bar" placeholder="Ricerca">
+                    <span class="search-icon"> <i class="fa-solid fa-magnifying-glass"></i></span>
+                </form>
+            </div>
+            <div class="filters">
+                <!-- <li>
+                    <input type="checkbox" id="All" name="categories" value="All" checked>
+                    <label for="All">Tutti</label>
+                </li> -->
+                <div>
+                    <input type="checkbox" id="Anello" name="categories" value="Anello">
+                    <label for="Anello">Anello</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Cresta" name="categories" value="Cresta">
+                    <label for="Cresta">Cresta</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Ferrata" name="categories" value="Ferrata">
+                    <label for="Ferrata">Ferrata</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Ciaspole" name="categories" value="Ciaspole">
+                    <label for="Ciaspole">Ciaspole</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="Trekking" name="categories" value="Trekking">
+                    <label for="Trekking">Trekking</label>
+                </div>
+                <!-- <br> -->
+
+                <br>
+
+
+
+
+                <div class="other-filters">
+                    <div>
+                        <input type="checkbox" id="Lago" name="categories" value="Lago">
+                        <label for="Lago">Lago</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Fiume" name="categories" value="Fiume">
+                        <label for="Fiume">Fiume</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Cascata" name="categories" value="Cascata">
+                        <label for="Cascata">Cascata</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Ghiacciaio" name="categories" value="Ghiacciaio">
+                        <label for="Ghiacciaio">Ghiacciaio</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Storia" name="categories" value="Storia">
+                        <label for="Storia">Storia</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Rifugio" name="categories" value="Rifugio">
+                        <label for="Rifugio">Rifugio</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Malga" name="categories" value="Malga">
+                        <label for="Malga">Malga</label>
+                    </div>
+
+
+                    <div>
+                        <input type="checkbox" id="Bivacco" name="categories" value="Fiume">
+                        <label for="Bivacco">Bivacco</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Bambini" name="categories" value="Bambini">
+                        <label for="Bambini">Bambini</label>
+                    </div>
+
+                    <br>
+
+                    <!-- <br> -->
+
+                    <div class="filter-box location-filter multiple">
+                        <span class="filter-title"><i class="fa-solid fa-location-dot"></i> Regione</span>
+                        <div>
+                            <input type="checkbox" id="Veneto" name="categories" value="Veneto">
+                            <label for="Veneto">Veneto</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="Friuli-Venezia-Giulia" name="categories"
+                                value="Friuli-Venezia-Giulia">
+                            <label for="Friuli-Venezia-Giulia">Friuli-Venezia
+                                Giulia</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="Trentino-Alto-Adige" name="categories"
+                                value="Trentino-Alto-Adige">
+                            <label for="Trentino-Alto-Adige">Trentino-Alto Adige</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="Lombardia" name="categories" value="Lombardia">
+                            <label for="Lombardia">Lombardia</label>
+                        </div>
+
+                        <!-- <div>
+                            <input type="checkbox" id="Piemonte" name="categories" value="Piemonte">
+                            <label for="Piemonte">Piemonte</label>
+                        </div> -->
+                    </div>
+
+                    <div class="filter-box difficulty-filter multiple">
+                        <span class="filter-title"> Difficoltà</span>
+                        <div>
+                            <input type="checkbox" id="E" name="categories" value="E">
+                            <label for="E" title="Escursionistico">E</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="EE" name="categories" value="EE">
+                            <label for="EE" title="Escursionisti Esperti">EE</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="EEA" name="categories" value="EEA">
+                            <label for="EEA" title="Escursionisti Esperti con Attrezzature">EEA</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="EAI" name="categories" value="EAI">
+                            <label for="EAI" title="Escursionisti in Ambiente Innevato">EAI</label>
+                        </div>
+
+                        <br>
+                        <div>
+                            <input type="checkbox" id="EEA-F" name="categories" value="EEA-F">
+                            <label for="EEA-F" title="Ferrata Facile">EEA-F</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="EEA-D" name="categories" value="EEA-D">
+                            <label for="EEA-D" title="Ferrata Difficile">EEA-D</label>
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div class="filter-sliders">
+                        <div class="filter-box duration-filter">
+                            <span class="filter-title"><i class="fa-solid fa-clock"></i> Durata</span>
+                            <form action="">
+                                <input type="number" class="min-duration"> <span>h</span>
+                                <span class="filter-spacer"> - </span>
+                                <input type="number" class="max-duration"> <span>h</span>
+                                <div class="plus plus-duration">+</div>
+                            </form>
+                            <div class="slider" id="slider-duration"></div>
+                        </div>
+
+                        <div class="filter-box trail-length-filter">
+                            <span class="filter-title"><i class="fa-solid fa-route"></i> Lunghezza</span>
+                            <form action="">
+                                <input type="number" class="min-trail-length"> <span>km</span>
+                                <span class="filter-spacer"> - </span>
+                                <input type="number" class="max-trail-length"> <span>km</span>
+                                <div class="plus plus-trail-length">+</div>
+                            </form>
+                            <div class="slider" id="slider-trail-length"></div>
+                        </div>
+
+                        <div class="filter-box elevation-gain-filter">
+                            <span class="filter-title"> Dislivello</span>
+                            <form action="">
+                                <input type="number" class="min-elevation-gain"> <span>m</span>
+                                <span class="filter-spacer"> - </span>
+                                <input type="number" class="max-elevation-gain"> <span>m</span>
+                                <div class="plus plus-elevation-gain">+</div>
+                            </form>
+                            <div class="slider" id="slider-elevation-gain"></div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                </div>
+
+                <button class="toggle-filters" title="Altri filtri">
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+
+            </div>
+
+            <div class="orderBy-container hide">
+
+                <label class="orderBy" for="slct">
+                    <select id="slct" required="required">
+                        <option value="date" selected="selected">Data</option>
+                        <option value="duration">Durata</option>
+                        <option value="length">Lunghezza</option>
+                        <option value="elevation_gain">Dislivello</option>
+                        <option value="max_altitude">Altitudine</option>
+                        <option value="distance">Distanza</option>
+                    </select>
+                    <span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </span>
+                </label>
+
+                <div class="position-container">
+
+                    <div class="position-bar" spellcheck="false" id="geocoder"></div>
+
+                    <!-- <div id="geocoder"></div> -->
+                    <!-- <input type="text" class="position-bar" placeholder="Posizione"> -->
+                    <!-- <span class="position-icon"> <i class="fa-solid fa-magnifying-glass"></i></span> -->
+                </div>
+
+
+
+                <button class="order" title="Ordine decrescente">
+                    <i class="fa-solid fa-arrow-down-short-wide"></i>
+                </button>
+
+                <div class="quantity-label">
+                    <span class="quantity-number">0</span> itinerari
+                </div>
+
+                <!-- <pre id="result"></pre> -->
+
+
+
+            </div>
+
+
+        </div>
+
+        </div>
+
+        <div class="centered">
+            <section class="cards">
+
+
+
+
+
+            </section>
+
+            <div class="loading">
+                <!-- Loading -->
+                <span class="loading-icon">
+                    <!-- <i class="fa-solid fa-circle-notch"></i> -->
+                    ◠
+                </span>
+            </div>
+            <span class="no-result">Nessun risultato</span>
+            <img class="work_in_progress" src="images/work_in_progress.svg" alt="Work in progress">
+        </div>
+
+        <div class="card-big-container">
+            <div class="card-big">
+                <button class="close-button"><i class="fa-solid fa-xmark"></i></button>
+                <div class="card-big-content">
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script src="js/geocode.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/cards.js"></script>
+</body>
+
+</html>

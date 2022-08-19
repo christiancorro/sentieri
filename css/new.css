@@ -1,0 +1,136 @@
+.trail-form {
+    padding: 2rem 1rem 0;
+}
+
+.input {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.input-group {
+    padding-top: 30px;
+}
+
+.input-group .input {
+    display: inline-flex;
+
+    margin-right: 30px;
+    width: 246px;
+}
+
+.input+.input {
+    margin-top: 1.5rem;
+}
+
+.input-label {
+    color: #8597a3;
+    position: absolute;
+    top: 2rem;
+    transition: 0.25s ease;
+    font-size: 0.8em;
+    /* z-index: 100000; */
+}
+
+.input-field {
+    border: 0;
+    z-index: 1;
+    background-color: transparent;
+    border-bottom: 2px solid #eee;
+    font: inherit;
+    font-size: 1.425rem;
+    padding: 0.25rem 0;
+    transition: all .2s ease;
+}
+
+.input-field:focus {
+    outline: 0;
+    border-bottom-color: #49b293;
+}
+
+.input-field:focus+.input-label {
+    color: #49b293;
+    transform: translateY(-2rem);
+}
+
+.input-field:valid+.input-label {
+    transform: translateY(-2rem);
+}
+
+.action {
+    margin-top: 5rem;
+}
+
+.action-button {
+    font: inherit;
+    font-size: 1.25rem;
+    padding: 1em;
+    width: 100%;
+    font-weight: 500;
+    background-color: #49b293;
+    border-radius: 6px;
+    color: #FFF;
+    border: 0;
+    cursor: pointer;
+}
+
+.action-button:focus {
+    outline: 0;
+}
+
+
+.input-field.title {
+    /* margin-bottom: .3em; */
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.input-field.description {
+    font-size: 1em;
+}
+
+
+form .image-preview {
+    display: block;
+    width: 100%;
+    height: 400px;
+    background: black;
+    background-image: url("../images/UI/mountains-landscape.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 2rem;
+    box-sizing: border-box;
+    /* padding: 10px; */
+}
+
+
+form .image-preview:hover {
+    /* border: 2px dashed rgb(94, 94, 94); */
+}
+
+form .message {
+    display: inline-block;
+    opacity: 0;
+    transition: all .4s ease;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 400px;
+    font-weight: bold;
+    transform: scale(0.99);
+    border: 1px dashed black;
+}
+
+form .image-preview:hover .message {
+    transform: scale(1);
+    opacity: 1;
+}

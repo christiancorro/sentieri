@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Sentieri di montagna, ordinati</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/filters.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/new.css">
+
+    <script src="libs/splide.min.js"></script>
+    <script src="https://kit.fontawesome.com/d8c2758a42.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script type="text/javascript" src="../js/db/database.js"></script>
+    <script type="text/javascript" src="../js/models/Trail.js"></script>
+    <script type="text/javascript" src="../js/models/Enums.js"></script>
+    <script type="text/javascript" src="../js/models/Card.js"></script>
+</head>
+
+<body>
+
+    <header id="navbar">
+        <nav class="navbar-container">
+            <a href="../index.html" class="home-link">
+                <div class="navbar-logo"></div>
+                Sentieri
+            </a>
+            <svg class="navbar-toggle ham hamRotate ham8" aria-label="Toggle menu" aria-expanded="false"
+                viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('opened')">
+                <path class="line top"
+                    d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+                <path class="line middle" d="m 30,50 h 40" />
+                <path class="line bottom"
+                    d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+            </svg>
+            <div id="navbar-menu" class="detached">
+                <ul class="navbar-links">
+                    <li class="navbar-item"><a class="navbar-link" href="../index.html">Lista</a>
+                    </li>
+                    <li class="navbar-item"><a class="navbar-link" href="/map">Mappa</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="/info">Info</a></li>
+                    <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
+                    <li class="navbar-item account-item"><a class="navbar-link" href="/account">Account</a></li>
+                    <li class="navbar-item selected"><a class="navbar-link" href="/">+</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-area">
+
+
+        <div class="centered">
+
+            <form class="trail-form">
+
+                <input type="file" accept="image/*" name="image" id="load-image" style="display: none;">
+                <label class="image-preview" for="load-image" style="cursor: pointer;">
+                    <span class="message">Cambia immagine
+                    </span>
+                </label>
+
+                <p><img id="output" width="900" margin="0 auto" /></p>
+
+
+
+                <div class="input">
+                    <!-- <input type="text" class="input-field title" name="title" value="" required /> -->
+                    <textarea class="input-field title" name="title" rows="2" value="Titolo di prova"
+                        required></textarea>
+
+                    <label class="input-label">Titolo</label>
+                </div>
+                <div class="input">
+                    <!-- <input type="text" value="" required /> -->
+                    <textarea class="input-field description" name="descritpion" value="Descrizione" rows="3"
+                        required></textarea>
+                    <label class="input-label">Descrizione</label>
+                </div>
+
+                <div class="input-group">
+                    <div class="input">
+                        <input type="number" step="any" name="duration" class="input-field" value="6" required />
+                        <label class="input-label"><i class="fa-solid fa-clock"></i> Durata (h)</label>
+                    </div>
+                    <div class="input">
+                        <input type="number" step="any" name="length" class="input-field" value="12" required />
+                        <label class="input-label"><i class="fa-solid fa-route"></i> Lunghezza (km)</label>
+                    </div>
+                    <div class="input">
+                        <input type="number" step="any" name="elevation_gain" class="input-field" value="880"
+                            required />
+                        <label class="input-label"><i class="fa-solid fa-arrows-up-down"></i> Dislivello (m)</label>
+                    </div>
+                    <div class="input">
+                        <input type="number" step="any" name="max_altitude" class="input-field" value="1970" required />
+                        <label class="input-label"><i class="fa-solid fa-flag"></i> Altitudine massima (m)</label>
+                    </div>
+                </div>
+
+
+                <!-- TODO: add autocomplete based on other groups -->
+                <div class="input-group">
+
+                    <label class="orderBy" for="slct">
+                        <select id="slct" required="required">
+                            <option value="date" selected="selected">Veneto</option>
+                            <option value="duration">Friuli-Venezia-Giulia</option>
+                            <option value="length">Trentino-Alto-Adige</option>
+                            <option value="elevation_gain">Lombardia</option>
+                        </select>
+                        <span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </label>
+
+                    <div class="input">
+                        <input type="text" step="any" name="group" class="input-field" value="" required />
+                        <label class="input-label">Gruppo</label>
+                    </div>
+                </div>
+
+                <br>
+
+
+
+
+
+                <div class="input">
+                    <input type="url" step="any" name="start_google_maps_url" class="input-field" value="" required />
+                    <label class="input-label">URL Google Maps</label>
+                </div>
+
+                <div class="input">
+                    <input type="url" step="any" name="url" class="input-field" value="" required />
+                    <label class="input-label">URL Pagina</label>
+                </div>
+                <br>
+
+                <div class="filters difficulty-filter">
+                    <span class="filter-title"> Difficoltà</span>
+                    <div>
+                        <input type="checkbox" id="E" name="difficulty" value="E">
+                        <label for="E" title="Escursionistico">E</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="EE" name="difficulty" value="EE">
+                        <label for="EE" title="Escursionisti Esperti">EE</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="EEA" name="difficulty" value="EEA">
+                        <label for="EEA" title="Escursionisti Esperti con Attrezzature">EEA</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="EAI" name="difficulty" value="EAI">
+                        <label for="EAI" title="Escursionisti in Ambiente Innevato">EAI</label>
+                    </div>
+
+                    <!-- <br> -->
+                    <div>
+                        <input type="checkbox" id="EEA-F" name="difficulty" value="EEA-F">
+                        <label for="EEA-F" title="Ferrata Facile">EEA-F</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="EEA-D" name="difficulty" value="EEA-D">
+                        <label for="EEA-D" title="Ferrata Difficile">EEA-D</label>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="filters">
+                    <span class="filter-title"> Tags</span>
+                    <div>
+                        <input type="checkbox" id="Anello" name="tag" value="Anello">
+                        <label for="Anello">Anello</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Cresta" name="tag" value="Cresta">
+                        <label for="Cresta">Cresta</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Ferrata" name="tag" value="Ferrata">
+                        <label for="Ferrata">Ferrata</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Ciaspole" name="tag" value="Ciaspole">
+                        <label for="Ciaspole">Ciaspole</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Trekking" name="tag" value="Trekking">
+                        <label for="Trekking">Trekking</label>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="checkbox" id="Lago" name="tag" value="Lago">
+                        <label for="Lago">Lago</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Fiume" name="tag" value="Fiume">
+                        <label for="Fiume">Fiume</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Cascata" name="tag" value="Cascata">
+                        <label for="Cascata">Cascata</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Ghiacciaio" name="tag" value="Ghiacciaio">
+                        <label for="Ghiacciaio">Ghiacciaio</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Storia" name="tag" value="Storia">
+                        <label for="Storia">Storia</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Rifugio" name="tag" value="Rifugio">
+                        <label for="Rifugio">Rifugio</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Malga" name="tag" value="Malga">
+                        <label for="Malga">Malga</label>
+                    </div>
+
+
+                    <div>
+                        <input type="checkbox" id="Bivacco" name="tag" value="Fiume">
+                        <label for="Bivacco">Bivacco</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="Bambini" name="tag" value="Bambini">
+                        <label for="Bambini">Bambini</label>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div class="action save">
+                    <button class="action-button" type="submit">SALVA</button>
+                </div>
+            </form>
+
+
+            <img class="work_in_progress" src="../images/work_in_progress.svg" alt="Work in progress">
+        </div>
+
+
+
+    </main>
+
+
+    <!-- <script src="../js/main.js"></script> -->
+    <script src="../js/submit.js"></script>
+</body>
+
+</html>
