@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/filters.css">
     <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/login.css">
 
     <link rel="stylesheet" href="/libs/slider/slider.min.css">
     <script src="/libs/slider/slider.min.js"></script>
@@ -26,6 +27,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
@@ -46,7 +48,7 @@
 
     <header id="navbar">
         <nav class="navbar-container">
-            <a href="../mountains/index.html" class="home-link">
+            <a href="index.html" class="home-link">
                 <div class="navbar-logo"></div>
                 Sentieri
             </a>
@@ -60,13 +62,35 @@
             </svg>
             <div id="navbar-menu" class="detached">
                 <ul class="navbar-links">
-                    <li class="navbar-item selected"><a class="navbar-link" href="../mountains/index.html">Lista</a>
+                    <li class="navbar-item selected"><a class="navbar-link" href="index.html">Lista</a>
                     </li>
                     <li class="navbar-item"><a class="navbar-link" href="/map">Mappa</a></li>
                     <li class="navbar-item"><a class="navbar-link" href="/info">Info</a></li>
+                    <li class="navbar-item new-item hide only-login">
+                        <a class="navbar-link" title="Aggiungi un nuovo sentiero" href="pages/new.html">
+                            Aggiungi
+                        </a>
+                    </li>
                     <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
-                    <li class="navbar-item account-item"><a class="navbar-link" href="/account">Account</a></li>
-                    <li class="navbar-item account-item"><a class="navbar-link" href="pages/new.html">+</a></li>
+                    <li class="navbar-item account-item">
+                        <div class="log-space">
+                            <button class="login-button" title="Log In per aggiungere e modificare i sentieri"
+                                onclick="GoogleLogin()"><i class="fa-solid fa-user-pen"></i>
+                            </button>
+                            <div class="account-space hide">
+                                <div class="account-content">
+                                    <div class="account-image"></div>
+                                    <div class="account-info">
+                                        <span class="account-name"></span>
+                                        <span class="account-lastname"></span>
+                                    </div>
+                                    <button class="logout-button" title="Log Out" onclick="Logout()"><i
+                                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -354,6 +378,7 @@
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
     <script src="js/cards.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

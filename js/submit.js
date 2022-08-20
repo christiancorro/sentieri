@@ -4,21 +4,44 @@ const form = document.querySelector(".trail-form");
 const laod_image = document.querySelector("#load-image");
 const image_preview = document.querySelector(".image-preview");
 
-const loading_bar = document.querySelector(".loading-bar");
+const loading_bar = document.querySelector("#loading-bar");
 
 let data = {};
 let image_url;
 
-let progressBar = new ldBar("#loading-bar");
 
-let trails = [];
+//TODO: controllo upload completato
+
+var progressBar = new ProgressBar.Line('#loading-bar', {
+    color: '#49B293',
+    duration: 1000,
+    easing: 'easeInOut'
+});
+
 getAllTrails(trails);
 
 laod_image.addEventListener('change', function (e) {
-    image_preview.style.backgroundImage = "url(" + URL.createObjectURL(e.target.files[0]) + ")";
-    uploadImage(e.target.files[0], progressBar).then(url => {
-        image_url = url;
-    });
+    let imageURL = URL.createObjectURL(e.target.files[0]);
+    loading_bar.classList.remove("complete");
+    let imgToCompress = new Image();
+    imgToCompress.onload = function () {
+        // Compress image onload
+        compressImage(this).then((compressedImage) => {
+            // preview image
+            image_preview.style.backgroundImage = "url(" + URL.createObjectURL(compressedImage) + ")";
+            // upload image
+            uploadImage(compressedImage, progressBar).then(url => {
+                // upload completed
+                image_url = url;
+                loading_bar.classList.add("complete");
+
+            });
+        });
+    };
+
+    imgToCompress.src = imageURL;
+
+
 });
 
 

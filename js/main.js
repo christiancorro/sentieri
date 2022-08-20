@@ -12,9 +12,6 @@ const quantity = document.querySelector(".quantity-number");
 const position_container = document.querySelector(".position-container");
 const position = document.querySelector(".position-bar input");
 
-const card_big_container = document.querySelector(".card-big-container");
-const close_button = card_big_container.querySelector(".close-button");
-const card_big = card_big_container.querySelector(".card-big-content");
 
 
 
@@ -57,41 +54,3 @@ navbarMenu.addEventListener("click", closeMobileNavbar);
 
 let mainArea = document.querySelector(".main-area .cards");
 let trails = []
-
-let cards = []
-
-// TODO: revwrite with async
-// Create cards
-function addCards(trails) {
-    trails.forEach(trail => {
-        addCard(trail)
-    });
-
-    loading.classList.add("loaded");
-    if (cards.length > 0)
-        orderby_container.classList.remove("hide");
-    // else
-    // no_result.classList.add("show");
-
-
-    sortCards();
-    updateQuantity();
-    updateMain();
-
-}
-
-function addCard(trail) {
-
-    // trail.downloadImages();
-    // console.log(trail);
-
-    let card = new Card(trail);
-    // card.html.addEventListener('click', (event) => {
-    //     openCard(card);
-    // });
-    cards.push(card);
-
-    // console.log(card.html);
-    // mainArea.appendChild(card.html);
-}
-getAllTrails(trails, addCards);

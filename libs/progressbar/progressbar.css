@@ -1,28 +1,45 @@
-.ldBar {
-    position: relative;
-    width: 100% !important;
+#loading-bar {
+    height: 20px;
+    top: 0;
+    margin-bottom: 30px;
+    transition: all .2s ease;
 }
 
-.ldBar.label-center>.ldBar-label {
+#loading-bar>svg {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+#loading-bar:after {
+    content: 'Uploading';
     position: absolute;
-    top: 50%;
+    display: block;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-shadow: 0 0 3px #fff;
-    background-color: green;
+    transform: translateX(-40%);
+    bottom: 0;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0s ease;
+
 }
 
-.ldBar-label {
-    display: none;
+#loading-bar.complete>svg {
+    opacity: 0;
 }
 
-.ldBar-label:after {
-    content: "%";
-    display: none;
-}
-
-.ldBar.no-percent .ldBar-label:after {
-    content: "";
-    display: none;
+#loading-bar.complete:after {
+    content: '🗸';
+    color: #49B293;
+    width: 50px;
+    height: 50px;
+    font-size: 3em;
+    line-height: 50px;
+    font-weight: bold;
+    left: 98%;
+    text-align: center;
+    transition: all 0.5s ease;
+    background-color: #ffffffec;
+    border-radius: 50%;
 }

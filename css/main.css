@@ -4,7 +4,7 @@
     --navbar-text-color: hsl(0, 0%, 85%);
     --navbar-text-color-focus: white;
     --navbar-bg-contrast: hsl(0, 0%, 25%);
-    --navbar-height: 64px;
+    --navbar-height: 60px;
     --max-width: 1200px;
 }
 
@@ -296,10 +296,11 @@ main {
     background-color: var(--navbar-bg-contrast);
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
     .navbar-toggle {
         display: none;
     }
+
 
     #navbar #navbar-menu,
     #navbar.opened #navbar-menu {

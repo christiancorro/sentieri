@@ -17,14 +17,17 @@
     <link rel="stylesheet" href="../css/filters.css">
     <link rel="stylesheet" href="../css/search.css">
     <link rel="stylesheet" href="../css/new.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../libs/progressbar/progressbar.css">
-    <script src="../libs/progressbar/progressbar.js"></script>
+    <!-- <script src="../libs/progressbar/progressbar.js"></script> -->
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
 
     <script src="libs/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/d8c2758a42.js" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
     <script type="text/javascript" src="../js/db/database.js"></script>
     <script type="text/javascript" src="../js/models/Trail.js"></script>
@@ -56,8 +59,29 @@
                     <li class="navbar-item"><a class="navbar-link" href="/map">Mappa</a></li>
                     <li class="navbar-item"><a class="navbar-link" href="/info">Info</a></li>
                     <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
-                    <li class="navbar-item account-item"><a class="navbar-link" href="/account">Account</a></li>
-                    <li class="navbar-item selected"><a class="navbar-link" href="/">+</a>
+                    <li class="navbar-item new-item only-login selected">
+                        <a class="navbar-link" title="Aggiungi un nuovo sentiero" href="new.html">
+                            Aggiungi
+                        </a>
+                    </li>
+                    <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
+                    <li class="navbar-item account-item">
+                        <div class="log-space">
+                            <button class="login-button" title="Log In per aggiungere e modificare i sentieri"
+                                onclick="GoogleLogin()"><i class="fa-solid fa-user-pen"></i>
+                            </button>
+                            <div class="account-space hide">
+                                <div class="account-content">
+                                    <div class="account-image"></div>
+                                    <div class="account-info">
+                                        <span class="account-name"></span>
+                                        <span class="account-lastname"></span>
+                                    </div>
+                                    <button class="logout-button" title="Log Out" onclick="Logout()"><i
+                                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -72,12 +96,13 @@
             <form class="trail-form">
 
                 <div class="image-upload-container">
-                    <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;">
+                    <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;"
+                        required>
                     <label class="image-preview" for="load-image" style="cursor: pointer;">
                         <span class="message">Cambia immagine
                         </span>
                     </label>
-                    <div class="ldBar" id="loading-bar"></div>
+                    <div style="width: 100%;" id="loading-bar"></div>
 
                     <!-- <p><img id="output" width="900" margin="0 auto" /></p> -->
                 </div>
@@ -276,7 +301,8 @@
     </main>
 
 
-    <!-- <script src="../js/main.js"></script> -->
+    <script src="../js/main.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../js/submit.js"></script>
 </body>
 

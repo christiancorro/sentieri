@@ -145,7 +145,6 @@ function uploadImage(file, progressBar = null) {
                 // url = fileUrl;
                 console.log(fileUrl);
                 resolve(fileUrl);
-
             });
         });
 
@@ -154,7 +153,8 @@ function uploadImage(file, progressBar = null) {
             let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             // console.log(percentage);
             if (progressBar) {
-                progressBar.set(percentage);
+                progressBar.animate(percentage / 100);
+                // console.log(percentage);
             }
         });
 
