@@ -81,7 +81,7 @@ function LoggedOut() {
 function returnToIndex() {
     setTimeout(() => {
         if (window.location.pathname != "index.html" && window.location.pathname != "/") {
-            document.location.href = "/";
+            document.location.href = "/sentieri";
         }
     }, 400);
 
