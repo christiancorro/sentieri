@@ -10,7 +10,7 @@ function getBase64(file) {
 }
 
 // let img;
-function compressImage(imgToCompress, maxWidth = 1920, quality = 0.7) {
+function compressImage(imgToCompress, maxWidth = 1024, quality = 0.5) {
 
     return new Promise((resolve, reject) => {
         const originalWidth = imgToCompress.width;

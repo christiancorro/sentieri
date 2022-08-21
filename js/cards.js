@@ -61,20 +61,26 @@ let cards = []
 // TODO: revwrite with async
 // Create cards
 function addCards(trails) {
-    trails.forEach(trail => {
-        addCard(trail)
+    return new Promise((resolve, reject) => {
+        console.log("Add cards " + trails.length);
+        trails.forEach(trail => {
+            addCard(trail)
+        });
+
+        loading.classList.add("loaded");
+        if (cards.length > 0)
+            orderby_container.classList.remove("hide");
+        // else
+        // no_result.classList.add("show");
+
+
+        sortCards();
+        updateQuantity();
+        updateMain();
+
+        resolve(cards);
     });
 
-    loading.classList.add("loaded");
-    if (cards.length > 0)
-        orderby_container.classList.remove("hide");
-    // else
-    // no_result.classList.add("show");
-
-
-    sortCards();
-    updateQuantity();
-    updateMain();
 
 }
 
@@ -92,4 +98,62 @@ function addCard(trail) {
     // console.log(card.html);
     // mainArea.appendChild(card.html);
 }
-getAllTrails(trails, addCards);
+
+
+function deleteCard(card) {
+    let askConfirm = false;
+    card.html.classList.add("hidden");
+    if (askConfirm) {
+        if (confirm("Sicuro di voler eliminare il sentiero?") == true) {
+            setTimeout(() => {
+                card.html.classList.add("none");
+
+                trails = trails.filter(trail => trail.id != card.trail.id);
+                cards = cards.filter(c => c.trail.id != card.trail.id);
+                updateQuantity();
+
+                let trailToDelete = getDatabase(card.trail.id);
+                trailToDelete.remove();
+
+            }, 200);
+        } else {
+            card.html.classList.remove("hidden");
+        }
+    } else {
+        setTimeout(() => {
+            card.html.classList.add("none");
+
+            trails = trails.filter(trail => trail.id != card.trail.id);
+            cards = cards.filter(c => c.trail.id != card.trail.id);
+            updateQuantity();
+
+            let trailToDelete = getDatabase(card.trail.id);
+            trailToDelete.remove();
+
+        }, 200);
+    }
+
+
+
+    // clearMain();
+    // getAllTrails(trails).then((trails) => {
+    //     addCards(trails);
+    // });
+}
+
+
+
+
+
+
+
+
+
+
+getAllTrails(trails).then(() => {
+    addCards(trails).then(() => {
+        if (!isLogged()) {
+            hideElements();
+        }
+    });
+});

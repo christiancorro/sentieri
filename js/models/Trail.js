@@ -38,7 +38,9 @@ class Trail {
         this.images = [];
 
         this.date = Date.now();
-        this.url = ""
+        this.url = "";
+        this.authorId = "";
+        this.authorName = "";
     }
 
     serialize() {
@@ -56,6 +58,9 @@ class Trail {
             group: this.group,
 
             tags: this.tags,
+
+            authorId: this.authorId,
+            authorName: this.authorName,
 
             start: this.start,
             end: this.end,

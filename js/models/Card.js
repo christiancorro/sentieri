@@ -16,7 +16,9 @@ class Card {
         let card = document.createElement('article');
 
         card.className = 'card hide';
-        card.innerHTML = '<a target="_blank" href="' +
+        card.innerHTML =
+            '<button class="delete-trail-button only-login" title="Elimina"><i class="fa-solid fa-trash-can"></i></button>' +
+            '<a target="_blank" href="' +
             this.trail.url +
             '">' +
             '<picture class="thumbnail">' +
@@ -70,6 +72,17 @@ class Card {
         this.html.addEventListener('click', (event) => {
             console.log(this.trail);
         });
+
+        this.html.querySelector(".delete-trail-button").addEventListener('click', (event) => {
+            console.log("DELETE trail-" + this.trail.id);
+            deleteCard(this);
+        });
     }
 
 }
+
+
+// function deleteTrail(trail) {
+//     console.log("delete");
+//     console.log();
+// }

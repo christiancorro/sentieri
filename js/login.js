@@ -7,7 +7,7 @@ const account_lastname = document.querySelector(".account-lastname");
 const account_image = document.querySelector(".account-image");
 
 
-const only_login = document.querySelectorAll(".only-login");
+let only_login = document.querySelectorAll(".only-login");
 
 
 
@@ -80,7 +80,7 @@ function LoggedOut() {
 
 function returnToIndex() {
     setTimeout(() => {
-        if (window.location.pathname != "index.html" && window.location.pathname != "/" && window.location.pathname != "/sentieri/") {
+        if (window.location.pathname != "/index.html" && window.location.pathname != "/" && window.location.pathname != "/sentieri/") {
             document.location.href = "/sentieri/";
         }
     }, 400);
@@ -120,13 +120,21 @@ firebase.auth().onAuthStateChanged((user) => {
 
 
 function showElements() {
+    only_login = document.querySelectorAll(".only-login");
+
     only_login.forEach(element => {
         element.classList.remove("hide");
     });
 }
 
 function hideElements() {
+    only_login = document.querySelectorAll(".only-login");
+
     only_login.forEach(element => {
         element.classList.add("hide");
     });
+}
+
+function isLogged() {
+    return firebase.auth().currentUser == null ? false : true;
 }

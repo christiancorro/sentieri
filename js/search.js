@@ -176,6 +176,11 @@ async function updateMain() {
     });
 }
 
+function clearMain() {
+    mainArea.innerHTML = "";
+    loading.classList.remove("loaded");
+}
+
 orderby.addEventListener("change", function () {
     // console.log(this.value);
 
@@ -190,7 +195,7 @@ async function sortCards() {
     position_container.classList.remove("show");
     switch (orderby.value) {
         case "date":
-            cards.sort((card1, card2) => (card1.trail.id < card2.trail.id) ? 1 : -1)
+            cards.sort((card1, card2) => (card1.trail.id > card2.trail.id) ? 1 : -1)
             break;
 
         case "length":

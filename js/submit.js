@@ -1,4 +1,4 @@
-const save_button = document.querySelector(".save");
+const save_button = document.querySelector(".save button");
 const form = document.querySelector(".trail-form");
 
 const laod_image = document.querySelector("#load-image");
@@ -18,12 +18,15 @@ var progressBar = new ProgressBar.Line('#loading-bar', {
     easing: 'easeInOut'
 });
 
-getAllTrails(trails);
 
 laod_image.addEventListener('change', function (e) {
+    // file picked
     let imageURL = URL.createObjectURL(e.target.files[0]);
     loading_bar.classList.remove("complete");
+    save_button.setAttribute('disabled', '');
+
     let imgToCompress = new Image();
+
     imgToCompress.onload = function () {
         // Compress image onload
         compressImage(this).then((compressedImage) => {
@@ -34,6 +37,7 @@ laod_image.addEventListener('change', function (e) {
                 // upload completed
                 image_url = url;
                 loading_bar.classList.add("complete");
+                save_button.removeAttribute('disabled');
 
             });
         });
@@ -82,6 +86,11 @@ form.addEventListener('submit', async function (e) {
 
     trail.imagesURL = [];
     trail.imagesURL.push(image_url);
+    trail.authorId = firebase.auth().currentUser.uid;
+    trail.authorName = firebase.auth().currentUser.displayName;
     trail.upload();
 
 });
+
+
+getAllTrails(trails);

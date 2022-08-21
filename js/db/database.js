@@ -98,26 +98,32 @@ function submitTrail() {
 
 
 function getAllTrails(trails, callback = () => { }) {
-    let ref = firebase.database().ref("trails");
-    ref.on("value", function (snapshot) {
-        snapshot.forEach(function (snapshot) {
-            var data = snapshot.val();
-            let trail = Trail.from(data);
-            trails.push(trail);
+    return new Promise((resolve, reject) => {
+        let ref = firebase.database().ref("trails");
+        ref.on("value", function (snapshot) {
+            console.log("Value changed");
+            // if (trails.length == 0)
+            snapshot.forEach(function (snapshot) {
+                var data = snapshot.val();
+                let trail = Trail.from(data);
+                trails.push(trail);
+            });
+            // console.log(trails);
+
+            // Get last id
+            const ids = trails.map(trail => {
+                return trail.id;
+            });
+
+            if (ids.length > 0)
+                Trail.lastId = Math.max(...ids);
+
+            // console.log(ids);
+            console.log(Trail.lastId);
+            console.log(trails.length);
+            callback(trails);
+            resolve(trails);
         });
-        // console.log(trails);
-
-        // Get last id
-        const ids = trails.map(trail => {
-            return trail.id;
-        });
-
-        if (ids.length > 0)
-            Trail.lastId = Math.max(...ids);
-
-        console.log(ids);
-        console.log(Trail.lastId);
-        callback(trails);
     });
 }
 
