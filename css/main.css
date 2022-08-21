@@ -120,8 +120,8 @@ main {
     cursor: pointer;
     border: none;
     background-color: transparent;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,11 +216,12 @@ main {
 }
 
 #navbar.opened #navbar-menu {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.432);
     opacity: 1;
     visibility: visible;
     z-index: 1000000;
 }
+
 
 #navbar.opened #navbar-menu.sidebar.left {
     left: 0;

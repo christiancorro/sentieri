@@ -12,16 +12,18 @@ const quantity = document.querySelector(".quantity-number");
 const position_container = document.querySelector(".position-container");
 const position = document.querySelector(".position-bar input");
 
-
+closeMobileNavbar();
 
 
 function openMobileNavbar() {
     navbar.classList.add("opened");
+    navbarToggle.classList.add("opened");
     navbarToggle.setAttribute("aria-expanded", "true");
 }
 
 function closeMobileNavbar() {
     navbar.classList.remove("opened");
+    navbarToggle.classList.remove("opened");
     navbarToggle.setAttribute("aria-expanded", "false");
 }
 
@@ -32,6 +34,13 @@ navbarToggle.addEventListener("click", () => {
         openMobileNavbar();
     }
 });
+
+onresize = function () {
+    console.log();
+    if (navbar.classList.contains("opened") && window.innerWidth > 800) {
+        closeMobileNavbar();
+    }
+};
 
 const navbarMenu = navbar.querySelector("#navbar-menu");
 const navbarLinksContainer = navbar.querySelector(".navbar-links");
