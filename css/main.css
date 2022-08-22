@@ -391,3 +391,49 @@ main {
     opacity: 0;
     /* margin: 0; */
 }
+
+
+.goto-button {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    font: inherit;
+    font-size: 1em;
+    padding: 0.3em;
+    width: 40px;
+    height: 40px;
+    font-weight: 500;
+    background-color: #353535cb;
+    border-radius: 50%;
+    color: #D9D9D9;
+    border: 0;
+    cursor: pointer;
+    /* border-bottom: 3px solid #464646; */
+    transition: all .1s ease;
+    /* font-weight: bold; */
+    box-sizing: border-box;
+    transition: all .2s ease, transform 0.05s ease;
+    /* margin-left: 20px; */
+    margin: 20px;
+    margin-right: 2.5%;
+    z-index: 10000000;
+}
+
+.goto-button:focus {
+    /* outline: 0; */
+}
+
+.goto-button:active {
+    /* border-bottom: 3px solid #2F2F2F; */
+    transform: scale(0.95);
+}
+
+.goto-button:hover {
+    background-color: #404040;
+    color: white;
+}
+
+.goto-button.hide {
+    opacity: 0;
+    visibility: hidden;
+}

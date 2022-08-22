@@ -127,6 +127,7 @@ function deleteCard(card) {
             cards = cards.filter(c => c.trail.id != card.trail.id);
             updateQuantity();
 
+            // remove trail
             let trailToDelete = getDatabase(card.trail.id);
             trailToDelete.remove();
 
@@ -151,9 +152,31 @@ function deleteCard(card) {
 
 
 getAllTrails(trails).then(() => {
-    addCards(trails).then(() => {
+    addCards(trails).then((cards) => {
         if (!isLogged()) {
             hideElements();
+        } else {
+            showElementsCards();
         }
     });
 });
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        showElementsCards();
+    }
+});
+
+
+function showElementsCards() {
+    cards.forEach((card) => {
+        // console.log("ID: " + getCurrentUser().uid);
+        // console.log("Card ID: " + card.trail.authorId);
+        if (getCurrentUser().uid === card.trail.authorId || getCurrentUser().uid == "FtXxhMyI2nWLzUEo2vsYJCRxfFl2") {
+            let only_user = card.html.querySelectorAll(".only-user");
+            only_user.forEach(element => {
+                element.classList.remove("hide");
+            });
+        }
+    });
+}

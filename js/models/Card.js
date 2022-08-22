@@ -17,7 +17,7 @@ class Card {
 
         card.className = 'card hide';
         card.innerHTML =
-            '<button class="delete-trail-button only-login" title="Elimina"><i class="fa-solid fa-trash-can"></i></button>' +
+            '<button class="delete-trail-button only-user hide" title="Elimina"><i class="fa-solid fa-trash-can"></i></button>' +
             '<a target="_blank" href="' +
             this.trail.url +
             '">' +

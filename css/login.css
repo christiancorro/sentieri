@@ -159,7 +159,7 @@
 }
 
 
-.only-login.hide {
+.only-login.hide, .only-user.hide {
     display: none;
 }
 

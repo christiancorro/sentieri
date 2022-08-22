@@ -92,12 +92,17 @@ class Trail {
     }
 
     extractCoords() {
-        let regex = new RegExp('@(.*),(.*),');
-        var lat_long_match = this.start_google_maps_url.match(regex);
-        let lat = lat_long_match[1];
-        let long = lat_long_match[2];
+        try {
+            let regex = new RegExp('@(.*),(.*),');
+            var lat_long_match = this.start_google_maps_url.match(regex);
+            let lat = lat_long_match[1];
+            let long = lat_long_match[2];
 
-        this.start_coords = [lat, long];
+            this.start_coords = [lat, long];
+        } catch (error) {
+            console.error("Coords not found");
+        }
+
     }
 
     downloadImages() {

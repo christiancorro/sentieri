@@ -60,6 +60,24 @@ navbarMenu.addEventListener("click", closeMobileNavbar);
 //             navbarMenu.classList = navType;
 //         });
 //     });
+const goToTop = () => {
+    document.body.scrollIntoView({
+        behavior: "smooth",
+    });
+};
+
+const goto_button = document.querySelector(".goto-button");
+
+
+document.addEventListener('scroll', (event) => {
+    if (document.documentElement.scrollTop > 3000) {
+        goto_button.classList.remove("hide");
+    } else {
+        goto_button.classList.add("hide");
+    }
+},
+    { passive: true }
+);
 
 let mainArea = document.querySelector(".main-area .cards");
 let trails = []

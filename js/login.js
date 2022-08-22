@@ -14,6 +14,10 @@ let only_login = document.querySelectorAll(".only-login");
 const provider = new firebase.auth.GoogleAuthProvider();
 firebase.auth().useDeviceLanguage();
 
+function getCurrentUser() {
+    return firebase.auth().currentUser;
+}
+
 async function GoogleLogin() {
     await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
     firebase.auth()
@@ -67,7 +71,7 @@ function LoggedIn(user) {
     console.log(user.name);
     console.log(user.lastName);
 
-    showElements();
+    showElements(user);
 
     showAccount(user);
 }
@@ -119,8 +123,9 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 
-function showElements() {
+function showElements(user) {
     only_login = document.querySelectorAll(".only-login");
+
 
     only_login.forEach(element => {
         element.classList.remove("hide");
@@ -129,8 +134,13 @@ function showElements() {
 
 function hideElements() {
     only_login = document.querySelectorAll(".only-login");
+    only_user = document.querySelectorAll(".only-user");
 
     only_login.forEach(element => {
+        element.classList.add("hide");
+    });
+
+    only_user.forEach(element => {
         element.classList.add("hide");
     });
 }

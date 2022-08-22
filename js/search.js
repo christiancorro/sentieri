@@ -51,39 +51,43 @@ checkboxs.forEach(function (checkbox) {
                         matches++;
                     }
                 });
-            });
-
-            if (matches == filters.length) {
-                card.html.classList.remove("hide");
-
-            } else {
-                counter++
-                card.html.classList.add("hide");
+                if (card.trail.location.toLowerCase() === filter.toLowerCase() 
+                || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
+                matches++;
             }
-
-
-            if (card.trail.tags.length == 0) {
-                card.html.classList.add("hide");
-                // counter++;
-            }
-
-            if (filters.length == 0) {
-                card.html.classList.remove("hide");
-            }
-
-
-            if (counter >= cards.length) {
-                no_result.classList.add("show");
-                // orderby_container.classList.add("hide");
-            } else {
-                no_result.classList.remove("show");
-                orderby_container.classList.remove("hide");
-            }
-
-            updateQuantity(counter);
-
         });
-    })
+
+        if (matches == filters.length) {
+            card.html.classList.remove("hide");
+
+        } else {
+            counter++
+            card.html.classList.add("hide");
+        }
+
+
+        if (card.trail.tags.length == 0) {
+            card.html.classList.add("hide");
+            // counter++;
+        }
+
+        if (filters.length == 0) {
+            card.html.classList.remove("hide");
+        }
+
+
+        if (counter >= cards.length) {
+            no_result.classList.add("show");
+            // orderby_container.classList.add("hide");
+        } else {
+            no_result.classList.remove("show");
+            orderby_container.classList.remove("hide");
+        }
+
+        updateQuantity(counter);
+
+    });
+})
 });
 
 
