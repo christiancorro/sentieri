@@ -73,9 +73,9 @@ function scrapeAll(urls = links) {
     urls.forEach((url, i) => {
 
         setTimeout(() => {
-            scrape(url).catch(console.log("Error scraping " + url));
+            scrape(url).catch((e) => { console.log(e + " Error scraping " + url) });
 
-        }, 100 * i);;
+        }, 500 * i);;
     });
 }
 

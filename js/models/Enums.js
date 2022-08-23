@@ -2,7 +2,7 @@ const Difficulty = {
     T: "T (Turistico)",
     E: "E (Escrusionistico)",
     EE: "EE (Escursionisti Esperti)",
-    EEA: "EEA Escursionisti Esperti Attrezzati)",
+    EEA: "EEA (Escursionisti Esperti Attrezzati)",
     EAI: "EAI (Escursionistico Ambiente Innevato)",
     EEA_F: "EEA-F (Ferrata Facile)",
     EEA_D: "EEA-D (Ferrata Difficile)"
