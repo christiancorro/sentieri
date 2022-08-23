@@ -87,7 +87,7 @@ function returnToIndex() {
         if (window.location.pathname != "/index.html" && window.location.pathname != "/" && window.location.pathname != "/sentieri/") {
             document.location.href = "/sentieri/";
         }
-    }, 400);
+    }, 100);
 
 }
 

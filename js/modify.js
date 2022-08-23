@@ -23,6 +23,7 @@ function populateModify(trail) {
     const image_preview = document.querySelector(".image-preview");
     const title = document.querySelector(".title");
     const description = document.querySelector(".description");
+    const difficulty = document.querySelector('[name="difficulty"]');
     const duration = document.querySelector('[name="duration"]');
     const trail_length = document.querySelector('[name="trail_length"]');
     const elevation_gain = document.querySelector('[name="elevation_gain"]');
@@ -39,6 +40,7 @@ function populateModify(trail) {
     image_preview.style.backgroundImage = "url(" + image_url + ")";
     title.innerHTML = trail.title;
     description.innerHTML = trail.description;
+    difficulty.value = trail.difficulty;
     duration.setAttribute("value", parseFloat(trail.duration));
     trail_length.setAttribute("value", parseInt(trail.trail_length));
     elevation_gain.setAttribute("value", parseInt(trail.elevation_gain));
@@ -94,5 +96,8 @@ form_modify.addEventListener('submit', async function (e) {
     thisTrail.upload();
 
     saved();
+    setTimeout(() => {
+        document.location.href = "../";
+    }, 1500);
 
 });

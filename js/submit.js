@@ -62,3 +62,10 @@ function saved() {
 
 
 getAllTrails(trails);
+
+document.querySelector(".save button").addEventListener("click", function (e) {
+    party.confetti(this, {
+        count: party.variation.range(60, 60),
+        size: party.variation.range(0.9, 1.4),
+    });
+});
