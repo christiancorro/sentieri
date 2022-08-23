@@ -87,5 +87,5 @@ class Card {
 }
 
 function gotoModify(trailId) {
-    document.location.href = "/pages/modify.html?id=" + trailId;
+    document.location.href = "pages/modify.html?id=" + trailId;
 }
