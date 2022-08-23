@@ -1,9 +1,9 @@
 .sticky {
     /* position: -webkit-sticky;
-    /* Safari */
-    /* position: sticky; */
-    /* z-index: 10; */
-    /* top: 62px; */
+
+    position: sticky;
+    z-index: 100;
+    top: var(--navbar-height); */
 
 }
 
@@ -67,8 +67,8 @@
 }
 
 .search-bar:focus {
-    border: solid 1px #656769;
-    box-shadow: 0 1px 6px 4px #dde1e6;
+    border: solid 1px #a6a8aa;
+    box-shadow: 0 1px 10px 2px #c0c3c7;
     /* padding-left: 16px; */
     /* width: 300%; */
 }

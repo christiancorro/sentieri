@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Sentieri di montagna, ordinati | Aggiungi nuovo </title>
+    <title>Sentieri di montagna, ordinati | Modifica sentiero</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,8 +60,8 @@
                     <li class="navbar-item"><a class="navbar-link" href="/info">Info</a></li>
                     <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
                     <li class="navbar-item new-item only-login selected">
-                        <a class="navbar-link" title="Aggiungi un nuovo sentiero" href="new.html">
-                            Aggiungi
+                        <a class="navbar-link" title="Aggiungi un nuovo sentiero" href="#">
+                            Modifica
                         </a>
                     </li>
                     <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
@@ -93,7 +93,7 @@
 
         <div class="centered">
 
-            <form class="trail-form hide">
+            <form class="trail-form-modify hide">
 
                 <div class="image-upload-container">
                     <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;">
@@ -103,10 +103,8 @@
                     </label>
                     <div style="width: 100%;" id="loading-bar"></div>
 
-
                     <!-- <p><img id="output" width="900" margin="0 auto" /></p> -->
                 </div>
-
 
                 <label class="selection-big" for="difficulty-selection">
                     <select id="difficulty-selection" name="difficulty" required="required">
@@ -114,7 +112,7 @@
                         <option value="E" selected="selected">E (Escursionistico)</option>
                         <option value="EE">EE (Escursionisti Esperti)</option>
                         <option value="EEA">EEA (Escursionisti Esperti con Attrezzature)</option>
-                        <option value="EAI">EAI (Escursionisti in Ambiente Innevato)</option>
+                        <option value="EAI">EAI (Escursionistico Ambiente Innevato)</option>
                         <option value="EEA-F">EEA-F (Ferrata Facile)</option>
                         <option value="EEA-D">EEA-D (Ferrata Difficile)</option>
                     </select>
@@ -126,37 +124,36 @@
 
                 <div class="input">
                     <!-- <input type="text" class="input-field title" name="title" value="" required /> -->
-                    <textarea class="input-field title" name="title" rows="2" placeholder=" "
-                        required>Titolo di prova</textarea>
+                    <textarea class="input-field title" name="title" rows="2" placeholder=" " required></textarea>
 
                     <label class="input-label">Titolo</label>
                 </div>
                 <div class="input">
                     <!-- <input type="text" value="" required /> -->
                     <textarea class="input-field description" name="description" rows="3" placeholder=" "
-                        required>Descrizione di prova</textarea>
+                        required></textarea>
                     <label class="input-label">Descrizione</label>
                 </div>
 
                 <div class="input-group">
                     <div class="input">
-                        <input type="number" step="any" name="duration" class="input-field" placeholder=" " value="6"
+                        <input type="number" step="any" name="duration" class="input-field" placeholder=" " value=""
                             required />
                         <label class="input-label"><i class="fa-solid fa-clock"></i> Durata (h)</label>
                     </div>
                     <div class="input">
-                        <input type="number" step="any" name="trail_length" class="input-field" placeholder=" "
-                            value="12" required />
+                        <input type="number" step="any" name="trail_length" class="input-field" placeholder=" " value=""
+                            required />
                         <label class="input-label"><i class="fa-solid fa-route"></i> Lunghezza (km)</label>
                     </div>
                     <div class="input">
                         <input type="number" step="any" name="elevation_gain" class="input-field" placeholder=" "
-                            value="880" required />
+                            value="" required />
                         <label class="input-label"><i class="fa-solid fa-arrows-up-down"></i> Dislivello (m)</label>
                     </div>
                     <div class="input">
-                        <input type="number" step="any" name="max_altitude" class="input-field" placeholder=" "
-                            value="1970" required />
+                        <input type="number" step="any" name="max_altitude" class="input-field" placeholder=" " value=""
+                            required />
                         <label class="input-label"><i class="fa-solid fa-flag"></i> Altitudine massima (m)</label>
                     </div>
                 </div>
@@ -180,14 +177,14 @@
                     </label> -->
 
                     <div class="input">
-                        <input type="text" step="any" name="location" class="input-field" placeholder=" " value="Veneto"
+                        <input type="text" step="any" name="location" class="input-field" placeholder=" " value=""
                             required />
                         <label class="input-label">Regione</label>
                     </div>
 
                     <div class="input">
-                        <input type="text" step="any" name="group" class="input-field" placeholder=" "
-                            value="Gruppo di prova" required />
+                        <input type="text" step="any" name="group" class="input-field" placeholder=" " value=""
+                            required />
                         <label class="input-label">Gruppo</label>
                     </div>
                 </div>
@@ -200,15 +197,12 @@
 
                 <div class="input">
                     <input type="url" step="any" name="start_google_maps_url" class="input-field" placeholder=" "
-                        value="https://www.google.com/maps/place/Via+Cr%C3%B2+Durigon,+2,+31055+Quinto+di+Treviso+TV/@45.6625449,12.1816236,17z/data=!3m1!4b1!4m5!3m4!1s0x477936fa838ce553:0x15ca8dd901a93f8b!8m2!3d45.6625449!4d12.1838123?shorturl=1"
-                        required />
+                        value="" required />
                     <label class="input-label">URL Google Maps</label>
                 </div>
 
                 <div class="input">
-                    <input type="url" step="any" name="url" class="input-field" placeholder=" "
-                        value="https://www.itineraridimontagna.it/sentiero-dei-kaiserjager-e-gallerie-del-lagazuoi/"
-                        required />
+                    <input type="url" step="any" name="url" class="input-field" placeholder=" " value="" required />
                     <label class="input-label">URL Pagina</label>
                 </div>
                 <br>
@@ -288,10 +282,9 @@
 
 
 
-
                 <div class="action save">
-                    <button class="action-button" type="submit" disabled>SALVA <span class="saved-icon hide"><i
-                                class="fa-solid fa-check"></i></span></button></button>
+                    <button class="action-button" type="submit" disabled>SALVA
+                        <span class="saved-icon hide"><i class="fa-solid fa-check"></i></span></button>
                 </div>
             </form>
 
@@ -314,7 +307,7 @@
     <script src="../js/login.js"></script>
     <script src="../js/submit.js"></script>
     <script src="../js/scraping.js"></script>
-    <script src="../js/new.js"></script>
+    <script src="../js/modify.js"></script>
 </body>
 
 </html>

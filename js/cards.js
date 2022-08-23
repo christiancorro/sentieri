@@ -172,7 +172,7 @@ function showElementsCards() {
     cards.forEach((card) => {
         // console.log("ID: " + getCurrentUser().uid);
         // console.log("Card ID: " + card.trail.authorId);
-        if (getCurrentUser().uid === card.trail.authorId || getCurrentUser().uid == "FtXxhMyI2nWLzUEo2vsYJCRxfFl2") {
+        if (checkPermission(card.trail.authorId)) {
             let only_user = card.html.querySelectorAll(".only-user");
             only_user.forEach(element => {
                 element.classList.remove("hide");

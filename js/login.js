@@ -148,3 +148,13 @@ function hideElements() {
 function isLogged() {
     return firebase.auth().currentUser == null ? false : true;
 }
+
+
+function checkPermission(uid) {
+    let currentId = getCurrentUser().uid;
+    if (uid == currentId || currentId == "FtXxhMyI2nWLzUEo2vsYJCRxfFl2") {
+        return true;
+    }
+
+    return false;
+}

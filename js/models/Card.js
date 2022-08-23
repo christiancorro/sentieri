@@ -17,7 +17,8 @@ class Card {
 
         card.className = 'card hide';
         card.innerHTML =
-            '<button class="delete-trail-button only-user hide" title="Elimina"><i class="fa-solid fa-trash-can"></i></button>' +
+            '<button class="trail-button delete-trail-button only-user hide" title="Elimina"><i class="fa-solid fa-trash"></i></button>' +
+            '<button class="trail-button modify-trail-button only-user hide" title="Modifica"><i class="fa-solid fa-pen"></i></button>' +
             '<a target="_blank" href="' +
             this.trail.url +
             '">' +
@@ -38,11 +39,11 @@ class Card {
             '</h2>' +
             '</a > ' +
             '<div class="description">' +
-            this.trail.description +
+            this.trail.description.replace(/\s+/g, " ").split(/(?=\s)/gi).slice(0, 29).join('') + "..." +
             '</div >' +
             '<div class="characteristics">' +
             '<span class="difficulty" title="Difficoltà">' +
-            this.trail.difficulty +
+            Difficulty[this.trail.difficulty] +
             '</span>' +
             '<span class ="duration" title="Durata"><i class ="fa-solid fa-clock"></i> ' +
             parseInt(this.trail.duration).toFixed(2) +
@@ -77,12 +78,14 @@ class Card {
             console.log("DELETE trail-" + this.trail.id);
             deleteCard(this);
         });
+
+        this.html.querySelector(".modify-trail-button").addEventListener('click', (event) => {
+            gotoModify(this.trail.id);
+        });
     }
 
 }
 
-
-// function deleteTrail(trail) {
-//     console.log("delete");
-//     console.log();
-// }
+function gotoModify(trailId) {
+    document.location.href = "/pages/modify.html?id=" + trailId;
+}

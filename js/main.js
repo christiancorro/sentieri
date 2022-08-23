@@ -70,11 +70,14 @@ const goto_button = document.querySelector(".goto-button");
 
 
 document.addEventListener('scroll', (event) => {
-    if (document.documentElement.scrollTop > 3000) {
-        goto_button.classList.remove("hide");
-    } else {
-        goto_button.classList.add("hide");
+    if (goto_button) {
+        if (document.documentElement.scrollTop > 3000) {
+            goto_button.classList.remove("hide");
+        } else {
+            goto_button.classList.add("hide");
+        }
     }
+
 },
     { passive: true }
 );

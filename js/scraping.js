@@ -63,15 +63,18 @@ let links = ["https://www.itineraridimontagna.it/forcella-ambrizzola-escursione-
     "https://www.itineraridimontagna.it/piz-boe-traversata-gruppo-sella/",
     "https://www.itineraridimontagna.it/ferrata-campalani-gruppo-carega/",
     "https://www.itineraridimontagna.it/giro-della-pala-di-san-martino/",
-    "https://www.itineraridimontagna.it/cima-cavallazza-laghi-colbricon/"
+    "https://www.itineraridimontagna.it/cima-cavallazza-laghi-colbricon/",
+    "https://www.itineraridimontagna.it/corna-trentapassi-escursione-anello-zone/"
 ];
 
 
 function scrapeAll(urls = links) {
+    console.log("Trying to scrape " + urls.length + " links");
     urls.forEach((url, i) => {
 
         setTimeout(() => {
-            scrape(url)
+            scrape(url).catch(console.log("Error scraping " + url));
+
         }, 100 * i);;
     });
 }
@@ -97,7 +100,7 @@ async function scrape(url) {
                     code = wrapper;
 
                     content.title = code.querySelector(".page-title").innerHTML;
-                    content.difficulty = code.querySelector('li[data-field="difficolta"]').childNodes[1].nodeValue;
+                    content.difficulty = code.querySelector('li[data-field="difficolta"]').childNodes[1].nodeValue.split(" ")[0];
                     content.duration = code.querySelector('li[data-field="durata"]').childNodes[1].nodeValue.split(/[- ]+/)[0];;
                     content.elevation_gain = code.querySelector('li[data-field="dislivello"]').childNodes[1].nodeValue.split(" ")[0];
                     content.group = code.querySelector('li[data-field="gruppo_montuoso"]').childNodes[1].nodeValue;

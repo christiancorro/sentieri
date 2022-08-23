@@ -96,6 +96,18 @@ function submitTrail() {
 
 }
 
+function getTrail(id) {
+    return new Promise((resolve, reject) => {
+        let ref = getDatabase(id);
+        ref.on("value", function (snapshot) {
+            var data = snapshot.val();
+            let trail = Trail.from(data);
+            console.log(trail);
+            resolve(trail);
+        });
+    });
+}
+
 
 function getAllTrails(trails, callback = () => { }) {
     return new Promise((resolve, reject) => {

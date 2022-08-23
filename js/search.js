@@ -51,43 +51,43 @@ checkboxs.forEach(function (checkbox) {
                         matches++;
                     }
                 });
-                if (card.trail.location.toLowerCase() === filter.toLowerCase() 
-                || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
-                matches++;
+                if (card.trail.location.toLowerCase() === filter.toLowerCase()
+                    || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
+                    matches++;
+                }
+            });
+
+            if (matches == filters.length) {
+                card.html.classList.remove("hide");
+
+            } else {
+                counter++
+                card.html.classList.add("hide");
             }
+
+
+            if (card.trail.tags.length == 0) {
+                card.html.classList.add("hide");
+                // counter++;
+            }
+
+            if (filters.length == 0) {
+                card.html.classList.remove("hide");
+            }
+
+
+            if (counter >= cards.length) {
+                no_result.classList.add("show");
+                // orderby_container.classList.add("hide");
+            } else {
+                no_result.classList.remove("show");
+                orderby_container.classList.remove("hide");
+            }
+
+            updateQuantity(counter);
+
         });
-
-        if (matches == filters.length) {
-            card.html.classList.remove("hide");
-
-        } else {
-            counter++
-            card.html.classList.add("hide");
-        }
-
-
-        if (card.trail.tags.length == 0) {
-            card.html.classList.add("hide");
-            // counter++;
-        }
-
-        if (filters.length == 0) {
-            card.html.classList.remove("hide");
-        }
-
-
-        if (counter >= cards.length) {
-            no_result.classList.add("show");
-            // orderby_container.classList.add("hide");
-        } else {
-            no_result.classList.remove("show");
-            orderby_container.classList.remove("hide");
-        }
-
-        updateQuantity(counter);
-
-    });
-})
+    })
 });
 
 
@@ -459,17 +459,21 @@ geocoder.on('result', (e) => {
     let from = e.result.center.reverse();
 
     cards.forEach(card => {
-        let to = card.trail.start_coords;
-        console.log("From: " + from + "\nTo: " + to);
-        let distance = turf.distance(from, to, options);
+        try {
+            let to = card.trail.start_coords;
+            console.log("From: " + from + "\nTo: " + to);
+            let distance = turf.distance(from, to, options);
 
-        console.log("Distance: " + distance.toFixed([2]) + " km");
+            console.log("Distance: " + distance.toFixed([2]) + " km");
 
-        console.log(card.html.querySelector(".distance-value"));
-        let distance_value = card.html.querySelector(".distance-value");
-        distance_value.innerHTML = distance.toFixed([0]);
-        distance_value.parentElement.classList.add("show");
-        card.trail.distance = distance;
+            console.log(card.html.querySelector(".distance-value"));
+            let distance_value = card.html.querySelector(".distance-value");
+            distance_value.innerHTML = distance.toFixed([0]);
+            distance_value.parentElement.classList.add("show");
+            card.trail.distance = distance;
+        } catch (error) {
+            console.log("Card does't have coords");
+        }
 
     });
 

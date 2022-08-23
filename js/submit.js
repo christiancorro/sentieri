@@ -1,5 +1,5 @@
 const save_button = document.querySelector(".save button");
-const form = document.querySelector(".trail-form");
+const saved_icon = document.querySelector(".saved-icon");
 
 const laod_image = document.querySelector("#load-image");
 const image_preview = document.querySelector(".image-preview");
@@ -7,7 +7,9 @@ const image_preview = document.querySelector(".image-preview");
 const loading_bar = document.querySelector("#loading-bar");
 
 let data = {};
-let image_url;
+let image_url = "https://3.bp.blogspot.com/-hNWh6ShDJGs/XFUltMH2fsI/AAAAAAAABz0/_UwOXZDl3ZEtejlpgFQoUBJ_rjt3O9ipgCKgBGAs/w1280-h720-c/mountains-fog-landscape-scenery-16-4K.jpg";
+
+let savedInterval;
 
 
 //TODO: controllo upload completato
@@ -23,6 +25,7 @@ laod_image.addEventListener('change', function (e) {
     // file picked
     let imageURL = URL.createObjectURL(e.target.files[0]);
     loading_bar.classList.remove("complete");
+    loading_bar.classList.add("uploading");
     save_button.setAttribute('disabled', '');
 
     let imgToCompress = new Image();
@@ -36,6 +39,7 @@ laod_image.addEventListener('change', function (e) {
             uploadImage(compressedImage, progressBar).then(url => {
                 // upload completed
                 image_url = url;
+                loading_bar.classList.remove("uploading");
                 loading_bar.classList.add("complete");
                 save_button.removeAttribute('disabled');
 
@@ -44,53 +48,17 @@ laod_image.addEventListener('change', function (e) {
     };
 
     imgToCompress.src = imageURL;
-
-
 });
 
+function saved() {
+    saved_icon.classList.remove("hide");
+    clearInterval(savedInterval);
+    savedInterval = setInterval(() => {
+        saved_icon.classList.add("hide");
+    }, 3000);
+}
 
-// Prevent Submit on enter
-form.addEventListener('keypress', function (e) {
-    if (e.keyCode == 13) {
-        e.preventDefault();
-        return false;
-    }
-});
 
-form.addEventListener('submit', async function (e) {
-
-    //prevent the normal submission of the form
-    e.preventDefault();
-    data = {};
-    const formData = new FormData(this);
-    const entires = formData.entries();
-
-    let trail = new Trail();
-
-    for (const [name, value] of entires) {
-        console.log(name + ': ' + value);
-        if (!data[name]) {
-            data[name] = []
-        }
-        data[name].push(value);
-    }
-
-    for (var k in data) {
-        if (data[k].length == 1) {
-
-            trail[k] = data[k][0];
-        } else {
-            trail[k] = data[k];
-        }
-    }
-
-    trail.imagesURL = [];
-    trail.imagesURL.push(image_url);
-    trail.authorId = firebase.auth().currentUser.uid;
-    trail.authorName = firebase.auth().currentUser.displayName;
-    trail.upload();
-
-});
 
 
 getAllTrails(trails);
