@@ -63,7 +63,7 @@ class Card {
             '<span class ="group" title="Gruppo"><i class ="fa-solid fa-mountain"></i> ' +
             this.trail.group +
             '</span>' +
-            '<span class ="distance" title="Distanza"><i class="fa-solid fa-map-location-dot"></i> <i class="distance-value"></i><i class="unit">km</i></span>' +
+            '<span class ="distance" title="Distanza in linea d\'aria"><i class="fa-solid fa-car"></i> <i class="distance-value"></i><i class="unit">km</i></span>' +
             '</div>' +
             '</div>';
 
@@ -87,5 +87,5 @@ class Card {
 }
 
 function gotoModify(trailId) {
-    document.location.href = "pages/modify.html?id=" + trailId;
+    document.location.href = "pages/modify/?id=" + trailId;
 }

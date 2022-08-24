@@ -126,6 +126,8 @@ function deleteCard(card) {
 
             trails = trails.filter(trail => trail.id != card.trail.id);
             cards = cards.filter(c => c.trail.id != card.trail.id);
+            showingCards = showingCards.filter(c => c.trail.id != card.trail.id);
+
             updateQuantity();
 
             // remove trail

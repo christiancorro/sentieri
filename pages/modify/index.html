@@ -19,14 +19,14 @@
     <meta name="theme-color" content="#2F2F2F">
 
 
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/cards.css">
-    <link rel="stylesheet" href="../css/filters.css">
-    <link rel="stylesheet" href="../css/search.css">
-    <link rel="stylesheet" href="../css/new.css">
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../libs/progressbar/progressbar.css">
-    <!-- <script src="../libs/progressbar/progressbar.js"></script> -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/filters.css">
+    <link rel="stylesheet" href="../../css/search.css">
+    <link rel="stylesheet" href="../../css/new.css">
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../libs/progressbar/progressbar.css">
+    <!-- <script src="../../libs/progressbar/progressbar.js"></script> -->
     <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
 
     <script src="libs/splide.min.js"></script>
@@ -36,18 +36,18 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
-    <script type="text/javascript" src="../js/db/database.js"></script>
-    <script type="text/javascript" src="../js/models/Trail.js"></script>
-    <script type="text/javascript" src="../js/models/Enums.js"></script>
-    <script type="text/javascript" src="../js/models/Card.js"></script>
-    <script type="text/javascript" src="../js/Utils.js"></script>
+    <script type="text/javascript" src="../../js/db/database.js"></script>
+    <script type="text/javascript" src="../../js/models/Trail.js"></script>
+    <script type="text/javascript" src="../../js/models/Enums.js"></script>
+    <script type="text/javascript" src="../../js/models/Card.js"></script>
+    <script type="text/javascript" src="../../js/Utils.js"></script>
 </head>
 
 <body>
 
     <header id="navbar">
         <nav class="navbar-container">
-            <a href="../" class="home-link">
+            <a href="../../" class="home-link">
                 <div class="navbar-logo"></div>
                 Sentieri
             </a>
@@ -61,10 +61,10 @@
             </svg>
             <div id="navbar-menu" class="detached">
                 <ul class="navbar-links">
-                    <li class="navbar-item"><a class="navbar-link" href="../">Home</a>
+                    <li class="navbar-item"><a class="navbar-link" href="../../">Home</a>
                     </li>
-                    <li class="navbar-item"><a class="navbar-link" href="map.html">Mappa</a></li>
-                    <li class="navbar-item"><a class="navbar-link" href="info.html">Info</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="../map/">Mappa</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="../info/">Info</a></li>
                     <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
                     <li class="navbar-item new-item only-login selected">
                         <a class="navbar-link" title="Aggiungi un nuovo sentiero" href="#">
@@ -103,16 +103,33 @@
             <form class="trail-form-modify hide">
 
                 <div class="image-upload-container">
-                    <input type="file" accept="image/*" name="imagesURL" id="load-image" style="display: none;">
-                    <label class="image-preview" for="load-image" style="cursor: pointer;">
-                        <span class="message">Cambia immagine
-                        </span>
-                    </label>
+
+                    <div class="image-preview">
+                        <div class="image-preview-content">
+                            <div class="upload-image">
+                                <input type="file" accept="image/*" name="imagesURL" id="load-image"
+                                    style="display: none;">
+                                <label for="load-image" class="noselect">
+                                    <span>Carica immagine</span>
+                                </label>
+
+                                <span class="divider">oppure</span>
+                            </div>
+                            <div class="url-image">
+                                <div class="input">
+                                    <input type="url" step="any" name="url_image" class="input-field" placeholder=" "
+                                        value="" autocomplete="off" />
+                                    <label class="input-label">URL Immagine</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     <div style="width: 100%;" id="loading-bar"></div>
+
 
                     <!-- <p><img id="output" width="900" margin="0 auto" /></p> -->
                 </div>
-
                 <label class="selection-big" for="difficulty-selection">
                     <select id="difficulty-selection" name="difficulty" required="required">
                         <option value="T">T (Turistico)</option>
@@ -302,7 +319,7 @@
                     ◠
                 </span>
             </div>
-            <!-- <img class="work_in_progress" src="../images/work_in_progress.svg" alt="Work in progress"> -->
+            <!-- <img class="work_in_progress" src="../../images/work_in_progress.svg" alt="Work in progress"> -->
         </div>
 
 
@@ -311,11 +328,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/login.js"></script>
-    <script src="../js/submit.js"></script>
-    <script src="../js/scraping.js"></script>
-    <script src="../js/modify.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/login.js"></script>
+    <script src="../../js/submit.js"></script>
+    <script src="../../js/scraping.js"></script>
+    <script src="../../js/modify.js"></script>
 </body>
 
 </html>

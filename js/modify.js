@@ -102,8 +102,8 @@ form_modify.addEventListener('submit', async function (e) {
     thisTrail.upload();
 
     saved();
-    setTimeout(() => {
-        document.location.href = "../";
-    }, 1500);
+    // setTimeout(() => {
+    //     document.location.href = "../";
+    // }, 1500);
 
 });

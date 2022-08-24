@@ -1,5 +1,7 @@
 const save_button = document.querySelector(".save button");
 const saved_icon = document.querySelector(".saved-icon");
+const url_image_input = document.querySelector("[name='url_image']");
+
 
 const laod_image = document.querySelector("#load-image");
 const image_preview = document.querySelector(".image-preview");
@@ -19,6 +21,23 @@ var progressBar = new ProgressBar.Line('#loading-bar', {
     duration: 1000,
     easing: 'easeInOut'
 });
+function isImage(url) {
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+}
+
+url_image_input.oninput = function () {
+    if (isImage(this.value)) {
+        image_url = this.value;
+        loading_bar.classList.add("complete");
+        laod_image.value = "";
+    }
+    else {
+        image_url = "https://3.bp.blogspot.com/-hNWh6ShDJGs/XFUltMH2fsI/AAAAAAAABz0/_UwOXZDl3ZEtejlpgFQoUBJ_rjt3O9ipgCKgBGAs/w1280-h720-c/mountains-fog-landscape-scenery-16-4K.jpg";
+        loading_bar.classList.remove("complete");
+    }
+
+    image_preview.style.backgroundImage = "url(" + image_url + ")";
+};
 
 
 laod_image.addEventListener('change', function (e) {
@@ -27,6 +46,7 @@ laod_image.addEventListener('change', function (e) {
     loading_bar.classList.remove("complete");
     loading_bar.classList.add("uploading");
     save_button.setAttribute('disabled', '');
+    url_image_input.value = "";
 
     let imgToCompress = new Image();
 
@@ -63,9 +83,13 @@ function saved() {
 
 getAllTrails(trails);
 
-document.querySelector(".confetti").addEventListener("click", function (e) {
-    party.confetti(this, {
-        count: party.variation.range(60, 60),
-        size: party.variation.range(0.9, 1.4),
+let confetti = document.querySelector(".confetti");
+
+if (confetti) {
+    confetti.addEventListener("click", function (e) {
+        party.confetti(this, {
+            count: party.variation.range(60, 60),
+            size: party.variation.range(0.9, 1.4),
+        });
     });
-});
+}

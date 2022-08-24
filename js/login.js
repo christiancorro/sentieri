@@ -84,7 +84,7 @@ function LoggedOut() {
 
 function returnToIndex() {
     setTimeout(() => {
-        if (window.location.pathname != "/index.html" && window.location.pathname != "/" && window.location.pathname != "/sentieri/") {
+        if (window.location.pathname != "/index.html" && window.location.pathname != "/" && window.location.pathname != "/sentieri/" && window.location.pathname != "/sentieri/pages/info/" && window.location.pathname != "/pages/info/") {
             document.location.href = "/sentieri/";
         }
     }, 100);

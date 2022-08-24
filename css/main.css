@@ -390,6 +390,7 @@ main {
 
 .loading.loaded {
     opacity: 0;
+    visibility: hidden;
     /* margin: 0; */
 }
 

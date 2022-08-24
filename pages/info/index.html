@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Sentieri di montagna, ordinati | Info</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+    <link rel="icon" type="image/x-icon" href="images/UI/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/UI/logo/favicon-192x192.png">
+
+    <meta name="theme-color" content="#2F2F2F">
+
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/filters.css">
+    <link rel="stylesheet" href="../../css/search.css">
+    <link rel="stylesheet" href="../../css/new.css">
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/info.css">
+    <link rel="stylesheet" href="../../libs/progressbar/progressbar.css">
+    <!-- <script src="../../libs/progressbar/progressbar.js"></script> -->
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+
+    <script src="libs/splide.min.js"></script>
+    <script src="https://kit.fontawesome.com/d8c2758a42.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script type="text/javascript" src="../../js/db/database.js"></script>
+    <script type="text/javascript" src="../../js/models/Trail.js"></script>
+    <script type="text/javascript" src="../../js/models/Enums.js"></script>
+    <script type="text/javascript" src="../../js/models/Card.js"></script>
+    <script type="text/javascript" src="../../js/Utils.js"></script>
+</head>
+
+<body>
+
+    <header id="navbar">
+        <nav class="navbar-container">
+            <a href="../../" class="home-link">
+                <div class="navbar-logo"></div>
+                Sentieri
+            </a>
+            <svg class="navbar-toggle ham hamRotate ham8" aria-label="Toggle menu" aria-expanded="false"
+                viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('opened')">
+                <path class="line top"
+                    d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+                <path class="line middle" d="m 30,50 h 40" />
+                <path class="line bottom"
+                    d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+            </svg>
+            <div id="navbar-menu" class="detached">
+                <ul class="navbar-links">
+                    <li class="navbar-item"><a class="navbar-link" href="../../">Home</a>
+                    </li>
+                    <li class="navbar-item"><a class="navbar-link" href="../map/">Mappa</a></li>
+                    <li class="navbar-item selected"><a class="navbar-link" href="../info/">Info</a></li>
+                    <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
+                    <li class="navbar-item new-item only-login hide ">
+                        <a class="navbar-link" title="Aggiungi un nuovo sentiero" href="../add/">
+                            Aggiungi
+                        </a>
+                    </li>
+                    <!-- <li class="navbar-item"><a class="navbar-link" href="/donations">Donazioni</a></li> -->
+                    <li class="navbar-item account-item">
+                        <div class="log-space">
+                            <button class="login-button" title="Log In per aggiungere e modificare i sentieri"
+                                onclick="GoogleLogin()"><i class="fa-solid fa-user"></i>
+                            </button>
+                            <div class="account-space hide">
+                                <div class="account-content">
+                                    <div class="account-image"></div>
+                                    <div class="account-info">
+                                        <span class="account-name"></span>
+                                        <span class="account-lastname"></span>
+                                    </div>
+                                    <button class="logout-button" title="Log Out" onclick="Logout()"><i
+                                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-area">
+
+
+        <div class="centered">
+
+
+
+        </div>
+
+
+
+    </main>
+    <img class="info" src="https://c.tenor.com/pPKOYQpTO8AAAAAC/monkey-developer.gif" alt="">
+
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/login.js"></script>
+</body>
+
+</html>

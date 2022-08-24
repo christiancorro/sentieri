@@ -159,7 +159,7 @@ form {
 form .image-preview {
     display: block;
     width: 100%;
-    height: 400px;
+    height: 450px;
     /* margin-top: 30px; */
     background: black;
     background-image: url("https://3.bp.blogspot.com/-hNWh6ShDJGs/XFUltMH2fsI/AAAAAAAABz0/_UwOXZDl3ZEtejlpgFQoUBJ_rjt3O9ipgCKgBGAs/w1920-h1080-c/mountains-fog-landscape-scenery-16-4K.jpg");
@@ -167,8 +167,8 @@ form .image-preview {
     background-position: center;
     background-size: cover;
     background-color: #ffffff;
-    transition: all .2s ease;
-    cursor: pointer;
+    transition: all .4s ease;
+    /* cursor: pointer; */
     border: 2px solid rgb(255, 255, 255);
     border-radius: 2rem;
     box-sizing: border-box;
@@ -180,23 +180,119 @@ form .image-preview:hover {
     /* border: 2px dashed rgb(94, 94, 94); */
 }
 
-form .message {
-    display: inline-block;
+form .image-preview .image-preview-content {
+    display: block;
     opacity: 0;
+    transition-property: opaicty;
     transition: all .4s ease;
+    /* transition-delay: 1s; */
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.87);
     border-radius: 2rem;
     text-align: center;
-    vertical-align: middle;
-    line-height: 400px;
+    /* line-height: 400px; */
     font-weight: bold;
     transform: scale(0.99);
     /* border: 3px solid black; */
 }
 
-form .image-preview:hover .message {
+.upload-image {
+    /* background: red; */
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.upload-image label {
+    /* display: block; */
+    cursor: pointer;
+    position: absolute;
+    font: inherit;
+    font-size: 1em;
+    padding: 1em;
+    font-weight: 500;
+    background-color: #49b293;
+    border-radius: 6px;
+    color: #ffffffda;
+    border: 0;
+    cursor: pointer;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-bottom: 2px solid #398870;
+    transition: all .1s ease;
+    /* font-weight: bold; */
+    box-sizing: border-box;
+    transition: all .2s ease, transform 0.05s ease, border 0s ease;
+    /* margin-left: 20px; */
+}
+
+.upload-image .divider {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    bottom: -20px;
+    font-size: 0.9em;
+    color: rgb(97, 97, 97);
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.upload-image label:active {
+    /* border-bottom: 3px solid #2F2F2F; */
+    transform: translate(-50%, -50%) translateY(2px);
+    border-bottom: 2px solid #ffffff;
+}
+
+.upload-image label:hover {
+    background-color: #47ad8f;
+    color: white;
+}
+
+.url-image {
+    /* background: green; */
+    position: absolute;
+    bottom: 0;
+    display: block;
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.url-image .input {
+    margin-top: 50px;
+    color: black;
+    z-index: 0;
+}
+
+.url-image .input label {
+    color: black;
+}
+
+.url-image .input input {
+    border-bottom-color: #353535;
+    z-index: 0;
+}
+
+form .image-upload-container:hover .image-preview-content {
     transform: scale(1);
     opacity: 1;
 }

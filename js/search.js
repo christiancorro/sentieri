@@ -7,7 +7,9 @@ const maxDurationLimit = 12;
 const maxElevationLimit = 2000;
 const maxLengthLimit = 30;
 
-let maxElevation = 2000, minElevation = 0, maxLength = 30, minLength = 0, maxDuration = maxDurationLimit, minDuration = 0;
+const bigNumber = 100000;
+
+let maxElevation = bigNumber, minElevation = 0, maxLength = bigNumber, minLength = 0, maxDuration = bigNumber, minDuration = 0;
 
 async function setCardSearchMode() {
     // console.log("focus");
@@ -45,91 +47,42 @@ checkboxs.forEach(function (checkbox) {
 
 
 
-        filterCards();
-        checkCards();
+        updateCards();
     })
 });
 
-let includesAll = (arr, target) => target.every(v => arr.includes(v));
+let includesAll = (array, target) => target.every(element => array.includes(element));
 
-function checkCard(card) {
-    // Tags
+
+function checkTags(card) {
+    return includesAll(card.trail.tags.concat(card.trail.location).concat(card.trail.difficulty), filters);
+}
+
+function checkSearch(card) {
     let text = searchBar.value.toLowerCase();
 
-    if (includesAll(card.trail.tags, filters) &&
-        (text.length == 0 || (card.trail.title.toLowerCase().includes(text) ||
-            card.trail.group.toLowerCase().includes(text) ||
-            card.trail.location.toLowerCase().includes(text) ||
-            card.trail.description.toLowerCase().includes(text))) &&
-        ((card.trail.duration <= maxDuration && card.trail.duration >= minDuration) &&
-            (card.trail.trail_length <= maxLength && card.trail.trail_length >= minLength) &&
-            (card.trail.elevation_gain <= maxElevation && card.trail.elevation_gain >= minElevation))) {
+    return text.length == 0 || (card.trail.title.toLowerCase().includes(text) ||
+        card.trail.group.toLowerCase().includes(text) ||
+        card.trail.location.toLowerCase().includes(text) ||
+        card.trail.description.toLowerCase().includes(text));
+}
+
+function checkSliders(card) {
+    return (card.trail.duration <= maxDuration && card.trail.duration >= minDuration) &&
+        (card.trail.trail_length <= maxLength && card.trail.trail_length >= minLength) &&
+        (card.trail.elevation_gain <= maxElevation && card.trail.elevation_gain >= minElevation);
+}
+
+function checkCard(card) {
+    if (checkTags(card) && checkSearch(card) && checkSliders(card)) {
         return true;
     }
     return false;
 }
 
-
-
-function filterCards() {
-    let counter = 0;
-    showingCards = [];
-    cards.forEach(card => {
-
-        let matches = 0;
-
-        filters.forEach(filter => {
-            card.trail.tags.forEach(tag => {
-                if (tag.toLowerCase() === filter.toLowerCase()) {
-                    matches++;
-                }
-            });
-            if (card.trail.location.toLowerCase() === filter.toLowerCase()
-                || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
-                matches++;
-            }
-        });
-
-        if (matches == filters.length) {
-            card.html.classList.remove("hide");
-            showingCards.push(card);
-
-        } else {
-            counter++
-            card.html.classList.add("hide");
-        }
-
-
-        if (card.trail.tags.length == 0) {
-            card.html.classList.add("hide");
-            // counter++;
-        }
-
-        if (filters.length == 0) {
-            card.html.classList.remove("hide");
-        }
-
-
-        if (counter >= cards.length) {
-            no_result.classList.add("show");
-            // orderby_container.classList.add("hide");
-        } else {
-            no_result.classList.remove("show");
-            orderby_container.classList.remove("hide");
-        }
-
-        updateQuantity(counter);
-
-    });
-
-    search();
-
-}
-
-
-async function updateQuantity(counter = 0) {
+function updateQuantity() {
     quantity.classList.add("changed");
-    let value = showingCards.length - counter;
+    let value = showingCards.length;
     quantity.innerHTML = value;
 
     setTimeout(() => {
@@ -143,55 +96,80 @@ async function updateQuantity(counter = 0) {
     }
 }
 
-
-
-
-
 function filterCards() {
     return cards.filter(card => checkCard(card));
 }
 
+function updateCards() {
+    showingCards = filterCards();
+    updateMain();
+    updateQuantity();
+}
+
+
+
+// function filterCards() {
+//     let counter = 0;
+//     showingCards = [];
+//     cards.forEach(card => {
+
+//         let matches = 0;
+
+//         filters.forEach(filter => {
+//             card.trail.tags.forEach(tag => {
+//                 if (tag.toLowerCase() === filter.toLowerCase()) {
+//                     matches++;
+//                 }
+//             });
+//             if (card.trail.location.toLowerCase() === filter.toLowerCase()
+//                 || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
+//                 matches++;
+//             }
+//         });
+
+//         if (matches == filters.length) {
+//             card.html.classList.remove("hide");
+//             showingCards.push(card);
+
+//         } else {
+//             counter++
+//             card.html.classList.add("hide");
+//         }
+
+
+//         if (card.trail.tags.length == 0) {
+//             card.html.classList.add("hide");
+//             // counter++;
+//         }
+
+//         if (filters.length == 0) {
+//             card.html.classList.remove("hide");
+//         }
+
+
+//         if (counter >= cards.length) {
+//             no_result.classList.add("show");
+//             // orderby_container.classList.add("hide");
+//         } else {
+//             no_result.classList.remove("show");
+//             orderby_container.classList.remove("hide");
+//         }
+
+//         updateQuantity(counter);
+
+//     });
+
+//     search();
+
+// }
 
 
 // Search
 
 searchBar.addEventListener("keyup", (e) => {
-    search();
+    updateCards();
 });
 
-function search() {
-    let text = searchBar.value.toLowerCase();
-
-    checkCards();
-
-    if (text.length >= 0) {
-        let counter = 0;
-
-        showingCards.forEach(card => {
-            if (card.trail.title.toLowerCase().includes(text)
-                ||
-                card.trail.group.toLowerCase().includes(text)
-                ||
-                card.trail.location.toLowerCase().includes(text) ||
-
-                card.trail.description.toLowerCase().includes(text)) {
-                card.html.classList.remove("hide");
-
-            } else {
-                card.html.classList.add("hide");
-                // console.log(counter);
-                counter++;
-            }
-        });
-
-        // console.log(counter);
-        // quantity.innerHTML = "" + cards.length - counter;
-        updateQuantity(counter);
-
-
-    }
-
-}
 
 
 let toggleFilters = document.querySelector(".toggle-filters");
@@ -204,24 +182,21 @@ toggleFilters.addEventListener("click", function () {
 
 
 
+function updateMain() {
+    new Promise((resolve, reject) => {
+        console.log("Update Main");
 
+        //Remove cards
+        mainArea.innerHTML = "";
 
+        // Add cards
+        showingCards.forEach(function (card, i) {
+            mainArea.appendChild(card.html);
+        });
 
-
-
-// Orderby
-
-// console.log(orderby.value);
-
-async function updateMain() {
-    console.log("Update Main");
-    //Remove cards
-    mainArea.innerHTML = "";
-
-    // Add cards
-    showingCards.forEach(function (card, i) {
-        mainArea.appendChild(card.html);
+        resolve();
     });
+
 }
 
 function showCards() {
@@ -238,8 +213,6 @@ function clearMain() {
 }
 
 orderby.addEventListener("change", function () {
-    // console.log(this.value);
-
     sortCards();
     updateMain();
 });
@@ -262,10 +235,10 @@ function updateHighlight(className) {
 
 }
 
-async function sortCards() {
+function sortCards() {
 
     // Order asc
-    console.log(orderby.value);
+    // console.log(orderby.value);
 
     position_container.classList.remove("show");
     switch (orderby.value) {
@@ -316,7 +289,7 @@ async function sortCards() {
 
 
 function manageDistanceCalculation() {
-    console.log(position_container.classList);
+    // console.log(position_container.classList);
 
     if (!position_container.classList.contains("show")) {
         position_container.classList.add("show");
@@ -459,142 +432,49 @@ bindInputSlider(elevation_gain_filter_min, elevation_gain_filter_max, slider_ele
 
 function filterSliders() {
     console.log("Filter");
-    minDuration = parseFloat(duration_filter_min.value);
-    maxDuration = parseFloat(duration_filter_max.value);
+    minDuration = duration_filter_min.value;
+    maxDuration = duration_filter_max.value;
     maxDuration = maxDuration >= maxDurationLimit ? 10000 : maxDuration;
 
-    minElevation = parseFloat(elevation_gain_filter_min.value);
-    maxElevation = parseFloat(elevation_gain_filter_max.value);
+    minElevation = elevation_gain_filter_min.value;
+    maxElevation = elevation_gain_filter_max.value;
     maxElevation = maxElevation >= maxElevationLimit ? 10000 : maxElevation;
 
-    minLength = parseFloat(trail_length_filter_min.value);
-    maxLength = parseFloat(trail_length_filter_max.value);
+    minLength = trail_length_filter_min.value;
+    maxLength = trail_length_filter_max.value;
     maxLength = maxLength >= maxLengthLimit ? 10000 : maxLength;
 
-    let counter = 0;
 
-    // console.log("Filter All");
-
-    showingCards.forEach(card => {
-        if ((card.trail.duration <= maxDuration && card.trail.duration >= minDuration) &&
-            (card.trail.trail_length <= maxLength && card.trail.trail_length >= minLength) &&
-            (card.trail.elevation_gain <= maxElevation && card.trail.elevation_gain >= minElevation)) {
-            card.html.classList.remove("hide");
-        } else {
-            // console.log(card.trail);
-            card.html.classList.add("hide");
-            counter++;
-        }
-    });
-
-    updateQuantity(counter);
-
-    // if (counter == showingCards.length) {
-    //     // no_result.classList.add("show")
-    // } else {
-    //     no_result.classList.remove("show")
-    // }
-
-    search(); //FIXME:error check
+    updateCards();
 }
-
-// async function filterDuration([min, max]) {
-
-//     let counter = 0;
-
-//     console.log("Filter Duration");
-
-//     showingCards.forEach(card => {
-//         if (card.trail.duration <= max && card.trail.duration >= min) {
-//             card.html.classList.remove("hide");
-//         } else {
-//             card.html.classList.add("hide");
-//             counter++;
-//         }
-//     });
-
-//     updateQuantity(counter);
-
-//     if (counter == showingCards.length) {
-//         // no_result.classList.add("show")
-//     } else {
-//         no_result.classList.remove("show")
-//     }
-// }
-
-// async function filterTrailLength([min, max]) {
-
-//     console.log("Filter Length");
-
-//     let counter = 0;
-
-//     showingCards.forEach(card => {
-//         if (card.trail.trail_length <= max && card.trail.trail_length >= min) {
-//             card.html.classList.remove("hide");
-//         } else {
-//             card.html.classList.add("hide");
-//             counter++;
-//         }
-//     });
-
-//     updateQuantity(counter);
-
-//     if (counter == showingCards.length) {
-//         // no_result.classList.add("show")
-//     } else {
-//         no_result.classList.remove("show")
-//     }
-// }
-
-// async function filterElevationGain([min, max]) {
-
-//     console.log("Filter Elevation Gain");
-
-//     let counter = 0;
-
-//     showingCards.forEach(card => {
-//         if (card.trail.elevation_gain <= max && card.trail.elevation_gain >= min) {
-//             card.html.classList.remove("hide");
-//         } else {
-//             card.html.classList.add("hide");
-//             counter++;
-//         }
-//     });
-
-//     updateQuantity(counter);
-
-//     if (counter == showingCards.length) {
-//         // no_result.classList.add("show")
-//     } else {
-//         no_result.classList.remove("show")
-//     }
-// }
 
 
 geocoder.on('result', (e) => {
-    console.log(JSON.stringify(e.result, null, 2));
+    // console.log(JSON.stringify(e.result, null, 2));
+    console.log("Change distance");
+    console.log(e.result);
 
     var options = {
         units: 'kilometers'
     };
 
-    let from = e.result.center.reverse();
+    let from = [e.result.center[1], e.result.center[0]];
 
     cards.forEach(card => {
         try {
             let to = card.trail.start_coords;
-            console.log("From: " + from + "\nTo: " + to);
+            // console.log("From: " + from + "\nTo: " + to);
             let distance = turf.distance(from, to, options);
 
-            console.log("Distance: " + distance.toFixed([2]) + " km");
+            // console.log("Distance: " + distance.toFixed([2]) + " km");
 
-            console.log(card.html.querySelector(".distance-value"));
+            // console.log(card.html.querySelector(".distance-value"));
             let distance_value = card.html.querySelector(".distance-value");
             distance_value.innerHTML = distance.toFixed([0]);
             distance_value.parentElement.classList.add("show");
             card.trail.distance = distance;
         } catch (error) {
-            console.log("Card does't have coords");
+            // console.log("Card does't have coords");
         }
 
     });

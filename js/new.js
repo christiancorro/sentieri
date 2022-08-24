@@ -52,8 +52,8 @@ form.addEventListener('submit', async function (e) {
         trail.upload();
         saved();
         setTimeout(() => {
-            document.location.href = "../";
-        }, 2000);
+            document.location.href = "../../";
+        }, 1600);
     }
 
 });
