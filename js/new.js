@@ -43,6 +43,12 @@ form.addEventListener('submit', async function (e) {
         trail.imagesURL.push(image_url);
         trail.authorId = firebase.auth().currentUser.uid;
         trail.authorName = firebase.auth().currentUser.displayName;
+
+        trail.duration = parseFloat(trail.duration);
+        trail.elevation_gain = parseFloat(trail.elevation_gain);
+        trail.trail_length = parseFloat(trail.trail_length);
+        trail.max_altitude = parseFloat(trail.max_altitude);
+
         trail.upload();
         saved();
         setTimeout(() => {

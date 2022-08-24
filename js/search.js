@@ -1,7 +1,13 @@
 
 // searchBar.addEventListener("focus", setCardSearchMode);
 // searchBar.addEventListener("focusout", setCardSearchModeOff);
+let showingCards = cards;
 
+const maxDurationLimit = 12;
+const maxElevationLimit = 2000;
+const maxLengthLimit = 30;
+
+let maxElevation = 2000, minElevation = 0, maxLength = 30, minLength = 0, maxDuration = maxDurationLimit, minDuration = 0;
 
 async function setCardSearchMode() {
     // console.log("focus");
@@ -22,11 +28,11 @@ async function setCardSearchModeOff() {
 
 // Filters
 let filters = [];
-const checkboxs = document.querySelectorAll('.filters input[type=checkbox]')
+const checkboxs = document.querySelectorAll('.filters input[type=checkbox]');
 
 checkboxs.forEach(function (checkbox) {
     checkbox.addEventListener('change', (event) => {
-        let counter = 0;
+
         if (event.currentTarget.checked) {
             // console.log("checked " + checkbox.value);
             filters.push(checkbox.value);
@@ -39,110 +45,152 @@ checkboxs.forEach(function (checkbox) {
 
 
 
-        cards.forEach(card => {
-
-            let matches = 0;
-
-
-
-            filters.forEach(filter => {
-                card.trail.tags.forEach(tag => {
-                    if (tag.toLowerCase() === filter.toLowerCase()) {
-                        matches++;
-                    }
-                });
-                if (card.trail.location.toLowerCase() === filter.toLowerCase()
-                    || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
-                    matches++;
-                }
-            });
-
-            if (matches == filters.length) {
-                card.html.classList.remove("hide");
-
-            } else {
-                counter++
-                card.html.classList.add("hide");
-            }
-
-
-            if (card.trail.tags.length == 0) {
-                card.html.classList.add("hide");
-                // counter++;
-            }
-
-            if (filters.length == 0) {
-                card.html.classList.remove("hide");
-            }
-
-
-            if (counter >= cards.length) {
-                no_result.classList.add("show");
-                // orderby_container.classList.add("hide");
-            } else {
-                no_result.classList.remove("show");
-                orderby_container.classList.remove("hide");
-            }
-
-            updateQuantity(counter);
-
-        });
+        filterCards();
+        checkCards();
     })
 });
 
+let includesAll = (arr, target) => target.every(v => arr.includes(v));
+
+function checkCard(card) {
+    // Tags
+    let text = searchBar.value.toLowerCase();
+
+    if (includesAll(card.trail.tags, filters) &&
+        (text.length == 0 || (card.trail.title.toLowerCase().includes(text) ||
+            card.trail.group.toLowerCase().includes(text) ||
+            card.trail.location.toLowerCase().includes(text) ||
+            card.trail.description.toLowerCase().includes(text))) &&
+        ((card.trail.duration <= maxDuration && card.trail.duration >= minDuration) &&
+            (card.trail.trail_length <= maxLength && card.trail.trail_length >= minLength) &&
+            (card.trail.elevation_gain <= maxElevation && card.trail.elevation_gain >= minElevation))) {
+        return true;
+    }
+    return false;
+}
+
+
+
+function filterCards() {
+    let counter = 0;
+    showingCards = [];
+    cards.forEach(card => {
+
+        let matches = 0;
+
+        filters.forEach(filter => {
+            card.trail.tags.forEach(tag => {
+                if (tag.toLowerCase() === filter.toLowerCase()) {
+                    matches++;
+                }
+            });
+            if (card.trail.location.toLowerCase() === filter.toLowerCase()
+                || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
+                matches++;
+            }
+        });
+
+        if (matches == filters.length) {
+            card.html.classList.remove("hide");
+            showingCards.push(card);
+
+        } else {
+            counter++
+            card.html.classList.add("hide");
+        }
+
+
+        if (card.trail.tags.length == 0) {
+            card.html.classList.add("hide");
+            // counter++;
+        }
+
+        if (filters.length == 0) {
+            card.html.classList.remove("hide");
+        }
+
+
+        if (counter >= cards.length) {
+            no_result.classList.add("show");
+            // orderby_container.classList.add("hide");
+        } else {
+            no_result.classList.remove("show");
+            orderby_container.classList.remove("hide");
+        }
+
+        updateQuantity(counter);
+
+    });
+
+    search();
+
+}
 
 
 async function updateQuantity(counter = 0) {
     quantity.classList.add("changed");
-    quantity.innerHTML = "" + cards.length - counter;
+    let value = showingCards.length - counter;
+    quantity.innerHTML = value;
 
     setTimeout(() => {
         quantity.classList.remove("changed");
     }, 200);
+
+    if (value == 0) {
+        no_result.classList.add("show")
+    } else {
+        no_result.classList.remove("show")
+    }
 }
 
 
 
 
 
-
-
+function filterCards() {
+    return cards.filter(card => checkCard(card));
+}
 
 
 
 // Search
 
-searchBar.addEventListener("keyup", search);
+searchBar.addEventListener("keyup", (e) => {
+    search();
+});
 
-async function search() {
-    let text = this.value.toLowerCase();
-    let counter = 0;
+function search() {
+    let text = searchBar.value.toLowerCase();
 
-    cards.forEach(card => {
-        if (card.trail.title.toLowerCase().includes(text)
-            ||
-            card.trail.group.toLowerCase().includes(text)
-            ||
-            card.trail.location.toLowerCase().includes(text) ||
+    checkCards();
 
-            card.trail.description.toLowerCase().includes(text)) {
-            card.html.classList.remove("hide");
+    if (text.length >= 0) {
+        let counter = 0;
 
-        } else {
-            card.html.classList.add("hide");
-            counter++;
-        }
-    });
+        showingCards.forEach(card => {
+            if (card.trail.title.toLowerCase().includes(text)
+                ||
+                card.trail.group.toLowerCase().includes(text)
+                ||
+                card.trail.location.toLowerCase().includes(text) ||
 
-    // console.log(counter);
-    // quantity.innerHTML = "" + cards.length - counter;
-    updateQuantity(counter);
+                card.trail.description.toLowerCase().includes(text)) {
+                card.html.classList.remove("hide");
 
-    if (counter == cards.length) {
-        no_result.classList.add("show")
-    } else {
-        no_result.classList.remove("show")
+            } else {
+                card.html.classList.add("hide");
+                // console.log(counter);
+                counter++;
+            }
+        });
+
+        // console.log(counter);
+        // quantity.innerHTML = "" + cards.length - counter;
+        updateQuantity(counter);
+
+
     }
+
 }
 
 
@@ -166,15 +214,19 @@ toggleFilters.addEventListener("click", function () {
 // console.log(orderby.value);
 
 async function updateMain() {
+    console.log("Update Main");
     //Remove cards
     mainArea.innerHTML = "";
 
     // Add cards
-    cards.forEach(function (card, i) {
+    showingCards.forEach(function (card, i) {
         mainArea.appendChild(card.html);
+    });
+}
 
+function showCards() {
+    cards.forEach(function (card, i) {
         setTimeout(() => {
-
             card.html.classList.remove("hide");
         }, 200);
     });
@@ -192,39 +244,65 @@ orderby.addEventListener("change", function () {
     updateMain();
 });
 
+function updateHighlight(className) {
+    let spans = document.querySelectorAll('.card-content .characteristics span');
+
+    // reset higlight
+    spans.forEach(span => {
+        span.classList.remove("highlight");
+    });
+
+    if (className != "date") {
+        let elements = document.querySelectorAll('.card-content .characteristics span.' + className);
+        elements.forEach(span => {
+            span.classList.add("highlight");
+        });
+    }
+
+
+}
+
 async function sortCards() {
 
     // Order asc
     console.log(orderby.value);
+
     position_container.classList.remove("show");
     switch (orderby.value) {
         case "date":
-            cards.sort((card1, card2) => (card1.trail.id > card2.trail.id) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.id > card2.trail.id) ? 1 : -1);
+            updateHighlight("date");
             break;
 
         case "length":
-            cards.sort((card1, card2) => (card1.trail.trail_length < card2.trail.trail_length) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.trail_length < card2.trail.trail_length) ? 1 : -1);
+            updateHighlight("trail_length");
             break;
 
         case "duration":
-            cards.sort((card1, card2) => (card1.trail.duration < card2.trail.duration) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.duration < card2.trail.duration) ? 1 : -1);
+            updateHighlight("duration")
             break;
 
         case "max_altitude":
-            cards.sort((card1, card2) => (card1.trail.max_altitude < card2.trail.max_altitude) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.max_altitude < card2.trail.max_altitude) ? 1 : -1);
+            updateHighlight("max-altitude")
             break;
 
         case "elevation_gain":
-            cards.sort((card1, card2) => (card1.trail.elevation_gain < card2.trail.elevation_gain) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.elevation_gain < card2.trail.elevation_gain) ? 1 : -1)
+            updateHighlight("elevation-gain")
             break;
 
         case "difficulty":
-            cards.sort((card1, card2) => (card1.trail.difficulty < card2.trail.difficulty) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.difficulty < card2.trail.difficulty) ? 1 : -1)
+            updateHighlight("difficulty")
             break;
 
         case "distance":
             manageDistanceCalculation();
-            cards.sort((card1, card2) => (card1.trail.distance < card2.trail.distance) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.distance < card2.trail.distance) ? 1 : -1)
+            updateHighlight("distance")
             break;
 
 
@@ -232,7 +310,7 @@ async function sortCards() {
             return;
     }
     if (!order.classList.contains("desc")) {
-        cards.reverse();
+        showingCards.reverse();
     }
 }
 
@@ -283,7 +361,7 @@ var slider_trail_length = document.getElementById('slider-trail-length');
 var slider_elevation_gain = document.getElementById('slider-elevation-gain');
 
 noUiSlider.create(slider_duration, {
-    start: [1, 10],
+    start: [0, 12],
     connect: true,
     step: 1,
     // tooltips: true,
@@ -297,7 +375,7 @@ noUiSlider.create(slider_duration, {
 });
 
 noUiSlider.create(slider_elevation_gain, {
-    start: [300, 1500],
+    start: [0, 2000],
     connect: true,
     step: 100,
     // tooltips: true,
@@ -311,7 +389,7 @@ noUiSlider.create(slider_elevation_gain, {
 });
 
 noUiSlider.create(slider_trail_length, {
-    start: [5, 20],
+    start: [0, 30],
     connect: true,
     step: 1,
     // tooltips: true,
@@ -337,7 +415,7 @@ const elevation_gain_filter_min = document.querySelector(".min-elevation-gain");
 const elevation_gain_plus = document.querySelector(".plus-elevation-gain");
 
 
-function bindSlider(slider, minElement, maxElement, plusElement, max, filter) {
+function bindSlider(slider, minElement, maxElement, plusElement, max) {
     slider.noUiSlider.on('update', function (values, handle) {
         // console.log(values);
 
@@ -347,18 +425,20 @@ function bindSlider(slider, minElement, maxElement, plusElement, max, filter) {
         if (values[1] >= max) {
             plusElement.classList.add("active");
             if (loading.classList.contains("loaded"))
-                filter([slider.noUiSlider.get(true)[0], 10000]);
+                // filter([slider.noUiSlider.get(true)[0], 10000]);
+                filterSliders();
         } else {
             plusElement.classList.remove("active");
             if (loading.classList.contains("loaded"))
-                filter(slider.noUiSlider.get(true));
+                // filter(slider.noUiSlider.get(true));
+                filterSliders();
         }
     });
 }
 
-bindSlider(slider_duration, duration_filter_min, duration_filter_max, duration_plus, 12, filterDuration);
-bindSlider(slider_trail_length, trail_length_filter_min, trail_length_filter_max, trail_length_plus, 30, filterTrailLength);
-bindSlider(slider_elevation_gain, elevation_gain_filter_min, elevation_gain_filter_max, elevation_gain_plus, 2000, filterElevationGain);
+bindSlider(slider_duration, duration_filter_min, duration_filter_max, duration_plus, maxDurationLimit);
+bindSlider(slider_trail_length, trail_length_filter_min, trail_length_filter_max, trail_length_plus, maxLengthLimit);
+bindSlider(slider_elevation_gain, elevation_gain_filter_min, elevation_gain_filter_max, elevation_gain_plus, maxElevationLimit);
 
 
 function bindInputSlider(inputMin, inputMax, slider) {
@@ -376,16 +456,32 @@ bindInputSlider(trail_length_filter_min, trail_length_filter_max, slider_trail_l
 bindInputSlider(elevation_gain_filter_min, elevation_gain_filter_max, slider_elevation_gain);
 
 
-async function filterDuration([min, max]) {
+
+function filterSliders() {
+    console.log("Filter");
+    minDuration = parseFloat(duration_filter_min.value);
+    maxDuration = parseFloat(duration_filter_max.value);
+    maxDuration = maxDuration >= maxDurationLimit ? 10000 : maxDuration;
+
+    minElevation = parseFloat(elevation_gain_filter_min.value);
+    maxElevation = parseFloat(elevation_gain_filter_max.value);
+    maxElevation = maxElevation >= maxElevationLimit ? 10000 : maxElevation;
+
+    minLength = parseFloat(trail_length_filter_min.value);
+    maxLength = parseFloat(trail_length_filter_max.value);
+    maxLength = maxLength >= maxLengthLimit ? 10000 : maxLength;
 
     let counter = 0;
 
-    console.log("Filter Duration");
+    // console.log("Filter All");
 
-    cards.forEach(card => {
-        if (card.trail.duration <= max && card.trail.duration >= min) {
+    showingCards.forEach(card => {
+        if ((card.trail.duration <= maxDuration && card.trail.duration >= minDuration) &&
+            (card.trail.trail_length <= maxLength && card.trail.trail_length >= minLength) &&
+            (card.trail.elevation_gain <= maxElevation && card.trail.elevation_gain >= minElevation)) {
             card.html.classList.remove("hide");
         } else {
+            // console.log(card.trail);
             card.html.classList.add("hide");
             counter++;
         }
@@ -393,60 +489,86 @@ async function filterDuration([min, max]) {
 
     updateQuantity(counter);
 
-    if (counter == cards.length) {
-        // no_result.classList.add("show")
-    } else {
-        no_result.classList.remove("show")
-    }
+    // if (counter == showingCards.length) {
+    //     // no_result.classList.add("show")
+    // } else {
+    //     no_result.classList.remove("show")
+    // }
+
+    search(); //FIXME:error check
 }
 
-async function filterTrailLength([min, max]) {
+// async function filterDuration([min, max]) {
 
-    console.log("Filter Length");
+//     let counter = 0;
 
-    let counter = 0;
+//     console.log("Filter Duration");
 
-    cards.forEach(card => {
-        if (card.trail.trail_length <= max && card.trail.trail_length >= min) {
-            card.html.classList.remove("hide");
-        } else {
-            card.html.classList.add("hide");
-            counter++;
-        }
-    });
+//     showingCards.forEach(card => {
+//         if (card.trail.duration <= max && card.trail.duration >= min) {
+//             card.html.classList.remove("hide");
+//         } else {
+//             card.html.classList.add("hide");
+//             counter++;
+//         }
+//     });
 
-    updateQuantity(counter);
+//     updateQuantity(counter);
 
-    if (counter == cards.length) {
-        // no_result.classList.add("show")
-    } else {
-        no_result.classList.remove("show")
-    }
-}
+//     if (counter == showingCards.length) {
+//         // no_result.classList.add("show")
+//     } else {
+//         no_result.classList.remove("show")
+//     }
+// }
 
-async function filterElevationGain([min, max]) {
+// async function filterTrailLength([min, max]) {
 
-    console.log("Filter Elevation Gain");
+//     console.log("Filter Length");
 
-    let counter = 0;
+//     let counter = 0;
 
-    cards.forEach(card => {
-        if (card.trail.elevation_gain <= max && card.trail.elevation_gain >= min) {
-            card.html.classList.remove("hide");
-        } else {
-            card.html.classList.add("hide");
-            counter++;
-        }
-    });
+//     showingCards.forEach(card => {
+//         if (card.trail.trail_length <= max && card.trail.trail_length >= min) {
+//             card.html.classList.remove("hide");
+//         } else {
+//             card.html.classList.add("hide");
+//             counter++;
+//         }
+//     });
 
-    updateQuantity(counter);
+//     updateQuantity(counter);
 
-    if (counter == cards.length) {
-        // no_result.classList.add("show")
-    } else {
-        no_result.classList.remove("show")
-    }
-}
+//     if (counter == showingCards.length) {
+//         // no_result.classList.add("show")
+//     } else {
+//         no_result.classList.remove("show")
+//     }
+// }
+
+// async function filterElevationGain([min, max]) {
+
+//     console.log("Filter Elevation Gain");
+
+//     let counter = 0;
+
+//     showingCards.forEach(card => {
+//         if (card.trail.elevation_gain <= max && card.trail.elevation_gain >= min) {
+//             card.html.classList.remove("hide");
+//         } else {
+//             card.html.classList.add("hide");
+//             counter++;
+//         }
+//     });
+
+//     updateQuantity(counter);
+
+//     if (counter == showingCards.length) {
+//         // no_result.classList.add("show")
+//     } else {
+//         no_result.classList.remove("show")
+//     }
+// }
 
 
 geocoder.on('result', (e) => {

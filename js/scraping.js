@@ -199,12 +199,12 @@ function submitTrail(content) {
     trail.authorId = getCurrentUser().uid;
     trail.authorName = getCurrentUser().displayName;
     trail.difficulty = content.difficulty;
-    trail.duration = content.duration;
+    trail.duration = parseFloat(content.duration);
     trail.group = content.group;
-    trail.trail_length = content.trail_length;
+    trail.trail_length = parseFloat(content.trail_length);
     trail.location = content.location;
-    trail.max_altitude = content.max_altitude;
-    trail.elevation_gain = content.elevation_gain;
+    trail.max_altitude = parseFloat(content.max_altitude);
+    trail.elevation_gain = parseFloat(content.elevation_gain);
     trail.url = content.page_url;
     trail.imagesURL.push(content.imageURL);
     trail.description = content.description.replace(/\s+/g, " ").split(/(?=\s)/gi).slice(0, 30).join('') + "...";

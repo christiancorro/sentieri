@@ -77,6 +77,7 @@ function addCards(trails) {
         sortCards();
         updateQuantity();
         updateMain();
+        showCards();
 
         resolve(cards);
     });

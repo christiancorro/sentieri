@@ -42,7 +42,7 @@ function populateModify(trail) {
     description.innerHTML = trail.description;
     difficulty.value = trail.difficulty;
     duration.setAttribute("value", parseFloat(trail.duration));
-    trail_length.setAttribute("value", parseInt(trail.trail_length));
+    trail_length.setAttribute("value", parseFloat(trail.trail_length));
     elevation_gain.setAttribute("value", parseInt(trail.elevation_gain));
     max_altitude.setAttribute("value", parseInt(trail.max_altitude));
     location.setAttribute("value", trail.location);
@@ -93,6 +93,12 @@ form_modify.addEventListener('submit', async function (e) {
     thisTrail.imagesURL.push(image_url);
     thisTrail.authorId = firebase.auth().currentUser.uid;
     thisTrail.authorName = firebase.auth().currentUser.displayName;
+
+    thisTrail.duration = parseFloat(thisTrail.duration);
+    thisTrail.elevation_gain = parseFloat(thisTrail.elevation_gain);
+    thisTrail.trail_length = parseFloat(thisTrail.trail_length);
+    thisTrail.max_altitude = parseFloat(thisTrail.max_altitude);
+
     thisTrail.upload();
 
     saved();
