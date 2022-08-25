@@ -489,8 +489,8 @@ geocoder.on('result', (e) => {
             let element_travel_time = card.html.querySelector(".travel_time_value");
             let element_travel_time_unit = card.html.querySelector(".time-unit");
             let element_distance_unit = card.html.querySelector(".distance-unit");
-
-            if (useSimpleRoute || cards.length > 600) {
+            element_travel.classList.add("show");
+            if (useSimpleRoute || cards.length > 700) {
 
                 let distance = turf.distance(start, end, options);
 
@@ -517,13 +517,22 @@ geocoder.on('result', (e) => {
 
                             // card.trail.route = route;
                             let distance = route.distance / 1000;
-                            let duration = parseFloat(new Date(route.duration * 1000).toISOString().substring(11, 16).replace(":", "."));
+                            let duration = parseFloat(new Date((route.duration - 480) * 1000).toISOString().substring(11, 16).replace(":", "."));
                             element_distance_value.innerHTML = " - " + distance.toFixed(0);
                             element_travel_time.innerHTML = duration.toFixed(2);
-                            element_distance_value.parentElement.classList.add("show");
-                            element_travel_time.parentElement.classList.add("show");
+                            element_distance_value.classList.add("show");
+                            element_travel_time.classList.add("show");
+                            element_travel_time_unit.classList.add("show");
                             card.trail.distance = distance;
                             card.trail.travel_time = duration;
+                            element_travel_time_unit.innerHTML = "h";
+                            element_distance_unit.classList.add("hide");
+                            element_distance_value.classList.add("hide");
+
+                            if (duration < 1) {
+                                element_travel_time.innerHTML = (duration * 100).toFixed(0);
+                                element_travel_time_unit.innerHTML = "min";
+                            }
                         } else {
                             // console.log("From: " + from + "\nTo: " + to);
                             // let distance = turf.distance(from, to, options);
@@ -538,6 +547,8 @@ geocoder.on('result', (e) => {
                             element_distance_value.parentElement.classList.add("show");
                             card.trail.distance = distance;
                             card.trail.travel_time = distance;
+                            element_distance_value.parentElement.classList.add("show");
+                            element_travel_time.parentElement.classList.add("show");
                             element_travel_time_unit.classList.add("hide");
                             element_travel_time.classList.add("hide");
                         }
@@ -555,11 +566,12 @@ geocoder.on('result', (e) => {
 
         } catch (error) {
             // console.log("Card does't have coords");
+            console.log(error);
         }
 
     });
 
-    if (useSimpleRoute || cards.length > 600) {
+    if (useSimpleRoute || cards.length > 700) {
         // Sort
         sortCards();
         updateMain();
