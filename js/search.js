@@ -547,8 +547,8 @@ geocoder.on('result', (e) => {
                             element_distance_value.parentElement.classList.add("show");
                             card.trail.distance = distance;
                             card.trail.travel_time = distance;
-                            element_distance_value.parentElement.classList.add("show");
-                            element_travel_time.parentElement.classList.add("show");
+                            element_distance_value.classList.add("show");
+                            element_distance_unit.classList.add("show");
                             element_travel_time_unit.classList.add("hide");
                             element_travel_time.classList.add("hide");
                         }
