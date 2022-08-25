@@ -517,7 +517,7 @@ geocoder.on('result', (e) => {
 
                             // card.trail.route = route;
                             let distance = route.distance / 1000;
-                            let duration = parseFloat(new Date((route.duration - 480) * 1000).toISOString().substring(11, 16).replace(":", "."));
+                            let duration = parseFloat(new Date(route.duration * 1000).toISOString().substring(11, 16).replace(":", "."));
                             element_distance_value.innerHTML = " - " + distance.toFixed(0);
                             element_travel_time.innerHTML = duration.toFixed(2);
                             element_distance_value.classList.add("show");
