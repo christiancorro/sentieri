@@ -260,18 +260,21 @@ function updateHighlight(className) {
 
 document.addEventListener('scroll', (event) => {
     // if (document.documentElement.scrollTop % 10 == 0) {
-    let rect = lastCard.html.getBoundingClientRect();
-    // console.log("Current " + document.documentElement.scrollTop);
-    // console.log("Last " + rect.top);
-    // console.log("Diff " + (document.documentElement.scrollTop - rect.top - 550));
+    if (lastCard) {
+        let rect = lastCard.html.getBoundingClientRect();
+        // console.log("Current " + document.documentElement.scrollTop);
+        // console.log("Last " + rect.top);
+        // console.log("Diff " + (document.documentElement.scrollTop - rect.top - 550));
 
-    if (lastCard.index < showingCards.length - 1 && document.documentElement.scrollTop > rect.top + 550) {
-        // console.log(lastCard.html);
-        let increment = lastCard.index + 48;
+        if (lastCard.index < showingCards.length - 1 && document.documentElement.scrollTop > rect.top + 550) {
+            // console.log(lastCard.html);
+            let increment = lastCard.index + 48;
 
-        updateMain(increment);
+            updateMain(increment);
 
+        }
     }
+
 
 },
     { passive: true }
@@ -491,6 +494,25 @@ function filterSliders() {
 }
 
 
+function nonLinearIncrease(value) {
+    if (value < 60) {
+        return value ** 1.05;
+    }
+
+    if (value < 150) {
+        return value ** 1.02;
+    }
+
+    if (value < 450) {
+        return value ** 1.005;
+    }
+
+    if (value >= 450) {
+        return value;
+    }
+}
+
+
 geocoder.on('result', (e) => {
     // console.log(JSON.stringify(e.result, null, 2));
     console.log("Change distance");
@@ -512,6 +534,7 @@ geocoder.on('result', (e) => {
 
             // console.log(card.html.querySelector(".distance-value"));
             let distance_value = card.html.querySelector(".distance-value");
+            distance = nonLinearIncrease(distance);
             distance_value.innerHTML = distance.toFixed([0]);
             distance_value.parentElement.classList.add("show");
             card.trail.distance = distance;
