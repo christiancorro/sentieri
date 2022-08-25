@@ -1,6 +1,7 @@
 
 // searchBar.addEventListener("focus", setCardSearchMode);
 // searchBar.addEventListener("focusout", setCardSearchModeOff);
+
 let showingCards = cards;
 
 const maxDurationLimit = 12;
@@ -180,9 +181,9 @@ toggleFilters.addEventListener("click", function () {
     other_filters.classList.toggle("opened");
 })
 
+let lastCard;
 
-
-function updateMain() {
+function updateMain(limit = 24) {
     new Promise((resolve, reject) => {
         console.log("Update Main");
 
@@ -191,7 +192,11 @@ function updateMain() {
 
         // Add cards
         showingCards.forEach(function (card, i) {
-            mainArea.appendChild(card.html);
+            if (i <= limit) {
+                mainArea.appendChild(card.html);
+                lastCard = card;
+                lastCard.index = i;
+            }
         });
 
         resolve();
@@ -217,8 +222,26 @@ orderby.addEventListener("change", function () {
     updateMain();
 });
 
+function getSpans(className = "") {
+    let spans = [];
+    // console.log(className);
+    showingCards.forEach(card => {
+        let children;
+        if (className == "") {
+            children = card.html.querySelectorAll('.card-content .characteristics span')
+        } else {
+            children = card.html.querySelectorAll("." + className);
+        }
+        children.forEach(span => {
+            spans.push(span);
+        })
+    });
+    return spans;
+}
+
+
 function updateHighlight(className) {
-    let spans = document.querySelectorAll('.card-content .characteristics span');
+    let spans = getSpans();
 
     // reset higlight
     spans.forEach(span => {
@@ -226,7 +249,7 @@ function updateHighlight(className) {
     });
 
     if (className != "date") {
-        let elements = document.querySelectorAll('.card-content .characteristics span.' + className);
+        let elements = getSpans(className);
         elements.forEach(span => {
             span.classList.add("highlight");
         });
@@ -234,6 +257,25 @@ function updateHighlight(className) {
 
 
 }
+
+document.addEventListener('scroll', (event) => {
+    // if (document.documentElement.scrollTop % 10 == 0) {
+    let rect = lastCard.html.getBoundingClientRect();
+    // console.log("Current " + document.documentElement.scrollTop);
+    // console.log("Last " + rect.top);
+    // console.log("Diff " + (document.documentElement.scrollTop - rect.top - 550));
+
+    if (lastCard.index < showingCards.length - 1 && document.documentElement.scrollTop > rect.top + 550) {
+        // console.log(lastCard.html);
+        let increment = lastCard.index + 48;
+
+        updateMain(increment);
+
+    }
+
+},
+    { passive: true }
+);
 
 function sortCards() {
 

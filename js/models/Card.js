@@ -63,7 +63,10 @@ class Card {
             '<span class ="group" title="Gruppo"><i class ="fa-solid fa-mountain"></i> ' +
             this.trail.group +
             '</span>' +
-            '<span class ="distance" title="Distanza in linea d\'aria"><i class="fa-solid fa-car"></i> <i class="distance-value"></i><i class="unit">km</i></span>' +
+            '<a target="_blank" href="' +
+            this.trail.start_google_maps_url +
+            '"> <span class ="distance" title="Distanza in linea d\'aria"><i class="fa-solid fa-car"></i> <i class="distance-value"></i><i class="unit">km</i></span>' +
+            '</a>' +
             '</div>' +
             '</div>';
 

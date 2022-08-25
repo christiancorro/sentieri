@@ -190,3 +190,11 @@ function downloadImage() {
         });
 
 }
+
+
+function backup() {
+    var a = document.createElement('a');
+    a.setAttribute('href', 'data:text/plain;charset=utf-8,' + JSON.stringify(trails));
+    a.setAttribute('download', "db.json");
+    a.click()
+}

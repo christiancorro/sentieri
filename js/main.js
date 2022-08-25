@@ -58,7 +58,7 @@ navbarMenu.addEventListener("click", closeMobileNavbar);
 //         option.addEventListener("change", (e) => {
 //             const navType = e.target.id.split("-").join(" ");
 //             navbarMenu.classList = navType;
-//         });
+// });
 //     });
 const goToTop = () => {
     document.body.scrollIntoView({
