@@ -520,9 +520,9 @@ geocoder.on('result', (e) => {
                             let duration = parseFloat(new Date(route.duration * 1000).toISOString().substring(11, 16).replace(":", "."));
                             element_distance_value.innerHTML = " - " + distance.toFixed(0);
                             element_travel_time.innerHTML = duration.toFixed(2);
-                            element_distance_value.classList.add("show");
-                            element_travel_time.classList.add("show");
-                            element_travel_time_unit.classList.add("show");
+                            element_distance_value.classList.remove("hide");
+                            element_travel_time.classList.remove("hide");
+                            element_travel_time_unit.classList.remove("hide");
                             card.trail.distance = distance;
                             card.trail.travel_time = duration;
                             element_travel_time_unit.innerHTML = "h";
@@ -544,11 +544,10 @@ geocoder.on('result', (e) => {
                             distance = nonLinearIncrease(distance);
                             element_travel_time.innerHTML = "-"
                             element_distance_value.innerHTML = distance.toFixed([0]);
-                            element_distance_value.parentElement.classList.add("show");
                             card.trail.distance = distance;
                             card.trail.travel_time = distance;
-                            element_distance_value.classList.add("show");
-                            element_distance_unit.classList.add("show");
+                            element_distance_value.classList.remove("hide");
+                            element_distance_unit.classList.remove("hide");
                             element_travel_time_unit.classList.add("hide");
                             element_travel_time.classList.add("hide");
                         }
