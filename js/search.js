@@ -107,64 +107,6 @@ function updateCards() {
     updateQuantity();
 }
 
-
-
-// function filterCards() {
-//     let counter = 0;
-//     showingCards = [];
-//     cards.forEach(card => {
-
-//         let matches = 0;
-
-//         filters.forEach(filter => {
-//             card.trail.tags.forEach(tag => {
-//                 if (tag.toLowerCase() === filter.toLowerCase()) {
-//                     matches++;
-//                 }
-//             });
-//             if (card.trail.location.toLowerCase() === filter.toLowerCase()
-//                 || card.trail.difficulty.toLowerCase() === filter.toLowerCase()) {
-//                 matches++;
-//             }
-//         });
-
-//         if (matches == filters.length) {
-//             card.html.classList.remove("hide");
-//             showingCards.push(card);
-
-//         } else {
-//             counter++
-//             card.html.classList.add("hide");
-//         }
-
-
-//         if (card.trail.tags.length == 0) {
-//             card.html.classList.add("hide");
-//             // counter++;
-//         }
-
-//         if (filters.length == 0) {
-//             card.html.classList.remove("hide");
-//         }
-
-
-//         if (counter >= cards.length) {
-//             no_result.classList.add("show");
-//             // orderby_container.classList.add("hide");
-//         } else {
-//             no_result.classList.remove("show");
-//             orderby_container.classList.remove("hide");
-//         }
-
-//         updateQuantity(counter);
-
-//     });
-
-//     search();
-
-// }
-
-
 // Search
 
 searchBar.addEventListener("keyup", (e) => {
@@ -213,6 +155,7 @@ function showCards() {
 }
 
 function clearMain() {
+    console.log("Clear Main");
     mainArea.innerHTML = "";
     loading.classList.remove("loaded");
 }
@@ -302,6 +245,11 @@ function sortCards() {
             updateHighlight("duration")
             break;
 
+        case "travel_time":
+            showingCards.sort((card1, card2) => (card1.trail.travel_time < card2.trail.travel_time) ? 1 : -1);
+            updateHighlight("travel_time")
+            break;
+
         case "max_altitude":
             showingCards.sort((card1, card2) => (card1.trail.max_altitude < card2.trail.max_altitude) ? 1 : -1);
             updateHighlight("max-altitude")
@@ -319,7 +267,7 @@ function sortCards() {
 
         case "distance":
             manageDistanceCalculation();
-            showingCards.sort((card1, card2) => (card1.trail.distance < card2.trail.distance) ? 1 : -1)
+            showingCards.sort((card1, card2) => (card1.trail.travel_time < card2.trail.travel_time) ? 1 : -1)
             updateHighlight("distance")
             break;
 
@@ -338,7 +286,6 @@ function manageDistanceCalculation() {
 
     if (!position_container.classList.contains("show")) {
         position_container.classList.add("show");
-
     }
 
     if (position.value.length > 0) {
@@ -512,39 +459,110 @@ function nonLinearIncrease(value) {
     }
 }
 
+let useSimpleRoute = false;
+
+function simpleRoute(params) {
+
+}
+
 
 geocoder.on('result', (e) => {
     // console.log(JSON.stringify(e.result, null, 2));
-    console.log("Change distance");
-    console.log(e.result);
+    // console.log("Change distance");
+    // console.log(e.result);
 
     var options = {
         units: 'kilometers'
     };
 
-    let from = [e.result.center[1], e.result.center[0]];
+    let start = e.result.center;
+    clearMain();
+    cards.forEach(async (card, i) => {
 
-    cards.forEach(card => {
+        let end = card.trail.start_coords;
+
         try {
-            let to = card.trail.start_coords;
-            // console.log("From: " + from + "\nTo: " + to);
-            let distance = turf.distance(from, to, options);
+            start = [e.result.center[1], e.result.center[0]];
+            let element_travel = card.html.querySelector(".distance-value").parentElement;
 
-            // console.log("Distance: " + distance.toFixed([2]) + " km");
+            let element_distance_value = card.html.querySelector(".distance-value");
+            let element_travel_time = card.html.querySelector(".travel_time_value");
+            let element_travel_time_unit = card.html.querySelector(".time-unit");
+            let element_distance_unit = card.html.querySelector(".distance-unit");
 
-            // console.log(card.html.querySelector(".distance-value"));
-            let distance_value = card.html.querySelector(".distance-value");
-            distance = nonLinearIncrease(distance);
-            distance_value.innerHTML = distance.toFixed([0]);
-            distance_value.parentElement.classList.add("show");
-            card.trail.distance = distance;
+            if (useSimpleRoute || cards.length > 600) {
+
+                let distance = turf.distance(start, end, options);
+
+                distance = nonLinearIncrease(distance);
+                element_distance_value.innerHTML = distance.toFixed([0]);
+                element_travel.classList.add("show");
+                card.trail.distance = distance;
+                card.trail.travel_time = distance;
+
+                element_travel_time_unit.classList.add("hide");
+                element_travel_time.classList.add("hide");
+            } else {
+
+                // reverse safe way for mapbox
+                end = [end[1], end[0]];
+                start = [start[1], start[0]];
+                // console.log(start, end);
+
+                await getRoute(start, end)
+                    .then((route) => {
+                        // console.log(route);
+                        if (route) {
+                            // console.log(card.trail);
+
+                            // card.trail.route = route;
+                            let distance = route.distance / 1000;
+                            let duration = parseFloat(new Date(route.duration * 1000).toISOString().substring(11, 16).replace(":", "."));
+                            element_distance_value.innerHTML = " - " + distance.toFixed(0);
+                            element_travel_time.innerHTML = duration.toFixed(2);
+                            element_distance_value.parentElement.classList.add("show");
+                            element_travel_time.parentElement.classList.add("show");
+                            card.trail.distance = distance;
+                            card.trail.travel_time = duration;
+                        } else {
+                            // console.log("From: " + from + "\nTo: " + to);
+                            // let distance = turf.distance(from, to, options);
+                            let distance = turf.distance(start, end, options);
+
+                            // console.log("Distance: " + distance.toFixed([2]) + " km");
+
+                            // console.log(card.html.querySelector(".distance-value"));
+                            distance = nonLinearIncrease(distance);
+                            element_travel_time.innerHTML = "-"
+                            element_distance_value.innerHTML = distance.toFixed([0]);
+                            element_distance_value.parentElement.classList.add("show");
+                            card.trail.distance = distance;
+                            card.trail.travel_time = distance;
+                            element_travel_time_unit.classList.add("hide");
+                            element_travel_time.classList.add("hide");
+                        }
+
+                        if (i == cards.length - 1) {
+                            loading.classList.add("loaded");
+                            // Sort
+                            sortCards();
+                            updateMain();
+                        }
+                    });
+
+
+            }
+
         } catch (error) {
             // console.log("Card does't have coords");
         }
 
     });
 
-    // Sort
-    sortCards();
-    updateMain();
+    if (useSimpleRoute || cards.length > 600) {
+        // Sort
+        sortCards();
+        updateMain();
+    }
+
 });

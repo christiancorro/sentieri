@@ -65,7 +65,7 @@ class Card {
             '</span>' +
             '<a target="_blank" href="' +
             this.trail.start_google_maps_url +
-            '"> <span class ="distance" title="Distanza in linea d\'aria"><i class="fa-solid fa-car"></i> <i class="distance-value"></i><i class="unit">km</i></span>' +
+            '"> <span class ="distance" ><i class="fa-solid fa-car"></i> <i class="travel_time_value" title="Durata del viaggio stimata"></i><i class="unit time-unit">h</i><i class="distance-value" title="Distanza in linea d\'aria"></i><i class="unit distance-unit">km</i></span > ' +
             '</a>' +
             '</div>' +
             '</div>';

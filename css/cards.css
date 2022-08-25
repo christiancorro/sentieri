@@ -179,6 +179,10 @@
     box-shadow: 0px 0px 6px hsla(0, 0%, 0%, 0.301);
 }
 
+i.hide {
+    display: none;
+}
+
 
 .difficulty:before {
     content: "";

@@ -32,17 +32,17 @@ async function getRoute(start, end) {
     );
 
     const json = await query.json();
-    const data = json.routes[0];
-    const route = data.geometry.coordinates;
-    const geojson = {
-        type: 'Feature',
-        properties: {},
-        geometry: {
-            type: 'LineString',
-            coordinates: route
-        }
-    };
+    const route = json.routes[0];
+    // const route = data.geometry.coordinates;
+    // const geojson = {
+    //     type: 'Feature',
+    //     properties: {},
+    //     geometry: {
+    //         type: 'LineString',
+    //         coordinates: route
+    //     }
+    // };
 
-    return data;
+    return route;
 
 }

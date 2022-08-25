@@ -98,7 +98,7 @@ class Trail {
             let lat = lat_long_match[1];
             let long = lat_long_match[2];
 
-            this.start_coords = [lat, long];
+            this.start_coords = [parseFloat(lat), parseFloat(long)];
         } catch (error) {
             console.error("Coords not found");
         }
