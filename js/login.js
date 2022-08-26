@@ -84,7 +84,12 @@ function LoggedOut() {
 
 function returnToIndex() {
     setTimeout(() => {
-        if (window.location.pathname != "/index.html" && window.location.pathname != "/" && window.location.pathname != "/sentieri/" && window.location.pathname != "/sentieri/pages/info/" && window.location.pathname != "/pages/info/") {
+        if (window.location.pathname != "/index.html" && window.location.pathname != "/"
+            && window.location.pathname != "/sentieri/"
+            && window.location.pathname != "/sentieri/pages/info/"
+            && window.location.pathname != "/pages/info/"
+            && window.location.pathname != "/sentieri/pages/map/"
+            && window.location.pathname != "/pages/map/") {
             document.location.href = "/sentieri/";
         }
     }, 100);

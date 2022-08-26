@@ -1,0 +1,103 @@
+#map {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    /* top: var(--navbar-height); */
+    /* bottom: 0; */
+    right: 0;
+    width: 94%;
+
+    /* height: calc(100vh - 60px); */
+    height: 750px;
+    transition: all 1s ease;
+    /* background-color: red; */
+    z-index: 100;
+}
+
+#map.loaded {
+    opacity: 1;
+    margin: 0 auto;
+    /* position: relative; */
+    /* display: block; */
+}
+
+
+.mapboxgl-popup-content {
+    text-align: center;
+    width: 300px;
+    /* height: 300px; */
+    padding: 0 !important;
+    border-radius: 1rem !important;
+}
+
+.marker {
+    background-image: url('mapbox-icon.png');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup-content img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    max-height: 130px;
+    margin: 0 auto;
+    border-top-left-radius: 1rem !important;
+    margin-bottom: 5px;
+}
+
+.mapboxgl-popup-close-button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    color: rgb(100, 100, 100);
+    margin-top: -12px;
+    font-size: 1.6em;
+    margin-right: -12px;
+    background-color: white !important;
+    border-radius: 50% !important;
+    transition: color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mapboxgl-popup-close-button:hover {
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.548);
+    color: rgb(0, 0, 0);
+}
+
+.mapboxgl-popup-content h3 {
+    padding: 10px;
+}
+
+.mapboxgl-popup-content a {
+    outline: rgba(27, 27, 27, 0.384);
+    display: block;
+    width: 100%;
+    /* background-color: red; */
+    font-family: Fira Code;
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+    line-height: 1.5em;
+}
+
+
+.map-container {
+
+    display: block;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+.map-container .loading:not(.loaded) {
+    margin-top: 300px !important;
+}
+
+.centered.map-filters {
+    margin-bottom: -100px !important;
+    z-index: 10;
+}
