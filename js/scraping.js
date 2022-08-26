@@ -67,6 +67,28 @@ let links = ["https://www.itineraridimontagna.it/forcella-ambrizzola-escursione-
     "https://www.itineraridimontagna.it/corna-trentapassi-escursione-anello-zone/"
 ];
 
+let linksMagicoVeneto = [
+    // "https://www.magicoveneto.it/Dolomiti/DolomitiSinistraPiave/Val-Zemola-escursione-Cava-Buscada-casera-Bedin-rifugio-Maniago-Duranno.htm",
+    // "https://www.magicoveneto.it/Dolomiti/CadiniMisurina/Escursione-Lago-Misurina-Col-de-Varda-Rif-Citta-Carpi-Agriturismo-Malga-Maraia.htm",
+    // "https://www.magicoveneto.it/Altipian/Melette-Fior/Monte-Fior-Citta-di-Roccia.htm",
+    // "https://www.magicoveneto.it/Altipian/Roana/Stonhaus-Loch-Voragine-Monte-Erio-Roana.htm",
+    // "https://www.magicoveneto.it/Altipian/Asiago/Monte-Zebio-Asiago.htm",
+    // "https://www.magicoveneto.it/Dolomiti/ColDiLana-SetSass-Pralongia/Cima-SetSass-Valparola-Pralongia.htm",
+    // "https://www.magicoveneto.it/Dolomiti/DolomitiDAmpezzo/Falzarego-Galleria-Lagazuoi-Val-Travenanzes-Col-dei-Bos.htm",
+    // "https://www.magicoveneto.it/Dolomiti/Giau/Escursione-Falzarego-Averau-Nuvolau-Cinque-Torri.htm",
+    // "https://www.magicoveneto.it/Dolomiti/DolomitiDAmpezzo/Sass-de-Stria.htm",
+    // "https://www.magicoveneto.it/Dolomiti/ColDiLana-SetSass-Pralongia/Castello-Andraz-Col-di-Lana-Sief-Federe.htm",
+    // "https://www.magicoveneto.it/Dolomiti/Giau/Escursione-Passo-Giau-Mondeval-Lastoi-de-Formin.htm",
+    // "https://www.magicoveneto.it/Dolomiti/DolomitiDiSesto-Lavaredo/Giro-attorno-alle-Tre-Cime-di-Lavaredo.htm",
+    // "https://www.magicoveneto.it/Dolomiti/PaleSanMartino/Trekking-del-Cristo-Pensante-Passo-Rolle-Pale-San-Martino.htm",
+    // "https://www.magicoveneto.it/Dolomiti/DolomitiSinistraPiave/Val-Zemola-escursione-Cava-Buscada-casera-Bedin-rifugio-Maniago-Duranno.htm",
+    // "https://www.magicoveneto.it/Dolomiti/Civetta/Passo-Duran-Rifugio-Carestiato-Framont.htm",
+    "",
+    "",
+    "",
+
+];
+
 
 function scrapeAll(urls = links) {
     console.log("Trying to scrape " + urls.length + " links");
@@ -78,6 +100,20 @@ function scrapeAll(urls = links) {
         }, 500 * i);;
     });
 }
+
+function getElementMagicoVeneto(html, name) {
+    var myEles = html.querySelectorAll("td");
+    let index;
+    for (var i = 0; i < myEles.length; i++) {
+        if (myEles[i].innerHTML.slice(0, -1) == (name.slice(0, -1)) || myEles[i].innerHTML.includes(">" + name)) {
+            // console.log('gotcha');
+            index = i;
+            return myEles[index + 1];
+        }
+    }
+}
+
+const divmod = (x, y) => [Math.floor(x / y), x % y];
 
 async function scrape(url) {
     await fetch('https://api.codetabs.com/v1/proxy?quest=' + url)
@@ -99,22 +135,100 @@ async function scrape(url) {
                     wrapper.innerHTML = data;
                     code = wrapper;
 
-                    content.title = code.querySelector(".page-title").innerHTML;
-                    content.difficulty = code.querySelector('li[data-field="difficolta"]').childNodes[1].nodeValue.split(" ")[0];
-                    content.duration = code.querySelector('li[data-field="durata"]').childNodes[1].nodeValue.split(/[- ]+/)[0];;
-                    content.elevation_gain = code.querySelector('li[data-field="dislivello"]').childNodes[1].nodeValue.split(" ")[0];
-                    content.group = code.querySelector('li[data-field="gruppo_montuoso"]').childNodes[1].nodeValue;
-                    content.max_altitude = code.querySelector('.kt-svg-icon-list-item-7 span').childNodes[1].nodeValue.replace(/^\D+/g, '').split(" ");
-                    content.max_altitude = content.max_altitude[content.max_altitude.length - 2];
-                    content.trail_length = code.querySelector('.kt-svg-icon-list-item-4 span').childNodes[1].nodeValue.replace(/^\D+/g, '').split(" ")[0];
-                    content.start_google_maps_url = code.querySelector('.kt-svg-icon-list-item-6 a').href;
-                    content.location = code.querySelector('.rank-math-breadcrumb p').childNodes[2].innerHTML.split("del ")[1];
-                    content.description = code.querySelector('.ct-container .entry-content p').innerHTML.replace(/<\/?strong>/g, "");;
-                    // content.title = code.querySelector(".page-title").innerHTML;
+                    // console.log(code);
+                    // content = {};
 
-                    content.imageURL = code.querySelector('.hero-section .ct-image-container img').getAttribute("data-src");
+
+                    if (url.includes("itineraridimontagna")) {
+                        content.title = code.querySelector(".page-title").innerHTML;
+                        content.difficulty = code.querySelector('li[data-field="difficolta"]').childNodes[1].nodeValue.split(" ")[0];
+                        content.duration = code.querySelector('li[data-field="durata"]').childNodes[1].nodeValue.split(/[- ]+/)[0];;
+                        content.elevation_gain = code.querySelector('li[data-field="dislivello"]').childNodes[1].nodeValue.split(" ")[0];
+                        content.group = code.querySelector('li[data-field="gruppo_montuoso"]').childNodes[1].nodeValue;
+                        content.max_altitude = code.querySelector('.kt-svg-icon-list-item-7 span').childNodes[1].nodeValue.replace(/^\D+/g, '').split(" ");
+                        content.max_altitude = content.max_altitude[content.max_altitude.length - 2];
+                        content.trail_length = code.querySelector('.kt-svg-icon-list-item-4 span').childNodes[1].nodeValue.replace(/^\D+/g, '').split(" ")[0];
+                        content.start_google_maps_url = code.querySelector('.kt-svg-icon-list-item-6 a').href;
+                        content.location = code.querySelector('.rank-math-breadcrumb p').childNodes[2].innerHTML.split("del ")[1];
+                        content.description = code.querySelector('.ct-container .entry-content p').innerHTML.replace(/<\/?strong>/g, "");;
+                        // content.title = code.querySelector(".page-title").innerHTML;
+
+                        content.imageURL = code.querySelector('.hero-section .ct-image-container img').getAttribute("data-src");
+                    }
+
+                    if (url.includes("magicoveneto")) {
+                        try {
+                            let path = url.split("/");
+                            let p = "";
+                            for (let i = 0; i < path.length - 1; i++) {
+                                // console.log(path[i]);
+                                p = p.concat("/", path[i]);
+                            }
+                            path = p.replace("/", "") + "/";
+                            content.title = "";
+                            content.title = code.querySelector("#Gps th").innerHTML;
+                            if (!content.title) {
+                                content.title = code.querySelector("#BCCBoxText h2").innerHTML;
+                            }
+                            content.title = content.title.charAt(0).toUpperCase() + content.title.slice(1);
+                            content.trail_length = getElementMagicoVeneto(code, "lunghezza").innerHTML.match(/\d+/)[0].replace(",", ".");
+                            content.duration = 0;
+                            content.duration = getElementMagicoVeneto(code, "tempi").innerHTML.match(/\d+:?\.?(\d+)?/g);
+                            if (content.duration) {
+                                (content.duration.map(x => x.replace(':', '.'))).map(x => x = parseFloat(x));
+                                content.duration = content.duration.reduce(function (sum, value) {
+                                    return sum + value;
+                                }, 0);
+                            } else {
+                                content.duration = 0;
+                            }
+
+
+
+                            content.elevation_gain = getElementMagicoVeneto(code, "dislivello").innerHTML.match(/\d+/)[0];
+                            content.difficulty = getElementMagicoVeneto(code, "difficoltà").innerHTML.match(/(?<=\=)[A-Z]+/)[0];
+                            content.max_altitude = 0;
+                            content.max_altitude = getElementMagicoVeneto(code, "quota").innerHTML.match(/(?<=\max\.m\.(\s+)?)\d+\.?\d+/)[0].replace(".", "")
+                            content.group = getElementMagicoVeneto(code, "monte").innerHTML.match(/(?<=.)gruppo.+|(?<=\- ).+/g);
+                            if (content.group) {
+                                content.group = content.group[0];
+                                content.group = content.group.charAt(0).toUpperCase() + content.group.slice(1);
+                            }
+                            else {
+                                content.group = getElementMagicoVeneto(code, "monte").innerHTML;
+                            }
+
+                            content.description = code.querySelector("#BCCBoxText").innerHTML.replaceAll(/<h2>.*<\/h2>/g, "").replaceAll("\n", " ").replaceAll("\t", " ").replaceAll("\n\t", " ").replace(/(\n)?(\t)*<\/?[^>]+(>|$)/g, "").trim();
+                            content.location = "Veneto";
+                            content.imageURL = code.querySelector("#CDXHead img").src.split("/");
+                            content.imageURL = path + content.imageURL[content.imageURL.length - 1];
+                            try {
+                                let lat = getElementMagicoVeneto(code, "park").innerHTML.match(/(?<=\N.)\d+\S+|(?<=\E\.?)\d{2}°.+"/g)[0].replace(".", "").replace("°", ".").replace("'", "").replace("\"", "");
+                                let long = getElementMagicoVeneto(code, "park").innerHTML.match(/(?<=\N.)\d+\S+|(?<=\E\.?)\d{2}°.+"/g)[1].replace(".", "").replace("°", ".").replace("'", "").replace("\"", "");
+
+                                content.start_google_maps_url = "https://www.google.it/maps/place/" + lat + "," + long + "/@" + lat + "," + long + ",16.69z/data=!4m5!3m4!1s0x0:0xa25ca5f128710886!8m2!3d46.578!4d12.2532222";
+
+                            } catch {
+
+                            }
+                            if (!content.start_google_maps_url) {
+                                content.start_google_maps_url = "";
+                            }
+
+                            // content.title = code.querySelector(".page-title").innerHTML;
+                            // console.log(content);
+                        } catch (error) {
+
+                        }
+
+
+                    }
+
+
                     content.page_url = url;
                     content.tags = [];
+
+                    console.log(content);
 
                     if (content.title.toLowerCase().includes("anello") || content.description.toLowerCase().includes("anello")) {
                         content.tags.push("Anello");
@@ -156,7 +270,7 @@ async function scrape(url) {
                     }
 
                     if (content.title.toLowerCase().includes("guerr") ||
-                        content.description.toLowerCase().includes("guerr")) {
+                        content.description.toLowerCase().includes("guerr") || content.description.toLowerCase().includes("fort")) {
                         content.tags.push("Storia");
                     }
                     if (content.title.toLowerCase().includes("rifug") ||
@@ -177,7 +291,7 @@ async function scrape(url) {
                         content.description.toLowerCase().includes("bambin")) {
                         content.tags.push("Bambini");
                     }
-                    console.log(content);
+                    // console.log(content);
                     try {
 
                         image_preview.style.backgroundImage = "url(" + content.imageURL + ")";
@@ -207,8 +321,9 @@ function submitTrail(content) {
     trail.elevation_gain = parseFloat(content.elevation_gain);
     trail.url = content.page_url;
     trail.imagesURL.push(content.imageURL);
-    trail.description = content.description.replace(/\s+/g, " ").split(/(?=\s)/gi).slice(0, 30).join('') + "...";
+    trail.description = content.description.replace(/\s+/g, " ").split(/(?=\s)/gi).slice(0, 118).join('') + "...";
     trail.tags = content.tags;
+    trail.start_google_maps_url = content.start_google_maps_url;
     console.log(trail);
     trail.upload();
 }

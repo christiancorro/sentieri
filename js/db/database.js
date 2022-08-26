@@ -131,8 +131,8 @@ function getAllTrails(trails, callback = () => { }) {
                 Trail.lastId = Math.max(...ids);
 
             // console.log(ids);
-            console.log(Trail.lastId);
-            console.log(trails.length);
+            // console.log(Trail.lastId);
+            // console.log(trails.length);
             callback(trails);
             resolve(trails);
         });

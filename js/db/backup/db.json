@@ -16,8 +16,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.5851358",
-            "11.7451381"
+            46.5851358,
+            11.7451381
         ],
         "start_google_maps_url": "https://www.google.com/maps/place/Almhotel+Col+Raiser/@46.5851358,11.7451381,15z/data=!4m8!3m7!1s0x0:0x6fd952c6ead6c205!5m2!4m1!1i2!8m2!3d46.5851358!4d11.7451381?sa=X&ved=2ahUKEwigxojG367zAhVtxoUKHVlHCRcQ_BJ6BAhaEAU&shorturl=1",
         "start_altitude": 0,
@@ -57,8 +57,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4570671,
+            11.6730903
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Parcheggio+gratuito/@46.4570671,11.6730903,13.31z/data=!4m5!3m4!1s0x4778698463afa351:0x7a46181769b4fead!8m2!3d46.4556222!4d11.6993833?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -88,13 +91,14 @@
         "elevation_gain": 800,
         "location": "Trentino Alto Adige",
         "group": "Gruppo del Sassolungo",
-        "tags": [
-            "Anello"
-        ],
+        "tags": "Anello",
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5101268,
+            11.7472416
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Passo+Sella/@46.5101268,11.7472416,14.78z/data=!4m5!3m4!1s0x47786ae834380c45:0x1d0709882e83eb90!8m2!3d46.509175!4d11.7582768?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -131,8 +135,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.8386275,
+            11.1077954
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/45°50'17.0\"N+11°06'43.8\"E/@45.8386275,11.1077954,16.22z/data=!4m6!3m5!1s0x0:0x0!7e2!8m2!3d45.8380573!4d11.1121702?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -171,8 +178,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.134339,
+            11.5992793
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Parking+Malga+Sorgazza/@46.134339,11.5992793,17z/data=!3m1!4b1!4m5!3m4!1s0x47788cf5cbcfd1c1:0x31d53346eeed36c9!8m2!3d46.134339!4d11.5992793",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -211,8 +221,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.9247314,
+            10.746197
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Malga+Trat/@45.9247314,10.746197,14.78z/data=!4m5!3m4!1s0x0:0xc43786e2a3c4a3d2!8m2!3d45.9246838!4d10.7613126?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -243,14 +256,17 @@
         "location": "Trentino Alto Adige",
         "group": "Dolomiti di Sesto",
         "tags": [
+            "Anello",
             "Ferrata",
-            "Rifugio",
-            "Anello"
+            "Rifugio"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.6122429,
+            12.2961886
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Auronzo+-+Località+Forcella+Longeres+(bl)/@46.6122429,12.2961886,17z/data=!3m1!4b1!4m8!3m7!1s0x4779cd73a229061b:0x35711df0c0489d7f!5m2!4m1!1i2!8m2!3d46.6122429!4d12.2961886",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -287,8 +303,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.1752775,
+            11.439167
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Manghen+Pass/@46.1752775,11.439167,15z/data=!3m1!4b1!4m5!3m4!1s0x477885e02b3ebff3:0x1d0709882e714d00!8m2!3d46.175278!4d11.439167",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -326,8 +345,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.8305473,
+            10.9027396
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Parcheggio+Stanga/@45.8305473,10.9027396,15z/data=!4m5!3m4!1s0x47821a8fb6bcff1f:0x5f625fd1c73986f5!8m2!3d45.8301185!4d10.8950345",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -365,8 +387,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.9077705,
+            10.978118
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Passo+Bordala/@45.9077705,10.978118,15z/data=!3m1!4b1!4m5!3m4!1s0x47820e08faf963b1:0x539be345c40fd860!8m2!3d45.907771!4d10.978118",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -404,8 +429,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.0225359,
+            11.0386199
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Viote/@46.0225359,11.0386199,17.34z/data=!4m5!3m4!1s0x0:0x5b26758fbf9d528!8m2!3d46.0232944!4d11.0378246?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -442,8 +470,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.6122429,
+            12.2939999
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Auronzo/@46.6122429,12.2939999,17z/data=!3m1!4b1!4m8!3m7!1s0x4779cd73a229061b:0x35711df0c0489d7f!5m2!4m1!1i2!8m2!3d46.6122429!4d12.2961886?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -474,15 +505,18 @@
         "location": "Trentino Alto Adige",
         "group": "Gruppo della Marmolada",
         "tags": [
-            "Ferrata",
+            "Anello",
             "Cresta",
-            "Storia",
-            "Anello"
+            "Ferrata",
+            "Storia"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.3829541,
+            11.7714947
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Passo+San+Pellegrino/@46.3829541,11.7714947,14.52z/data=!4m5!3m4!1s0x477842d7253d00c5:0x1d0709882e714ce0!8m2!3d46.3833333!4d11.7833333?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -519,8 +553,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.8517746,
+            10.8220546
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Pregasina+TN/@45.8517746,10.8220546,17z/data=!3m1!4b1!4m5!3m4!1s0x4782175edc2436bb:0x260709882e6ce371!8m2!3d45.8512893!4d10.8239771?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -550,13 +587,14 @@
         "elevation_gain": 1100,
         "location": "Trentino Alto Adige",
         "group": "Gruppo del Carega",
-        "tags": [
-            "Cresta"
-        ],
+        "tags": "Cresta",
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.6942866,
+            11.1191734
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Revolto/@45.6942866,11.1191734,17z/data=!4m5!3m4!1s0x477f54767a33914b:0x57842847759ef967!8m2!3d45.695532!4d11.118906?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -592,8 +630,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.5002833",
-            "11.7953698"
+            46.5002833,
+            11.7953698
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Ristorante+Pian+Schiavaneis/@46.5002833,11.7953698,14.79z/data=!4m8!1m2!2m1!1salbergo+schiavaneis!3m4!1s0x0:0xc88a6e9a2950bd3c!8m2!3d46.4987117!4d11.7912",
         "start_altitude": 0,
@@ -634,8 +672,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "45.6954712",
-            "11.1176691"
+            45.6954712,
+            11.1176691
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Revolto/@45.6954712,11.1176691,17.5z/data=!4m5!3m4!1s0x477f54767a33914b:0x57842847759ef967!8m2!3d45.695532!4d11.1189059",
         "start_altitude": 0,
@@ -674,8 +712,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.2677049",
-            "11.8307965"
+            46.2677049,
+            11.8307965
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Bar+Ristorante+Arrivo+Funivia+Rosetta/@46.2677049,11.8307965,16z/data=!4m5!3m4!1s0x0:0x4077c529b1cf099b!8m2!3d46.2647476!4d11.8331699",
         "start_altitude": 0,
@@ -715,8 +753,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.2992143",
-            "11.7835908"
+            46.2992143,
+            11.7835908
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Passo+Rolle/@46.2992143,11.7835908,17z/data=!4m5!3m4!1s0x47785c21d84bd99b:0x1d0709882e6bfa60!8m2!3d46.3!4d11.7833333?shorturl=1",
         "start_altitude": 0,
@@ -757,8 +795,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.6024461",
-            "12.1062676"
+            46.6024461,
+            12.1062676
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/S.+Uberto/@46.6024461,12.1062676,18z/data=!4m13!1m7!3m6!1s0x47783435d247033f:0xdd3c30437b92e42b!2s32043+Cortina+d'Ampezzo+BL!3b1!8m2!3d46.5404711!4d12.1356524!3m4!1s0x0:0x53f9759711391d1!8m2!3d46.6030712!4d12.1062282",
         "start_altitude": 0,
@@ -781,6 +819,47 @@
         "authorName": "Christian Corrò"
     },
     {
+        "id": 120,
+        "title": "Sentiero storico Museo all'aperto della Grande Guerra sul monte Piana",
+        "description": "La visita all'interessante Museo all'aperto della Grande Guerra nelle Dolomiti al monte Piana (o Piano, come veniva chiamato per l'evidente conformazione) è fortemente raccomandata e permette di conoscere gli aspetti umani di come vennero condotte le operazioni belliche in alta montagna.\nProbabilmente il luogo più facile e frequentato per chi desidera approfondire episodi della grande guerra nelle Dolomiti. È anche l'occasione per camminare sul vasto pianoro di una imponente cima dolomitica a 2300 metri di quota, pianoro circondato da grandi pareti strapiombanti, e godere di un panorama mozzafiato sul settore settentrionale delle Dolomiti, in particolare luogo privilegiato per ammirare le Tre Cime di Lavaredo.",
+        "difficulty": "T",
+        "duration": 3,
+        "trail_length": 16,
+        "elevation_gain": 200,
+        "location": "Veneto",
+        "group": "Gruppo Lavaredo Dolomiti di Sesto",
+        "tags": [
+            "Anello",
+            "Cresta",
+            "Storia"
+        ],
+        "distance": 0,
+        "start": "",
+        "start_coords": [
+            46.5583609,
+            12.0820118
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Ristorante+Bar+Genzianella/@46.5583609,12.0820118,11.6z/data=!4m9!1m2!2m1!1sRistorante+Genzianella!3m5!1s0x4779ccdf51fbf13f:0xc2f6408a6556f09d!8m2!3d46.588496!4d12.2579752!15sChZSaXN0b3JhbnRlIEdlbnppYW5lbGxhWhgiFnJpc3RvcmFudGUgZ2VuemlhbmVsbGGSAQpyZXN0YXVyYW50",
+        "start_altitude": 0,
+        "end": "",
+        "end_coords": [],
+        "end_google_maps_url": "",
+        "end_altitude": 0,
+        "max_altitude": 2325,
+        "max_altitude_name": "",
+        "huts": "",
+        "signage": "",
+        "gpx": "",
+        "imagesURL": [
+            "https://www.magicoveneto.it/Dolomiti/DolomitiDiSesto-Lavaredo/Monte-Piana-Museo-Grande-Guerra-Dolomiti-Foto-15.jpg"
+        ],
+        "images": [],
+        "date": 1661454918757,
+        "url": "https://www.magicoveneto.it/Dolomiti/DolomitiDiSesto-Lavaredo/Monte-Piana-Museo-Grande-Guerra-Dolomiti.htm",
+        "authorId": "FtXxhMyI2nWLzUEo2vsYJCRxfFl2",
+        "authorName": "Christian Corrò"
+    },
+    {
         "id": 60,
         "title": "Corna Trentapassi: trekking ad anello da Zone (BS)",
         "description": "Descrizione di provaSul Lago d’Iseo, dalla località di Zone (BS), la salita alla Corna Trentapassi, attraverso il facile sentiero 229, è un percorso di trekking molto appagante e suggestivo, una meta ideale per chi desidera effettuare un’escursione durante la stagione fredda invernale, senza rinunciare però al piacere panoramico. Difatti, questo monte, che segna l’inizio della famosa Val Camonica, nonostante la sua modesta quota, è comunque caratterizzato da una spaziosa veduta a 360°, che si affaccia sull’incantevole Lago d’Iseo e su parecchi massicci montuosi che caratterizzano le circostanti Alpi Orobie.",
@@ -797,8 +876,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "45.760772",
-            "10.1066757"
+            45.760772,
+            10.1066757
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/45°45'38.8\"N+10°06'28.0\"E/@45.760772,10.1066757,18z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d45.7607721!4d10.1077703?shorturl=1",
         "start_altitude": 0,
@@ -840,8 +919,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.4361857",
-            "12.1007064"
+            46.4361857,
+            12.1007064
         ],
         "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Aquileia/@46.4361857,12.1007064,17z/data=!3m1!4b1!4m8!3m7!1s0x477849677c7fdf59:0xbcf7832b44425a!5m2!4m1!1i2!8m2!3d46.4361857!4d12.1007064",
         "start_altitude": 0,
@@ -873,13 +952,14 @@
         "elevation_gain": 700,
         "location": "Veneto",
         "group": "Gruppo del Civetta",
-        "tags": [
-            "Anello"
-        ],
+        "tags": "Anello",
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4367583,
+            12.0694872
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Val+Fiorentina+Seggiovie/@46.4367583,12.0694872,17z/data=!4m5!3m4!1s0x47784be0509f6c77:0xa1080c9c42ca4e0a!8m2!3d46.4362584!4d12.0701733?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -916,8 +996,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.339551,
+            12.2233968
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/46°20'22.4\"N+12°13'26.2\"E/@46.339551,12.2233968,147m/data=!3m2!1e3!4b1!4m6!3m5!1s0x0:0xc86597815cb89614!7e2!8m2!3d46.3395509!4d12.2239436?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -956,8 +1039,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "45.8763384",
-            "11.8081418"
+            45.8763384,
+            11.8081418
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Pian+Dela+Bala,+Via+Madonna+Del+Covolo,+31017+Pieve+del+Grappa+TV/@45.8763384,11.8081418,15z/data=!4m5!3m4!1s0x4778ddbfa0e14c8d:0xe85ce2f51e401853!8m2!3d45.8820022!4d11.813221?shorturl=1",
         "start_altitude": 0,
@@ -995,8 +1078,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.9999991,
+            12.1579119
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Passo+San+Boldo/@45.9999991,12.1579119,15z/data=!3m1!4b1!4m5!3m4!1s0x47791a956ce7949d:0xfeefc9ef4acbc76a!8m2!3d46!4d12.1666667?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1034,8 +1120,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.4351931",
-            "12.3613991"
+            46.4351931,
+            12.3613991
         ],
         "start_google_maps_url": "https://www.google.com/maps/place/Pozzale/@46.4351931,12.3613991,17.5z/data=!4m5!3m4!1s0x4779b79a7f0ca2d7:0x89cfae842e67bc1a!8m2!3d46.435997!4d12.363529?shorturl=1",
         "start_altitude": 0,
@@ -1074,8 +1160,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.6840285,
+            10.9746929
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Passo+Fittanze+della+Sega/@45.6840285,10.9746929,16.5z/data=!4m6!3m5!1s0x478201fe85217611:0xa6cef0708496c53b!8m2!3d45.6831519!4d10.9792652!15sCg5wYXNzbyBmaXR0YW56ZVoQIg5wYXNzbyBmaXR0YW56ZZIBEnRvdXJpc3RfYXR0cmFjdGlvbpoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VORE9IQlVkRXhSRUFF?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1112,8 +1201,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4478977,
+            11.9745619
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/32023+Ronch+BL/@46.4478977,11.9745619,17z/data=!3m1!4b1!4m5!3m4!1s0x4778461f8d7ce76d:0xa256c40a87fa261!8m2!3d46.4477268!4d11.9766421?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1151,8 +1243,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4233702,
+            11.9954063
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/32023+Caracoi+Agoin+BL/@46.4233702,11.9954063,16.48z/data=!4m5!3m4!1s0x47784f3414b70761:0x6752a21adb81e260!8m2!3d46.4228729!4d11.9984887?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1185,12 +1280,16 @@
         "tags": [
             "Anello",
             "Trekking",
-            "Rifugio"
+            "Rifugio",
+            "Bivacco"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.461354,
+            12.3585663
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Pozzale/@46.4351931,12.3613991,17z/data=!4m5!3m4!1s0x4779b79a7f0ca2d7:0x89cfae842e67bc1a!8m2!3d46.435997!4d12.363529",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1226,8 +1325,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.6732904,
+            11.1652069
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Bepi+Bertagnoli/@45.6732904,11.1652069,15z/data=!4m8!3m7!1s0x0:0xe064df796c12de5!5m2!4m1!1i2!8m2!3d45.6732539!4d11.1651863?sa=X&ved=2ahUKEwinjrX2xpvxAhXIg_0HHW1YDLkQ_BIwHHoECEsQBQ&shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1265,8 +1367,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.9237551,
+            12.015604
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/45°55'25.5\"N+12°01'00.6\"E/@45.9237551,12.015604,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d45.9237551!4d12.0168381?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1305,8 +1410,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "45.6858988",
-            "11.0826204"
+            45.6858988,
+            11.0826204
         ],
         "start_google_maps_url": "https://www.google.com/maps/place/37021+Malga+San+Giorgio+VR/@45.6858988,11.0826204,17z/data=!3m1!4b1!4m5!3m4!1s0x4778aabcc43fa0ff:0x148201dcfaef8ad7!8m2!3d45.6857468!4d11.0853311?shorturl=1",
         "start_altitude": 0,
@@ -1347,8 +1452,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.3880324",
-            "12.1716552"
+            46.3880324,
+            12.1716552
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/46°23'16.9\"N+12°10'19.7\"E/@46.3880324,12.1716552,18.82z/data=!4m6!3m5!1s0x0:0x0!7e2!8m2!3d46.3880214!4d12.1721414?shorturl=1",
         "start_altitude": 0,
@@ -1381,14 +1486,17 @@
         "location": "Veneto",
         "group": "Gruppo delle Tofane",
         "tags": [
+            "Anello",
             "Ferrata",
-            "Rifugio",
-            "Anello"
+            "Rifugio"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5325204,
+            12.0679833
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Angelo+Dibona/@46.5325204,12.0679833,17z/data=!3m1!4b1!4m7!3m6!1s0x4778343a7992ed0f:0x3201450272f985e0!5m1!1s2018-06-27!8m2!3d46.5325167!4d12.070172?hl=it&authuser=0&shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1426,8 +1534,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.3807012,
+            11.9101939
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+l'Agazon/@46.3807012,11.9101939,15z/data=!4m5!3m4!1s0x0:0x2788e3463d0bf1bb!8m2!3d46.3806986!4d11.9102076",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1463,8 +1574,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x47790c91a88711d5:0x8ad81643a14eb2ca?source=g.page.share",
+        "start_coords": [
+            46.06369,
+            12.3871257
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Vallorch/@46.06369,12.3871257,17z/data=!3m1!4b1!4m8!3m7!1s0x47790c91a88711d5:0x8ad81643a14eb2ca!5m2!4m1!1i2!8m2!3d46.06369!4d12.3871257",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1503,8 +1617,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.970606,
+            11.4127948
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Rifugio+Larici+da+Alessio/@45.970606,11.4127948,17z/data=!3m1!4b1!4m8!3m7!1s0x4778b90e2981d7db:0x5e66caaceaf53dce!5m2!4m1!1i2!8m2!3d45.970606!4d11.4127948",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1540,8 +1657,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4025498,
+            12.098349
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Palafavera/@46.4025498,12.098349,17z/data=!3m1!4b1!4m5!3m4!1s0x47784ce07ab8aeed:0xed21e863c50b5716!8m2!3d46.4025498!4d12.1005377?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1577,8 +1697,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.3063264,
+            11.882198
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Capanna+Cima+Comelle+di+Deola+Snc/@46.3063264,11.882198,15z/data=!4m5!3m4!1s0x0:0x70204086e96df167!8m2!3d46.3063443!4d11.8821247?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1609,13 +1732,16 @@
         "location": "Veneto",
         "group": "Catena Carnica Occidentale",
         "tags": [
-            "Ferrata",
-            "Anello"
+            "Anello",
+            "Ferrata"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.633067,
+            12.6037854
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/46°37'59.0\"N+12°36'15.9\"E/@46.633067,12.6037854,18z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d46.6330666!4d12.6044038?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1652,8 +1778,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.6511753,
+            12.3797788
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Malga+Coltrondo/@46.6511753,12.3797788,13z/data=!4m8!3m7!1s0x0:0x7fb0fa17e15e81fd!5m2!4m1!1i2!8m2!3d46.6629344!4d12.4507391?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1690,8 +1819,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.2532213,
+            11.981387
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Chiesa+di+San+Nicolò/@46.2532213,11.981387,17z/data=!4m5!3m4!1s0x47785705a9b117c5:0xd39f2189d462749c!8m2!3d46.2532026!4d11.9832858?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1730,8 +1862,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "45.708152",
-            "10.8587564"
+            45.708152,
+            10.8587564
         ],
         "start_google_maps_url": "https://www.google.com/maps/place/Chalet+Novezza/@45.708152,10.8587564,15.78z/data=!4m5!3m4!1s0x0:0xfa04c560d825ac1d!8m2!3d45.7087108!4d10.8611889?shorturl=1",
         "start_altitude": 0,
@@ -1764,15 +1896,18 @@
         "location": "Veneto",
         "group": "Gruppo di Fanis",
         "tags": [
+            "Anello",
             "Ferrata",
             "Lago",
-            "Rifugio",
-            "Anello"
+            "Rifugio"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5274481,
+            12.0045692
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Lagazuoi/@46.5274481,12.0045692,15z/data=!4m8!3m7!1s0x477837b720bf5701:0xade38c18a4e77d23!5m2!4m1!1i2!8m2!3d46.527713!4d12.0081049",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1809,8 +1944,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5659898,
+            12.68194
+        ],
+        "start_google_maps_url": "https://www.google.com/maps/place/Borgata+Bach,+33012+Sappada+UD/@46.5659898,12.68194,17z/data=!4m5!3m4!1s0x4779e8675bd186c9:0x8f8d0236fb8d79dc!8m2!3d46.5661152!4d12.6841225",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1848,8 +1986,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.5325204",
-            "12.0679833"
+            46.5325204,
+            12.0679833
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Angelo+Dibona/@46.5325204,12.0679833,17z/data=!3m1!4b1!4m7!3m6!1s0x4778343a7992ed0f:0x3201450272f985e0!5m1!1s2018-06-27!8m2!3d46.5325167!4d12.070172?hl=it&authuser=0&shorturl=1",
         "start_altitude": 0,
@@ -1882,13 +2020,16 @@
         "location": "Veneto",
         "group": "Gruppo del Pomagagnon",
         "tags": [
-            "Ferrata",
-            "Anello"
+            "Anello",
+            "Ferrata"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5578546,
+            12.1316004
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/46°33'28.3\"N+12°07'59.3\"E/@46.5578546,12.1316004,17z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d46.5578524!4d12.133148?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1920,14 +2061,16 @@
         "group": "Gruppo Croda da Lago-Cernera",
         "tags": [
             "Trekking",
-            "Fiume",
             "Lago",
             "Rifugio"
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4301823,
+            12.1120114
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/park+rifugio+citta+di+fiume/@46.4301823,12.1120114,16.75z/data=!4m13!1m7!3m6!1s0x47784b8e59a31401:0x72f3a6f19e745694!2sPasso+Staulanza!3b1!8m2!3d46.4230556!4d12.1030556!3m4!1s0x47784b9bdbfec183:0x87b74671af9a63ab!8m2!3d46.4286667!4d12.1139234?hl=it&shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -1964,8 +2107,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4830556,
+            12.051978
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Passo+di+Giau/@46.4830556,12.051978,17z/data=!3m1!4b1!4m5!3m4!1s0x477849c8ddb4726f:0x6e338788d85b33c1!8m2!3d46.4830556!4d12.0541667?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2002,8 +2148,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.6024461,
+            12.1062676
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/S.+Uberto/@46.6024461,12.1062676,18z/data=!4m13!1m7!3m6!1s0x47783435d247033f:0xdd3c30437b92e42b!2s32043+Cortina+d'Ampezzo+BL!3b1!8m2!3d46.5404711!4d12.1356524!3m4!1s0x0:0x53f9759711391d1!8m2!3d46.6030712!4d12.1062282?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2039,8 +2188,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5317016,
+            11.9862556
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Passo+Valparola/@46.5317016,11.9862556,17z/data=!3m1!4b1!4m5!3m4!1s0x4778384763e2fb31:0x8bc421a0c66831f3!8m2!3d46.5317016!4d11.9884443?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2077,8 +2229,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.556986,
+            12.1992623
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Passo+Tre+Croci/@46.556986,12.1992623,17z/data=!3m1!4b1!4m5!3m4!1s0x4778349f387dc285:0xc39423a7462555f7!8m2!3d46.556986!4d12.201451?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2115,8 +2270,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4025498,
+            12.098349
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Palafavera/@46.4026191,12.1005711,17z/data=!3m1!4b1!4m8!3m7!1s0x47784c65b843bb6f:0x65a7526c49a8a1c9!5m2!4m1!1i2!8m2!3d46.4026169!4d12.100655",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2153,8 +2311,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            45.7769593,
+            11.2355052
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Passo+Xomo/@45.7769593,11.2355052,17z/data=!3m1!4b1!4m5!3m4!1s0x4778af1bccb39a15:0xec9ab85e4b582f52!8m2!3d45.7769593!4d11.2376939?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2191,8 +2352,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.4198135,
+            12.1063803
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/Rifugio+Passo+Staulanza/@46.4198135,12.1063803,16z/data=!4m5!3m4!1s0x0:0x71e8468fde4e3e56!8m2!3d46.42103!4d12.1045947?shorturl=1",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2230,8 +2394,11 @@
         ],
         "distance": 0,
         "start": "",
-        "start_coords": [],
-        "start_google_maps_url": "",
+        "start_coords": [
+            46.5058889,
+            12.0788056
+        ],
+        "start_google_maps_url": "https://www.google.it/maps/place/46°30'21.2\"N+12°04'43.7\"E/@46.5058889,12.0788056,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x56b5384b6db5fe1d!8m2!3d46.5059!4d12.0788",
         "start_altitude": 0,
         "end": "",
         "end_coords": [],
@@ -2269,8 +2436,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "46.2999981",
-            "11.7658237"
+            46.2999981,
+            11.7658237
         ],
         "start_google_maps_url": "https://www.google.com/maps/place/Passo+Rolle/@46.2999981,11.7658237,14z/data=!3m1!4b1!4m5!3m4!1s0x47785c21d84bd99b:0x1d0709882e6bfa60!8m2!3d46.3!4d11.7833333!5m1!1e4?shorturl=1",
         "start_altitude": 0,
@@ -2310,8 +2477,8 @@
         "distance": 0,
         "start": "",
         "start_coords": [
-            "45.9492737",
-            "11.2073556"
+            45.9492737,
+            11.2073556
         ],
         "start_google_maps_url": "https://www.google.it/maps/place/Albergo+Bar+Ristorante+Sindech/@45.9492737,11.2073556,17z/data=!4m8!3m7!1s0x4782757f857c5043:0x5707171af97829be!5m2!4m1!1i2!8m2!3d45.9492737!4d11.2095443?shorturl=1",
         "start_altitude": 0,
