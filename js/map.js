@@ -5,6 +5,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/christiancorro/cl7aceajq003015nqbznfhixi?optimize=true',
+    // zoom: 0.6,
     zoom: 7.3,
     center: [11.367943927336322, 45.92176838392123],
     projection: 'globe'
@@ -22,15 +23,15 @@ const end = {
 map.on('load', () => {
     // Set the default atmosphere style
     // map.setFog({});
-    map.addSource('mapbox-dem', {
-        'type': 'raster-dem',
-        'url': 'mapbox://mapbox.terrain-rgb'
-    });
+    // map.addSource('mapbox-dem', {
+    //     'type': 'raster-dem',
+    //     'url': 'mapbox://mapbox.terrain-rgb'
+    // });
 
-    map.setTerrain({
-        'source': 'mapbox-dem',
-        'exaggeration': 1.5
-    });
+    // map.setTerrain({
+    //     'source': 'mapbox-dem',
+    //     'exaggeration': 1.5
+    // });
 
 
 
@@ -77,7 +78,6 @@ getAllTrails(trails).then((trails) => {
     trails.forEach(trail => {
         let point = {
             'type': 'Feature',
-            'properties': {},
             'geometry': {
                 'type': 'Point',
                 'coordinates': []
@@ -143,19 +143,19 @@ getAllTrails(trails).then((trails) => {
 
 
 
-    setTimeout(() => {
+    // setTimeout(() => {
 
-        mapElement.classList.add("loaded");
-        loading.classList.add("loaded");
+    mapElement.classList.add("loaded");
+    loading.classList.add("loaded");
 
-        // setTimeout(() => {
-        //     map.flyTo({
-        //         ...end, // Fly to the selected target
-        //         duration: 8500, // Animate over 12 seconds
-        //         essential: true // This animation is considered essential with
-        //         //respect to prefers-reduced-motion
-        //     });
-        // }, 1500);
-    }, 1000);
+    //     setTimeout(() => {
+    //         map.flyTo({
+    //             ...end, // Fly to the selected target
+    //             duration: 4000, // Animate over 12 seconds
+    //             // essential: true // This animation is considered essential with
+    //             //respect to prefers-reduced-motion
+    //         });
+    //     }, 800);
+    // }, 10);
 
 });

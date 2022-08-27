@@ -161,7 +161,7 @@ orderby.addEventListener("change", function () {
 function getSpans(className = "") {
     let spans = [];
     // console.log(className);
-    showingCards.forEach(card => {
+    cards.forEach(card => {
         let children;
         if (className == "") {
             children = card.html.querySelectorAll('.card-content .characteristics span')
