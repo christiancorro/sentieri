@@ -11,6 +11,7 @@ const geocoder = new MapboxGeocoder({
     // fuzzyMatch: true
 });
 
+
 geocoder.addTo('#geocoder');
 
 // Get the geocoder results container.

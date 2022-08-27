@@ -285,9 +285,9 @@ function manageDistanceCalculation() {
         return;
     } else {
         position.focus();
-        cards.forEach(card => {
-            card.html.querySelector(".distance").classList.remove("show");
-        });
+        // cards.forEach(card => {
+        //     card.html.querySelector(".distance").classList.remove("show");
+        // });
     }
 }
 
@@ -454,8 +454,14 @@ function nonLinearIncrease(value) {
 
 let useSimpleRoute = false;
 
-function simpleRoute(params) {
 
+function requestPositoin() {
+    console.log("Request");
+
+    navigator.geolocation.getCurrentPosition((position) => {
+        if (position)
+            showDistances([position.coords.longitude, position.coords.latitude], false);
+    });
 }
 
 
@@ -464,18 +470,23 @@ geocoder.on('result', (e) => {
     // console.log("Change distance");
     // console.log(e.result);
 
+    showDistances(e.result.center);
+
+});
+function showDistances(coords, showLoading = true) {
     var options = {
         units: 'kilometers'
     };
 
-    let start = e.result.center;
-    clearMain();
+    let start = coords;
+    if (showLoading)
+        clearMain();
     cards.forEach(async (card, i) => {
 
         let end = card.trail.start_coords;
 
         try {
-            start = [e.result.center[1], e.result.center[0]];
+            start = [coords[1], coords[0]];
             let element_travel = card.html.querySelector(".distance-value").parentElement;
 
             let element_distance_value = card.html.querySelector(".distance-value");
@@ -501,13 +512,11 @@ geocoder.on('result', (e) => {
                 end = [end[1], end[0]];
                 start = [start[1], start[0]];
                 // console.log(start, end);
-
                 await getRoute(start, end)
                     .then((route) => {
                         // console.log(route);
                         if (route) {
                             // console.log(card.trail);
-
                             // card.trail.route = route;
                             let distance = route.distance / 1000;
                             let duration = parseFloat(new Date(route.duration * 1000).toISOString().substring(11, 16).replace(":", "."));
@@ -532,10 +541,9 @@ geocoder.on('result', (e) => {
                             let distance = turf.distance(start, end, options);
 
                             // console.log("Distance: " + distance.toFixed([2]) + " km");
-
                             // console.log(card.html.querySelector(".distance-value"));
                             distance = nonLinearIncrease(distance);
-                            element_travel_time.innerHTML = "-"
+                            element_travel_time.innerHTML = "-";
                             element_distance_value.innerHTML = distance.toFixed([0]);
                             card.trail.distance = distance;
                             card.trail.travel_time = distance;
@@ -546,7 +554,8 @@ geocoder.on('result', (e) => {
                         }
 
                         if (i == cards.length - 1) {
-                            loading.classList.add("loaded");
+                            if (showLoading)
+                                loading.classList.add("loaded");
                             // Sort
                             sortCards();
                             updateMain();
@@ -568,5 +577,7 @@ geocoder.on('result', (e) => {
         sortCards();
         updateMain();
     }
-
+}
+document.addEventListener("cards-loaded", () => {
+    requestPositoin();
 });

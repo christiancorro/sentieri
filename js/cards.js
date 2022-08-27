@@ -161,6 +161,14 @@ getAllTrails(trails).then(() => {
         } else {
             showElementsCards();
         }
+
+        const event = new Event('cards-loaded', {
+            bubbles: true,
+            cancelable: true,
+            composed: false
+        });
+
+        document.dispatchEvent(event);
     });
 });
 
