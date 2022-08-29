@@ -46,7 +46,7 @@ class Card {
             Difficulty[this.trail.difficulty] +
             '</span>' +
             '<span class ="duration" title="Durata"><i class ="fa-solid fa-clock"></i> ' +
-            parseInt(this.trail.duration).toFixed(2) +
+            (parseFloat(this.trail.duration) % 1 != 0 ? parseFloat(this.trail.duration).toFixed(2) : parseFloat(this.trail.duration).toFixed(0)) +
             '<i class="unit">h</i></span>' +
             '<span class ="trail_length" title="Lunghezza"><i class ="fa-solid fa-route"></i> ' +
             this.trail.trail_length +
