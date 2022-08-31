@@ -103,6 +103,7 @@ function filterCards() {
 
 function updateCards() {
     showingCards = filterCards();
+    sortCards();
     updateMain();
     updateQuantity();
 }
