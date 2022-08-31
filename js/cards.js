@@ -74,10 +74,12 @@ function addCards(trails) {
         // no_result.classList.add("show");
 
 
-        sortCards();
+
         updateQuantity();
-        updateMain();
+        sortCards();
+        updateMain(24);
         showCards();
+
 
         resolve(cards);
     });

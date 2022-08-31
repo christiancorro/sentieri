@@ -22,7 +22,7 @@ var progressBar = new ProgressBar.Line('#loading-bar', {
     easing: 'easeInOut'
 });
 function isImage(url) {
-    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url.toLowerCase());
 }
 
 url_image_input.oninput = function () {
@@ -82,14 +82,3 @@ function saved() {
 
 
 getAllTrails(trails);
-
-let confetti = document.querySelector(".confetti");
-
-if (confetti) {
-    confetti.addEventListener("click", function (e) {
-        party.confetti(this, {
-            count: party.variation.range(60, 60),
-            size: party.variation.range(0.9, 1.4),
-        });
-    });
-}

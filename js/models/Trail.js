@@ -79,9 +79,9 @@ class Trail {
 
 
     upload() {
-        if (this.start_coords == "") {
-            this.extractCoords()
-        }
+        // if (this.start_coords == "") {
+        this.extractCoords()
+        // }
 
         Trail.lastId += 1;
         let database = getDatabase(this.id);

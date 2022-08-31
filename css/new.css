@@ -318,7 +318,8 @@ form input[type=url] {
 .loading.loading-modify {
     position: absolute;
     top: 45vh;
-    left: 49vw;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .saved-icon {

@@ -85,10 +85,11 @@ document.addEventListener('scroll', (event) => {
 let toggleFilters = document.querySelector(".toggle-filters");
 let other_filters = document.querySelector(".other-filters");
 
-toggleFilters.addEventListener("click", function () {
-    toggleFilters.classList.toggle("opened");
-    other_filters.classList.toggle("opened");
-})
+if (toggleFilters)
+    toggleFilters.addEventListener("click", function () {
+        toggleFilters.classList.toggle("opened");
+        other_filters.classList.toggle("opened");
+    })
 
 
 let mainArea = document.querySelector(".main-area .cards");

@@ -119,7 +119,7 @@ searchBar.addEventListener("keyup", (e) => {
 let lastCard;
 
 function updateMain(limit = 24) {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         console.log("Update Main");
 
         //Remove cards
@@ -134,9 +134,8 @@ function updateMain(limit = 24) {
             }
         });
 
-        resolve();
+        resolve(true);
     });
-
 }
 
 function showCards() {
@@ -459,8 +458,9 @@ function requestPositoin() {
     console.log("Request");
 
     navigator.geolocation.getCurrentPosition((position) => {
-        if (position)
+        if (position) {
             showDistances([position.coords.longitude, position.coords.latitude], false);
+        }
     });
 }
 

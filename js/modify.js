@@ -50,6 +50,7 @@ function populateModify(trail) {
     start_google_maps_url.setAttribute("value", trail.start_google_maps_url);
     url.setAttribute("value", trail.url);
 
+
     trail.tags.forEach(tag => {
         const checkbox = document.querySelector('[value="' + tag + '"]');
         checkbox.checked = true;
