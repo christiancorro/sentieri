@@ -50,11 +50,15 @@ function populateModify(trail) {
     start_google_maps_url.setAttribute("value", trail.start_google_maps_url);
     url.setAttribute("value", trail.url);
 
+    try {
+        trail.tags.forEach(tag => {
+            const checkbox = document.querySelector('[value="' + tag + '"]');
+            checkbox.checked = true;
+        });
+    } catch (error) {
 
-    trail.tags.forEach(tag => {
-        const checkbox = document.querySelector('[value="' + tag + '"]');
-        checkbox.checked = true;
-    });
+    }
+
 
     loading.classList.add("loaded");
     form_modify.classList.remove("hide");

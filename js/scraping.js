@@ -89,6 +89,74 @@ let linksMagicoVeneto = [
 
 ];
 
+let linksEscursioniFriuli = [
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-osternig/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-forato-dal-gilberti/",
+    "https://escursionifriuli.it/escursioni_a_piedi/cima-di-terrarossa/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-cima-del-cacciatore/",
+    "https://escursionifriuli.it/escursioni_a_piedi/jof-di-miezegnot/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-lussari/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-del-monte-robon/",
+    "https://escursionifriuli.it/escursioni_a_piedi/orrido-dello-slizza/",
+    "https://escursionifriuli.it/escursioni_a_piedi/ta-lipa-pot/",
+    "https://escursionifriuli.it/escursioni_a_piedi/laghi-di-fusine/",
+    "https://escursionifriuli.it/escursioni_a_piedi/lago-del-predil/",
+    "https://escursionifriuli.it/escursioni_a_piedi/raggiungere-rifugio-zacchi/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-gilberti/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-osternig/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-corsi-sentieri/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-brazza/",
+    "https://escursionifriuli.it/escursioni_a_piedi/raggiungere-rifugio-zacchi/",
+    "https://escursionifriuli.it/escursioni_a_piedi/tiglio-di-napoleone/",
+    "https://escursionifriuli.it/escursioni_a_piedi/val-saisera-wild-track/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malga-priu/",
+    "https://escursionifriuli.it/escursioni_a_piedi/val-bartolo/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-nebria/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-pellarini/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-grego/",
+    "https://escursionifriuli.it/escursioni_a_piedi/bivacco-battaglione-gemona/",
+    "https://escursionifriuli.it/escursioni_a_piedi/jof-di-sompdogna/",
+    "https://escursionifriuli.it/escursioni_a_piedi/cappella-zita/",
+    "https://escursionifriuli.it/escursioni_a_piedi/il-lago-dimon/",
+    "https://escursionifriuli.it/escursioni_a_piedi/lago-di-bordaglia/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malghe-di-sauris/",
+    "https://escursionifriuli.it/escursioni_a_piedi/lago-volaia/",
+    "https://escursionifriuli.it/escursioni_a_piedi/lago-avostanis-creta-timau/",
+    "https://escursionifriuli.it/escursioni_a_piedi/casera-ungarina-confin/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-del-monte-floriz/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-marinelli/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-del-monte-cuarnan/",
+    "https://escursionifriuli.it/escursioni_a_piedi/creta-di-timau/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-del-monte-lodin/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-cuar/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-fabiani/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-volaia/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-de-gasperi/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-festa/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-di-pinzano/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-dauda/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malga-coot/",
+    "https://escursionifriuli.it/escursioni_a_piedi/sentiero-delle-creste/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malga-lavareit/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malga-glazzat/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-terzo/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-grauzaria/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malga-tartoi/",
+    "https://escursionifriuli.it/escursioni_a_piedi/pal-piccolo-e-freikofel/",
+    "https://escursionifriuli.it/escursioni_a_piedi/grotta-di-attila/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-paularo/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-zermula/",
+    "https://escursionifriuli.it/escursioni_a_piedi/lago-di-barcis/",
+    "https://escursionifriuli.it/escursioni_a_piedi/anello-monte-cjastelat/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-pala/",
+    "https://escursionifriuli.it/escursioni_a_piedi/monte-jouf/",
+    "https://escursionifriuli.it/escursioni_a_piedi/campanile-di-val-montanaia/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-pradut/",
+    "https://escursionifriuli.it/escursioni_a_piedi/malghe-di-piancavallo/",
+    "https://escursionifriuli.it/escursioni_a_piedi/casera-valmenon/",
+    "https://escursionifriuli.it/escursioni_a_piedi/rifugio-pussa/"];
+
+
 
 function scrapeAll(urls = links) {
     console.log("Trying to scrape " + urls.length + " links");
@@ -109,6 +177,18 @@ function getElementMagicoVeneto(html, name) {
             // console.log('gotcha');
             index = i;
             return myEles[index + 1];
+        }
+    }
+}
+
+function getElementEscursioniFriuli(html, name) {
+    var myEles = html.querySelectorAll(".et_pb_blurb_container");
+    for (var i = 0; i < myEles.length; i++) {
+        // console.log(myEles[i]);
+        if (myEles[i].querySelector("span").innerHTML.toLowerCase().includes(name.toLowerCase())) {
+            // console.log('gotcha');
+            // console.log(myEles[i].querySelector(".et_pb_blurb_description").innerHTML);
+            return myEles[i].querySelector(".et_pb_blurb_description").innerHTML;
         }
     }
 }
@@ -224,11 +304,41 @@ async function scrape(url) {
 
                     }
 
+                    if (url.includes("escursionifriuli")) {
+                        content.title = code.querySelector("h1").innerHTML;
+                        if (code.querySelector(".et_pb_text_inner a").innerHTML.includes("Turist")) {
+                            content.difficulty = "T";
+                        } else if (code.querySelector(".et_pb_text_inner a").innerHTML.includes("esperti")) {
+                        } else {
+                            content.difficulty = "E";
+                        }
+                        content.duration = (getElementEscursioniFriuli(code, "tempistiche").split("-"))[0].split("h")[0];
+                        content.elevation_gain = (getElementEscursioniFriuli(code, "dislivello")).split("m")[0];
+                        content.group = "Alpi Giulie";
+                        content.max_altitude = (getElementEscursioniFriuli(code, "altitudine").split("-"))[1].split("m")[0];
+                        content.trail_length = (getElementEscursioniFriuli(code, "km totali").split("-"))[0].split("km")[0];
+                        try {
+                            let coords = code.querySelector("iframe").getAttribute("data-lazy-src").match(/(?<=!2d)\d+\.\d+|(?<=!3d)\d+\.\d+/g);
+                            content.start_google_maps_url = `https://www.google.com/maps/place/${coords[1]}+${coords[0]}/@${coords[1]},${coords[0]}`;
+                        } catch (error) {
+                            content.start_google_maps_url = "";
+                            console.log("Error google maps link");
+                        }
+                        content.location = "Friuli Venezia Giulia";
+                        try {
+                            content.description = (code.querySelector("#ez-toc-container+p").innerHTML.replaceAll("<strong>", "")).replaceAll("</strong>", "");
+                        } catch (error) {
+                            content.description = "";
+                        }
+                        content.imageURL = code.querySelectorAll("body img")[5].src;
+
+                    }
+
 
                     content.page_url = url;
                     content.tags = [];
 
-                    console.log(content);
+                    // console.log(content);
 
                     if (content.title.toLowerCase().includes("anello") || content.description.toLowerCase().includes("anello")) {
                         content.tags.push("Anello");

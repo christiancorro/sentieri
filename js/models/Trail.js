@@ -93,10 +93,11 @@ class Trail {
 
     extractCoords() {
         try {
-            let regex = new RegExp('@(.*),(.*),');
-            var lat_long_match = this.start_google_maps_url.match(regex);
-            let lat = lat_long_match[1];
-            let long = lat_long_match[2];
+            var lat_long_match = this.start_google_maps_url.match(/(?<=@)\d+\.\d+|(?<=,)\d+\.\d+/g);
+            let lat = lat_long_match[0];
+            let long = lat_long_match[1];
+
+            // console.log(lat, long);
 
             this.start_coords = [parseFloat(lat), parseFloat(long)];
         } catch (error) {
