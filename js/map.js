@@ -126,7 +126,7 @@ getAllTrails(trails).then((trails) => {
         markers.push(marker);
     });
 
-    console.log(markers);
+    // console.log(markers);
 
     // map.addSource('points', points);
     // Add a circle layer
