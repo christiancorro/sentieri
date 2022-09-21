@@ -140,12 +140,17 @@ function showElements(user) {
 function hideElements() {
     only_login = document.querySelectorAll(".only-login");
     only_user = document.querySelectorAll(".only-user");
+    all_users = document.querySelectorAll(".all-users");
 
     only_login.forEach(element => {
         element.classList.add("hide");
     });
 
     only_user.forEach(element => {
+        element.classList.add("hide");
+    });
+
+    all_users.forEach(element => {
         element.classList.add("hide");
     });
 }
@@ -157,7 +162,7 @@ function isLogged() {
 
 function checkPermission(uid) {
     let currentId = getCurrentUser().uid;
-    if (uid == currentId || currentId == "FtXxhMyI2nWLzUEo2vsYJCRxfFl2") {
+    if (uid == currentId || currentId == "FtXxhMyI2nWLzUEo2vsYJCRxfFl2" || uid == "all" || uid == "admin") {
         return true;
     }
 

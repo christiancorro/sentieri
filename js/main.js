@@ -89,6 +89,9 @@ if (toggleFilters)
     toggleFilters.addEventListener("click", function () {
         toggleFilters.classList.toggle("opened");
         other_filters.classList.toggle("opened");
+        if (screen.width < 800) {
+            window.scrollTo(0, 0);
+        }
     })
 
 

@@ -26,6 +26,7 @@
 
 
 .card {
+    position: relative;
     background: white;
     max-height: 650px;
     margin-bottom: 2em;
@@ -102,7 +103,7 @@
 
 
 .card:hover {
-    box-shadow: 0px 1px 4px hsl(0, 0%, 41%);
+    box-shadow: 0px 1px 2px hsl(0, 0%, 41%);
     /* transform: scale(1.018); */
 }
 
@@ -391,6 +392,8 @@ i {
 }
 
 
+
+
 .trail-button:focus {
     /* outline: 0; */
 }
@@ -404,4 +407,81 @@ i {
     background-color: rgba(32, 32, 32, 0.212);
     color: white;
     opacity: 1;
+}
+
+.favorite-trail-button {
+    /* margin: 10px; */
+    position: absolute;
+    display: block;
+    /* float: right; */
+    right: 0px;
+    /* top: 0px; */
+    bottom: 0px;
+    z-index: 10;
+    font: inherit;
+    font-size: 1.1em;
+    padding: 0.3em;
+    width: 50px;
+    height: 50px;
+    font-weight: 500;
+    background-color: #35353500;
+    border-radius: 6px;
+    color: #ffffffd2;
+    border: 0;
+    cursor: pointer;
+    /* border-bottom: 3px solid #464646; */
+    transition: all .1s ease;
+    /* font-weight: bold; */
+    box-sizing: border-box;
+    /* opacity: 0; */
+    transition: all .2s ease;
+    text-shadow: 0px 0px 1px #000000c4;
+    /* margin-left: 50px; */
+    color: #ffffff;
+    display: none;
+}
+
+.favorite-trail-button i {
+    transform: 0.6s cubic-bezier(.47, 1.64, .41, .8), transform 0.2s ease;
+}
+
+.favorite-trail-button:active i {
+    /* transform: scale(0.9); */
+}
+
+.favorite-trail-button:hover {
+    background-color: rgba(95, 95, 95, 0);
+    /* color: red; */
+    opacity: 1;
+}
+
+.favorite-trail-button.active {
+    color: #ff6b63;
+    text-shadow: 0px 0px 1px #00000033;
+    /* transform: scale(1.1); */
+}
+
+.favorite-trail-button.hide {
+    display: none;
+}
+
+.favorite-trail-button .favorite-number {
+    position: absolute;
+    font-size: 0.65em;
+    width: 100%;
+    text-align: center;
+    top: -6px;
+    left: 6px;
+    visibility: hidden;
+    color: #ff6b63;
+    text-shadow: 0px 0px 1px #00000033;
+}
+
+.favorite-trail-button.highlight .favorite-number {
+    visibility: visible;
+}
+
+.favorite-trail-button.highlight i {
+    text-shadow: 0px 0px 1px #ff0000;
+    /* color: blue; */
 }

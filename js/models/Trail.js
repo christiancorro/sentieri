@@ -41,6 +41,7 @@ class Trail {
         this.url = "";
         this.authorId = "";
         this.authorName = "";
+        this.favorite = 0;
     }
 
     serialize() {
@@ -70,7 +71,8 @@ class Trail {
             gpx: this.gpx,
             imagesURL: this.imagesURL,
             date: this.date,
-            url: this.url
+            url: this.url,
+            favorite: this.favorite,
         }
 
         return data;

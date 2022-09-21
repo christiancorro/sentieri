@@ -191,5 +191,11 @@ function showElementsCards() {
                 element.classList.remove("hide");
             });
         }
+        if (checkPermission("all")) {
+            let all_users = card.html.querySelectorAll(".all-users");
+            all_users.forEach(element => {
+                element.classList.remove("hide");
+            });
+        }
     });
 }

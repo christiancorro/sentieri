@@ -158,13 +158,13 @@ orderby.addEventListener("change", function () {
     updateMain();
 });
 
-function getSpans(className = "") {
+function getCardsElements(className = "") {
     let spans = [];
     // console.log(className);
     cards.forEach(card => {
         let children;
         if (className == "") {
-            children = card.html.querySelectorAll('.card-content .characteristics span')
+            children = card.html.querySelectorAll('.card-content .characteristics span, .card-content .characteristics button');
         } else {
             children = card.html.querySelectorAll("." + className);
         }
@@ -177,7 +177,7 @@ function getSpans(className = "") {
 
 
 function updateHighlight(className) {
-    let spans = getSpans();
+    let spans = getCardsElements();
 
     // reset higlight
     spans.forEach(span => {
@@ -185,9 +185,16 @@ function updateHighlight(className) {
     });
 
     if (className != "date") {
-        let elements = getSpans(className);
+        let elements = getCardsElements(className);
         elements.forEach(span => {
             span.classList.add("highlight");
+        });
+    }
+
+    if (className == "favorite") {
+        let elements = getCardsElements(className);
+        elements.forEach(element => {
+            element.classList.add("highlight");
         });
     }
 
@@ -262,6 +269,12 @@ function sortCards() {
             manageDistanceCalculation();
             showingCards.sort((card1, card2) => (card1.trail.travel_time < card2.trail.travel_time) ? 1 : -1)
             updateHighlight("distance")
+            break;
+
+        case "favorite":
+            // manageDistanceCalculation();
+            // showingCards.sort((card1, card2) => (card1.trail.travel_time < card2.trail.travel_time) ? 1 : -1)
+            updateHighlight("favorite")
             break;
 
 

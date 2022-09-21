@@ -3,13 +3,14 @@
     position: absolute;
     opacity: 0;
     left: 0;
+    top: 0;
     /* top: var(--navbar-height); */
     /* bottom: 0; */
     right: 0;
     width: 94%;
 
     /* height: calc(100vh - 60px); */
-    height: 750px;
+    height: 550px;
     transition: all 3s ease;
     /* background-color: red; */
     z-index: 100;
@@ -29,15 +30,36 @@
     /* height: 300px; */
     padding: 0 !important;
     border-radius: 1rem !important;
+    box-shadow: 0px 0px 20px black;
 }
 
+
 .marker {
-    background-image: url('mapbox-icon.png');
+    background-color: #495cb2d2;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.212);
+    border: 2px solid white;
     background-size: cover;
-    width: 20px;
-    height: 20px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quantity-label.quanity-marks {
+    opacity: 0;
+    margin-top: -80px;
+    transition: 2s ease;
+    transition-delay: 1s;
+}
+
+.quantity-label.quanity-marks.show {
+    opacity: 1;
+}
+
+.marker:hover {
+    width: 16px;
+    height: 16px;
 }
 
 .mapboxgl-popup-content img {
@@ -75,6 +97,7 @@
 
 .mapboxgl-popup-content a {
     outline: rgba(27, 27, 27, 0.384);
+
     display: block;
     width: 100%;
     /* background-color: red; */
@@ -94,7 +117,7 @@
 }
 
 .map-container .loading:not(.loaded) {
-    margin-top: 300px !important;
+    margin-top: 250px !important;
 }
 
 .centered.map-filters {
