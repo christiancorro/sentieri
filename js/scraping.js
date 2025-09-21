@@ -437,3 +437,361 @@ function submitTrail(content) {
     console.log(trail);
     trail.upload();
 }
+
+let manualFriuliTrails = [
+    {
+        title: "Jof di Miezegnot",
+        difficulty: "E",
+        duration: 6.0,
+        elevation_gain: 1090,
+        group: "Alpi Giulie",
+        max_altitude: 2087,
+        trail_length: 9.9,
+        location: "Friuli Venezia Giulia",
+        description: "Impegnativa escursione alpina nelle Alpi Giulie che offre viste spettacolari dalla vetta a 2087m. Il sentiero attraversa prati alpini e terreno roccioso, con un tratto finale di cresta esposta per raggiungere la vetta.",
+        tags: ["TREKKING", "CRESTA", "STORIA"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5089,13.4234/@46.5089,13.4234,14z",
+        imageURL: "https://images.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvNjc5ODI5NjIvYzNkZjc4YWYxOWUxNmNkZjFjZjExZDgzN2ZmY2JhYmIuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsicXVhbGl0eSI6NzB9fX0=",
+        page_url: "https://www.alltrails.com/trail/italy/friuli-venezia-giulia/jof-di-miezegnot"
+    },
+    {
+        title: "Monte Lussari Anello",
+        difficulty: "E",
+        duration: 7.2,
+        elevation_gain: 800,
+        group: "Alpi Giulie",
+        max_altitude: 1789,
+        trail_length: 15.0,
+        location: "Friuli Venezia Giulia",
+        description: "Storico sentiero di pellegrinaggio ad anello che conduce al santuario di Monte Lussari, combinando significato spirituale e bellezza naturale. Il percorso circolare si snoda attraverso antiche foreste e offre panorami mozzafiato.",
+        tags: ["ANELLO", "STORIA"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5067,13.5833/@46.5067,13.5833,14z",
+        imageURL: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/5a/24/8a/santuario-di-monte-lussari.jpg",
+        page_url: "https://www.alltrails.com/trail/italy/friuli-venezia-giulia/monte-lussari"
+    },
+    {
+        title: "Cima del Cacciatore",
+        difficulty: "E",
+        duration: 4.5,
+        elevation_gain: 600,
+        group: "Alpi Giulie",
+        max_altitude: 1814,
+        trail_length: 8.0,
+        location: "Friuli Venezia Giulia",
+        description: "Sentiero montano accessibile tramite funivia da Tarvisio, che offre viste panoramiche su tre paesi: Italia, Austria e Slovenia. Ideale per chi cerca panorami senza troppo dislivello.",
+        tags: ["TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5089,13.5456/@46.5089,13.5456,14z",
+        imageURL: "https://www.turismofvg.it/sites/default/files/styles/galleria_principale/public/enti/monte_lussari_2_0.jpg",
+        page_url: "https://nailthetrail.com/cima-del-cacciatore-trail-gps-hiking-the-alps/"
+    },
+    {
+        title: "Monte Canin - Ferrata Brigata Julia",
+        difficulty: "EE",
+        duration: 8.0,
+        elevation_gain: 1200,
+        group: "Alpi Giulie",
+        max_altitude: 2587,
+        trail_length: 12.0,
+        location: "Friuli Venezia Giulia",
+        description: "Spettacolare escursione verso la conca glaciale del Monte Canin utilizzando la famosa Ferrata Brigata Julia. Il percorso combina paesaggi carsici lunari, resti glaciali e tratti attrezzati con cavi metallici.",
+        tags: ["FERRATA", "GHIACCIAIO", "RIFUGIO"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.3667,13.5167/@46.3667,13.5167,14z",
+        imageURL: "https://www.turismofvg.it/sites/default/files/styles/galleria_principale/public/enti/canin_conca_glaciale.jpg",
+        page_url: "https://www.wikiloc.com/hiking-trails/09-07-23-09-57-140306166"
+    },
+    {
+        title: "Anello Monte Robon da Sella Nevea",
+        difficulty: "E",
+        duration: 6.5,
+        elevation_gain: 900,
+        group: "Alpi Giulie",
+        max_altitude: 2401,
+        trail_length: 11.0,
+        location: "Friuli Venezia Giulia",
+        description: "Escursione ad anello attraverso il famoso altopiano carsico del Canin, caratterizzata da impressionanti formazioni calcaree e viste montane mozzafiato. Un viaggio circolare nella geologia alpina.",
+        tags: ["ANELLO", "TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.3667,13.5167/@46.3667,13.5167,14z",
+        imageURL: "https://explorerfvg.com/wp-content/uploads/2020/06/robon-sella-nevea-scaled.jpg",
+        page_url: "https://explorerfvg.com/en/product/escursione-ad-anello-del-monte-robon-da-sella-nevea/"
+    },
+    {
+        title: "Monte Peralba",
+        difficulty: "E",
+        duration: 7.0,
+        elevation_gain: 1100,
+        group: "Alpi Carniche",
+        max_altitude: 2694,
+        trail_length: 10.5,
+        location: "Friuli Venezia Giulia",
+        description: "Salita alla quarta cima più alta delle Alpi Carniche, dove nasce il fiume Piave. Viste straordinarie su Austria e Slovenia, con un significato geografico particolare come spartiacque principale.",
+        tags: ["TREKKING", "FIUME"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5500,12.4833/@46.5500,12.4833,14z",
+        imageURL: "https://camminateinfriuli.altervista.org/images/peralba1.jpg",
+        page_url: "https://www.wikiloc.com/hiking-trails/monte-peralba-53102258"
+    },
+    {
+        title: "Creta delle Chianevate",
+        difficulty: "EE",
+        duration: 8.5,
+        elevation_gain: 1300,
+        group: "Alpi Carniche",
+        max_altitude: 2769,
+        trail_length: 13.0,
+        location: "Friuli Venezia Giulia",
+        description: "Impegnativa salita alla seconda cima più alta delle Alpi Carniche, che offre viste panoramiche eccezionali su tutta la catena montuosa. Percorso per escursionisti esperti con passaggi su cresta esposta.",
+        tags: ["CRESTA", "TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5400,12.4600/@46.5400,12.4600,14z",
+        imageURL: "https://www.peakware.com/photos/big/4/Chianevate2.jpg",
+        page_url: "https://www.summitpost.org/creta-delle-chianevate/1065432"
+    },
+    {
+        title: "Rifugio Gilberti da Sella Nevea",
+        difficulty: "E",
+        duration: 5.0,
+        elevation_gain: 700,
+        group: "Alpi Giulie",
+        max_altitude: 1850,
+        trail_length: 8.5,
+        location: "Friuli Venezia Giulia",
+        description: "Popolare escursione al rifugio Gilberti sull'altopiano del Canin, accessibile con funivia o a piedi attraverso scenici prati alpini. Punto di partenza ideale per esplorare l'altopiano carsico.",
+        tags: ["RIFUGIO"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.3667,13.5167/@46.3667,13.5167,14z",
+        imageURL: "https://www.rifugiogilberti.it/wp-content/uploads/2019/06/rifugio-gilberti-esterno.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/rifugio-corsi-sentieri/"
+    },
+    {
+        title: "Jof Fuart - Via Normale con Ferrata",
+        difficulty: "EE",
+        duration: 9.0,
+        elevation_gain: 1500,
+        group: "Alpi Giulie",
+        max_altitude: 2666,
+        trail_length: 14.0,
+        location: "Friuli Venezia Giulia",
+        description: "Impegnativa salita a una delle cime più prominenti delle Alpi Giulie, caratterizzata da creste esposte e un tratto finale attrezzato con ferrata. Richiede esperienza alpinistica e ottime condizioni meteo.",
+        tags: ["FERRATA", "CRESTA", "TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.4167,13.5833/@46.4167,13.5833,14z",
+        imageURL: "https://www.summitpost.org/images/large/276325.jpg",
+        page_url: "https://www.summitpost.org/jof-fuart/173063"
+    },
+    {
+        title: "Anello dei Laghi di Fusine",
+        difficulty: "T",
+        duration: 2.0,
+        elevation_gain: 100,
+        group: "Alpi Giulie",
+        max_altitude: 930,
+        trail_length: 4.5,
+        location: "Friuli Venezia Giulia",
+        description: "Facile passeggiata ad anello adatta alle famiglie intorno ai bellissimi laghi di Fusine, con acque cristalline che riflettono le cime circostanti. Uno dei percorsi circolari più fotografati del Friuli Venezia Giulia.",
+        tags: ["ANELLO", "LAGO", "BAMBINI"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5000,13.6833/@46.5000,13.6833,14z",
+        imageURL: "https://www.turismofvg.it/sites/default/files/styles/galleria_principale/public/enti/laghi_di_fusine_superiore.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/laghi-di-fusine/"
+    },
+    {
+        title: "Orrido dello Slizza",
+        difficulty: "T",
+        duration: 1.5,
+        elevation_gain: 50,
+        group: "Valle del Fella",
+        max_altitude: 750,
+        trail_length: 3.0,
+        location: "Friuli Venezia Giulia",
+        description: "Breve ma spettacolare passeggiata attraverso la gola dello Slizza, caratterizzata da formazioni rocciose drammatiche e acque impetuose. Perfetto per una gita in famiglia.",
+        tags: ["FIUME", "BAMBINI"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5067,13.5833/@46.5067,13.5833,14z",
+        imageURL: "https://www.turismofvg.it/sites/default/files/styles/galleria_principale/public/enti/orrido_slizza.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/orrido-dello-slizza/"
+    },
+    {
+        title: "Monte Cuar",
+        difficulty: "E",
+        duration: 5.5,
+        elevation_gain: 800,
+        group: "Alpi Carniche",
+        max_altitude: 1966,
+        trail_length: 9.0,
+        location: "Friuli Venezia Giulia",
+        description: "Escursione panoramica nelle Alpi Carniche che offre belle viste sulla valle del Tagliamento e sulle cime austriache. Sentiero ben segnalato attraverso boschi e pascoli alpini.",
+        tags: ["TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.4500,12.9500/@46.4500,12.9500,14z",
+        imageURL: "https://escursionifriuli.it/wp-content/uploads/2020/05/monte-cuar-panorama.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/monte-cuar/"
+    },
+    {
+        title: "Rifugio Marinelli",
+        difficulty: "E",
+        duration: 4.0,
+        elevation_gain: 600,
+        group: "Alpi Carniche",
+        max_altitude: 1600,
+        trail_length: 7.5,
+        location: "Friuli Venezia Giulia",
+        description: "Piacevole escursione verso un rifugio di montagna attraverso boschi e pascoli alpini, perfetta per una pausa gastronomica in quota. Il sentiero offre belle viste panoramiche sulle vallate circostanti.",
+        tags: ["RIFUGIO", "MALGA"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.4200,12.8500/@46.4200,12.8500,14z",
+        imageURL: "https://www.rifugiomarinelli.it/wp-content/uploads/2019/07/rifugio-marinelli.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/rifugio-marinelli/"
+    },
+    {
+        title: "Creta di Timau",
+        difficulty: "E",
+        duration: 6.0,
+        elevation_gain: 950,
+        group: "Alpi Carniche",
+        max_altitude: 2218,
+        trail_length: 10.0,
+        location: "Friuli Venezia Giulia",
+        description: "Gratificante salita a una prominente cima carnica che offre eccellenti viste sulle vallate circostanti e sul confine austriaco. Sentiero ben tracciato attraverso ambienti alpini variati.",
+        tags: ["TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.5167,12.7833/@46.5167,12.7833,14z",
+        imageURL: "https://www.avventurosamente.it/joomla/images/stories/escursioni/creta_timau/creta_timau_3.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/creta-di-timau/"
+    },
+    {
+        title: "Campanile di Val Montanaia",
+        difficulty: "EE",
+        duration: 8.0,
+        elevation_gain: 1100,
+        group: "Dolomiti Friulane",
+        max_altitude: 2173,
+        trail_length: 12.0,
+        location: "Friuli Venezia Giulia",
+        description: "Spettacolare avvicinamento al famoso campanile delle Dolomiti Friulane, una delle formazioni rocciose più iconiche della regione. Richiede esperienza e buone condizioni meteo.",
+        tags: ["TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.3167,12.4833/@46.3167,12.4833,14z",
+        imageURL: "https://www.summitpost.org/images/large/150524.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/campanile-di-val-montanaia/"
+    },
+    {
+        title: "Monte Zermula",
+        difficulty: "E",
+        duration: 6.5,
+        elevation_gain: 1000,
+        group: "Alpi Carniche",
+        max_altitude: 2143,
+        trail_length: 11.0,
+        location: "Friuli Venezia Giulia",
+        description: "Escursione verso una delle cime più panoramiche delle Alpi Carniche orientali, con viste spettacolari su Austria, Slovenia e le vallate friulane. Percorso impegnativo ma molto gratificante.",
+        tags: ["TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.4833,13.0833/@46.4833,13.0833,14z",
+        imageURL: "https://escursionifriuli.it/wp-content/uploads/2020/07/monte-zermula-vetta.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/monte-zermula/"
+    },
+    {
+        title: "Rifugio De Gasperi",
+        difficulty: "E",
+        duration: 4.5,
+        elevation_gain: 650,
+        group: "Alpi Carniche",
+        max_altitude: 1650,
+        trail_length: 8.0,
+        location: "Friuli Venezia Giulia",
+        description: "Piacevole escursione al rifugio intitolato al grande statista trentino, situato in una conca panoramica delle Alpi Carniche. Ideale per famiglie e per una sosta gastronomica.",
+        tags: ["RIFUGIO", "STORIA"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.4500,12.8000/@46.4500,12.8000,14z",
+        imageURL: "https://www.rifugiodegasperi.it/wp-content/uploads/2020/06/rifugio-de-gasperi-esterno.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/rifugio-de-gasperi/"
+    },
+    {
+        title: "Cascate del Gorgazzo",
+        difficulty: "T",
+        duration: 1.0,
+        elevation_gain: 50,
+        group: "Prealpi Friulane",
+        max_altitude: 600,
+        trail_length: 2.0,
+        location: "Friuli Venezia Giulia",
+        description: "Breve e suggestiva passeggiata alle cascate del Gorgazzo, dove una sorgente carsica crea uno spettacolare salto d'acqua color smeraldo. Perfetto per famiglie con bambini.",
+        tags: ["CASCATA", "BAMBINI"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.1167,12.6833/@46.1167,12.6833,14z",
+        imageURL: "https://www.turismofvg.it/sites/default/files/styles/galleria_principale/public/enti/gorgazzo_cascate.jpg",
+        page_url: "https://www.turismofvg.it/cosa-vedere/cascate-del-gorgazzo"
+    },
+    {
+        title: "Monte Raut",
+        difficulty: "EE",
+        duration: 9.0,
+        elevation_gain: 1400,
+        group: "Dolomiti Friulane",
+        max_altitude: 2025,
+        trail_length: 13.5,
+        location: "Friuli Venezia Giulia",
+        description: "Impegnativa escursione nella parte più selvaggia delle Dolomiti Friulane, attraverso ambienti incontaminati e paesaggi di rara bellezza. Richiede esperienza alpinistica.",
+        tags: ["TREKKING"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.2833,12.4500/@46.2833,12.4500,14z",
+        imageURL: "https://www.summitpost.org/images/large/589234.jpg",
+        page_url: "https://www.summitpost.org/monte-raut/589234"
+    },
+    {
+        title: "Anello del Lago del Predil",
+        difficulty: "T",
+        duration: 1.5,
+        elevation_gain: 80,
+        group: "Alpi Giulie",
+        max_altitude: 1020,
+        trail_length: 3.5,
+        location: "Friuli Venezia Giulia",
+        description: "Facile passeggiata ad anello intorno al lago di origine glaciale situato al confine con la Slovenia. Il percorso circolare permette di ammirare le acque turchesi che riflettono le montagne circostanti creando scenari da cartolina.",
+        tags: ["ANELLO", "LAGO", "BAMBINI"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.4167,13.5833/@46.4167,13.5833,14z",
+        imageURL: "https://www.turismofvg.it/sites/default/files/styles/galleria_principale/public/enti/lago_del_predil.jpg",
+        page_url: "https://escursionifriuli.it/escursioni_a_piedi/lago-del-predil/"
+    },
+    {
+        title: "Monte Matajur",
+        difficulty: "E",
+        duration: 7.0,
+        elevation_gain: 1100,
+        group: "Prealpi Giulie",
+        max_altitude: 1641,
+        trail_length: 12.0,
+        location: "Friuli Venezia Giulia",
+        description: "Storica escursione sulla montagna sacra agli Sloveni, teatro di importanti eventi della Prima Guerra Mondiale. Dalla vetta si gode una vista a 360° su Friuli, Veneto e Slovenia.",
+        tags: ["TREKKING", "STORIA"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.2167,13.4500/@46.2167,13.4500,14z",
+        imageURL: "https://www.natisone.it/wp-content/uploads/2019/05/matajur-vetta.jpg",
+        page_url: "https://www.natisone.it/monte-matajur-escursione/"
+    },
+    {
+        title: "Grotta di Villanova",
+        difficulty: "T",
+        duration: 2.0,
+        elevation_gain: 150,
+        group: "Prealpi Friulane",
+        max_altitude: 450,
+        trail_length: 4.0,
+        location: "Friuli Venezia Giulia",
+        description: "Interessante escursione naturalistica che combina il trekking con la speleologia. La grotta, visitabile con guida, offre un affascinante viaggio nel mondo sotterraneo carsico.",
+        tags: ["BAMBINI"],
+        start_google_maps_url: "https://www.google.com/maps/place/46.0333,12.9167/@46.0333,12.9167,14z",
+        imageURL: "https://www.grottadivillanova.it/wp-content/uploads/2020/04/grotta-villanova-ingresso.jpg",
+        page_url: "https://www.grottadivillanova.it/"
+    }
+];
+
+// Function to add manual trails to your database
+function addManualTrails() {
+    manualFriuliTrails.forEach(trailData => {
+        let trail = new Trail();
+        trail.title = trailData.title;
+        trail.authorId = getCurrentUser().uid;
+        trail.authorName = getCurrentUser().displayName;
+        trail.difficulty = trailData.difficulty;
+        trail.duration = trailData.duration;
+        trail.group = trailData.group;
+        trail.trail_length = trailData.trail_length;
+        trail.location = trailData.location;
+        trail.max_altitude = trailData.max_altitude;
+        trail.elevation_gain = trailData.elevation_gain;
+        trail.url = trailData.page_url;
+        trail.imagesURL.push(trailData.imageURL);
+        trail.description = trailData.description;
+        trail.tags = trailData.tags;
+        trail.start_google_maps_url = trailData.start_google_maps_url;
+
+        console.log("Adding trail:", trail.title);
+        trail.upload();
+    });
+}
